@@ -1,0 +1,59 @@
+/* 
+ * Custom styles for the Delhi Load Forecast Dashboard
+ */
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.footer {
+    margin-top: auto;
+}
+
+.chart-container {
+    position: relative;
+    height: 300px;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+#updateStatus.updating {
+    color: orange;
+    font-weight: bold;
+}
+
+#updateStatus.success {
+    color: lightgreen;
+    font-weight: bold;
+}
+
+#updateStatus.error {
+    color: salmon;
+    font-weight: bold;
+}
+
+.card {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand {
+    font-weight: bold;
+}
+
+.table thead {
+    background-color: #f8f9fa;
+}
+
+@media (max-width: 768px) {
+    .chart-container {
+        height: 250px;
+    }
+}
