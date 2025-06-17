@@ -41,4 +41,10 @@ models/saved_models/
 *.log
 
 # Keep InnovationReport.pdf
-!InnovationReport.pdf 
+!InnovationReport.pdf
+
+# Ignore development environment and cache directories
+.cursor/
+__pycache__/
+venv/
+.venv/ 
