@@ -1,0 +1,45 @@
+# Ignore miscellaneous files and directories not part of the core project
+1_QV1rVgh3bfaMbtxueS-cgA.webp
+1-s2.0-S1040619024000083-main.pdf
+10.09.24_NLDC_PSP.xls
+clean_data.csv
+cyz.docx
+d0ec5c83-6be5-4453-9fb4-779f1f11d659.png
+delhi_load_data_2hour_intervals.csv
+delhi_load_data.py
+delhi-electrical-substations-updated.csv
+energies-17-04457.pdf
+final_data (1).csv
+final_data.csv
+final.csv
+Idea_Submission_Format.docx
+Idea-Presentation-Format-SIH2023-College.pptx
+InnovationReport.docx
+InnovationReport.pdf
+load_forecast.zip
+NDMC_feeder_wise_load_data.csv
+No Of Consumers.jpeg
+output_time_only.csv
+output4.csv
+Picture1 (2).png
+Picture1.png
+Picture10.jpg
+Picture11.png
+Picture2.png
+Picture3.jpg
+Picture4.jpg
+Picture5.jpg
+Picture6.png
+Picture7.png
+Picture8.png
+Picture9.png
+preprocess.ipynb
+preprocessed_data.csv
+REGION WISE LOAD/
+SIH_new/
+Screeningform.docx
+SIH125.docx
+SIH2024.pptx
+
+# Ignore virtual environment
+.venv/ 
