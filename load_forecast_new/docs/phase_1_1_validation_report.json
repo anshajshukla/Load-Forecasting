@@ -1,0 +1,77 @@
+{
+  "validation_timestamp": "2025-07-24T19:18:52.489539",
+  "total_records": 50496,
+  "time_range": {
+    "start": "2022-07-25T00:00:00+00:00",
+    "end": "2025-07-24T23:30:00+00:00"
+  },
+  "range_validation": {
+    "delhi_load": {
+      "range_ok": "False",
+      "outlier_count": 1,
+      "outlier_percentage": 0.001980354879594423,
+      "min": 1070.87,
+      "max": 7871.3,
+      "mean": 3303.6160674112803
+    },
+    "brpl_load": {
+      "range_ok": "True",
+      "outlier_count": 1,
+      "outlier_percentage": 0.001980354879594423,
+      "min": 299.84,
+      "max": 2203.97,
+      "mean": 925.0125031685678
+    },
+    "bypl_load": {
+      "range_ok": "True",
+      "outlier_count": 1,
+      "outlier_percentage": 0.001980354879594423,
+      "min": 235.59,
+      "max": 1731.69,
+      "mean": 726.7955313292143
+    },
+    "ndpl_load": {
+      "range_ok": "True",
+      "outlier_count": 1,
+      "outlier_percentage": 0.001980354879594423,
+      "min": 192.76,
+      "max": 1416.83,
+      "mean": 594.6509014575412
+    },
+    "ndmc_load": {
+      "range_ok": "True",
+      "outlier_count": 1,
+      "outlier_percentage": 0.001980354879594423,
+      "min": 128.5,
+      "max": 944.56,
+      "mean": 396.43392308301645
+    },
+    "mes_load": {
+      "range_ok": "False",
+      "outlier_count": 1,
+      "outlier_percentage": 0.001980354879594423,
+      "min": 85.67,
+      "max": 629.7,
+      "mean": 264.28929241920156
+    }
+  },
+  "completeness": {
+    "completeness": 0.9598540145985401,
+    "missing_count": 2112,
+    "status": "\u2705"
+  },
+  "consistency": {
+    "consistency_rate": 1.0,
+    "avg_diff_percentage": 11.999999259406831,
+    "negative_values": {
+      "delhi_load": "0",
+      "brpl_load": "0",
+      "bypl_load": "0",
+      "ndpl_load": "0",
+      "ndmc_load": "0",
+      "mes_load": "0"
+    },
+    "status": "\u2705"
+  },
+  "overall_score": 1.0
+}

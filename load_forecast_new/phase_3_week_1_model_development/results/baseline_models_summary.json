@@ -1,0 +1,18 @@
+{
+  "evaluation_summary": {
+    "ridge": {
+      "avg_val_mape": 17.52792214460871
+    },
+    "lasso": {
+      "avg_val_mape": 13.6653700676709
+    },
+    "random_forest": {
+      "avg_val_mape": 11.394381258819129
+    }
+  },
+  "best_model": {
+    "name": "random_forest",
+    "val_mape": 11.394381258819129
+  },
+  "training_timestamp": "2025-08-08T03:27:49.864501"
+}

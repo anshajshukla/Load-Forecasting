@@ -1,0 +1,89 @@
+"""
+Delhi Load Forecasting - Phase 3 Week 1 Requirements
+Week 1 Baseline Establishment Pipeline Dependencies
+
+This file contains all Python package dependencies required for
+the complete Week 1 baseline establishment pipeline.
+"""
+
+# Core data science and machine learning
+pandas>=1.5.0
+numpy>=1.21.0
+scikit-learn>=1.1.0
+scipy>=1.9.0
+
+# Gradient boosting and ensemble methods
+xgboost>=1.6.0
+lightgbm>=3.3.0
+
+# Time series and forecasting
+prophet>=1.1.0
+statsmodels>=0.13.0
+
+# Deep learning (for Week 2 preparation)
+tensorflow>=2.10.0
+torch>=1.12.0
+pytorch-lightning>=1.7.0
+
+# Hyperparameter optimization
+optuna>=3.0.0
+hyperopt>=0.2.7
+
+# Visualization and plotting
+matplotlib>=3.5.0
+seaborn>=0.11.0
+plotly>=5.10.0
+
+# Progress bars and utilities
+tqdm>=4.64.0
+joblib>=1.1.0
+
+# Jupyter notebook support
+jupyter>=1.0.0
+ipykernel>=6.15.0
+ipywidgets>=7.7.0
+
+# Data validation and quality
+pandera>=0.12.0
+great-expectations>=0.15.0
+
+# Feature engineering and selection
+feature-engine>=1.4.0
+boruta>=0.3.0
+
+# Model interpretation
+shap>=0.41.0
+lime>=0.2.0
+
+# Performance monitoring
+mlflow>=1.28.0
+wandb>=0.13.0
+
+# Configuration management
+pyyaml>=6.0
+configparser>=5.3.0
+
+# Logging and monitoring
+loguru>=0.6.0
+
+# Memory optimization
+psutil>=5.9.0
+memory-profiler>=0.60.0
+
+# File I/O optimization
+pyarrow>=8.0.0
+fastparquet>=0.8.0
+
+# Parallel processing
+dask>=2022.8.0
+multiprocessing-logging>=0.3.0
+
+# Development and testing
+pytest>=7.1.0
+black>=22.6.0
+flake8>=5.0.0
+mypy>=0.971
+
+# Documentation
+sphinx>=5.1.0
+sphinx-rtd-theme>=1.0.0

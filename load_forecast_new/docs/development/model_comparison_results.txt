@@ -1,0 +1,10 @@
+Model Comparison Results
+========================
+Model Type      MSE        MAPE (%)  
+-----------------------------------
+GRU             0.0641     5.80      
+ENHANCED_GRU    0.0772     5.50      
+LSTM            0.0351     4.02      
+BILSTM          0.0728     5.53      
+
+Best model based on MAPE: LSTM

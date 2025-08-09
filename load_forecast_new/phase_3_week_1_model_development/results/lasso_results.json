@@ -1,0 +1,32 @@
+{
+  "delhi_load": {
+    "alpha": 0.1,
+    "val_mape": 0.4311418175787501,
+    "n_features_selected": "73"
+  },
+  "brpl_load": {
+    "alpha": 0.1,
+    "val_mape": 4.913596718424887,
+    "n_features_selected": "93"
+  },
+  "bypl_load": {
+    "alpha": 0.1,
+    "val_mape": 4.329560748363445,
+    "n_features_selected": "75"
+  },
+  "ndpl_load": {
+    "alpha": 0.1,
+    "val_mape": 5.669322758486351,
+    "n_features_selected": "87"
+  },
+  "ndmc_load": {
+    "alpha": 0.1,
+    "val_mape": 14.438238773176392,
+    "n_features_selected": "81"
+  },
+  "mes_load": {
+    "alpha": 0.1,
+    "val_mape": 52.21035958999557,
+    "n_features_selected": "69"
+  }
+}

@@ -1,0 +1,146 @@
+{
+  "evaluation_date": "2025-08-08T17:30:03.421856",
+  "week_1_summary": {
+    "total_models_evaluated": 16,
+    "best_mape": 9.160451094408137,
+    "models_meeting_criteria": 2
+  },
+  "model_performance": [
+    {
+      "model_name": "extra_trees",
+      "validation_mape": 9.160451094408137,
+      "training_mape": 825490.00646124,
+      "validation_rmse": 78.62843635999393,
+      "source": "enhanced_baseline_results",
+      "category": "Enhanced Baseline"
+    },
+    {
+      "model_name": "ultimate_ensemble",
+      "validation_mape": 9.20644343937733,
+      "training_mape": 984207.78684794,
+      "validation_rmse": 58.34768517805919,
+      "source": "enhanced_baseline_results",
+      "category": "Enhanced Baseline"
+    },
+    {
+      "model_name": "elastic_net_cv",
+      "validation_mape": 12.470448087761271,
+      "training_mape": 1200278.0944299886,
+      "validation_rmse": 51.37501251138558,
+      "source": "enhanced_baseline_results",
+      "category": "Enhanced Baseline"
+    },
+    {
+      "model_name": "elastic_net",
+      "validation_mape": 13.662039540316783,
+      "training_mape": 1242887.6306200996,
+      "validation_rmse": 66.49386101859803,
+      "source": "super_fast_baseline_results",
+      "category": "Initial Baseline"
+    },
+    {
+      "model_name": "weighted_ensemble",
+      "validation_mape": 13.723412566133511,
+      "training_mape": 1315355.8741414363,
+      "validation_rmse": 51.08629854266101,
+      "source": "enhanced_baseline_results",
+      "category": "Enhanced Baseline"
+    },
+    {
+      "model_name": "tuned_gradient_boosting",
+      "validation_mape": 15.497334378253374,
+      "training_mape": 1100596.9090457116,
+      "validation_rmse": 177.89590959844418,
+      "source": "advanced_models_results",
+      "category": "Advanced Models"
+    },
+    {
+      "model_name": "ensemble",
+      "validation_mape": 15.774849210797228,
+      "training_mape": 1397856.2604185226,
+      "validation_rmse": 52.04155000164371,
+      "source": "enhanced_baseline_results",
+      "category": "Enhanced Baseline"
+    },
+    {
+      "model_name": "advanced_ensemble",
+      "validation_mape": 15.806268084177296,
+      "training_mape": 1032158.8635975288,
+      "validation_rmse": 160.9984564127426,
+      "source": "advanced_models_results",
+      "category": "Advanced Models"
+    },
+    {
+      "model_name": "ada_boost",
+      "validation_mape": 16.24267653485014,
+      "training_mape": 927371.5400046336,
+      "validation_rmse": 162.0588846567826,
+      "source": "advanced_models_results",
+      "category": "Advanced Models"
+    },
+    {
+      "model_name": "ridge_cv",
+      "validation_mape": 16.950321820549927,
+      "training_mape": 1471775.544115282,
+      "validation_rmse": 51.44391129619507,
+      "source": "enhanced_baseline_results",
+      "category": "Enhanced Baseline"
+    },
+    {
+      "model_name": "ridge",
+      "validation_mape": 17.52792214460871,
+      "training_mape": 1446274.494016912,
+      "validation_rmse": 54.210420443121066,
+      "source": "super_fast_baseline_results",
+      "category": "Initial Baseline"
+    },
+    {
+      "model_name": "bayesian_ridge",
+      "validation_mape": 17.77387545651526,
+      "training_mape": 1472709.883580751,
+      "validation_rmse": 55.33385546649913,
+      "source": "enhanced_baseline_results",
+      "category": "Enhanced Baseline"
+    },
+    {
+      "model_name": "linear_regression",
+      "validation_mape": 18.7724184285271,
+      "training_mape": 1443962.6687456325,
+      "validation_rmse": 57.17583761881993,
+      "source": "super_fast_baseline_results",
+      "category": "Initial Baseline"
+    },
+    {
+      "model_name": "gradient_boosting",
+      "validation_mape": 19.30936451149036,
+      "training_mape": 1071461.2222831591,
+      "validation_rmse": 219.68388150263485,
+      "source": "advanced_models_results",
+      "category": "Advanced Models"
+    },
+    {
+      "model_name": "polynomial_ridge",
+      "validation_mape": 22.629103330416584,
+      "training_mape": 905883.3192656216,
+      "validation_rmse": 167.2056898760368,
+      "source": "enhanced_baseline_results",
+      "category": "Enhanced Baseline"
+    },
+    {
+      "model_name": "pca_ridge",
+      "validation_mape": 39.6781205607688,
+      "training_mape": 1200890.717637292,
+      "validation_rmse": 531.8232990372808,
+      "source": "enhanced_baseline_results",
+      "category": "Enhanced Baseline"
+    }
+  ],
+  "recommendations": [
+    "Build upon Enhanced Baseline approach which showed best performance",
+    "Focus on ensemble methods combining best performing models",
+    "Implement advanced feature engineering techniques",
+    "Explore time series specific models (ARIMA, Prophet)",
+    "Consider neural network approaches for complex patterns",
+    "Implement cross-validation for robust model selection"
+  ]
+}

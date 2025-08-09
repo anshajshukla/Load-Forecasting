@@ -1,0 +1,46 @@
+data_version: '2.0'
+feature_definitions:
+  engineering_ready: true
+  load_targets:
+  - timestamp_load
+  - delhi_load
+  - brpl_load
+  - bypl_load
+  - ndpl_load
+  - ndmc_load
+  - mes_load
+  priority1_predictors:
+  - shortwave_radiation
+  - wet_bulb_temperature_2m
+  - direct_radiation
+  - diffuse_radiation
+  temporal_features:
+  - timestamp_hour
+  - hour
+  - day_of_week
+  - month
+  - is_weekend
+  - is_morning_peak
+  - is_evening_peak
+  - is_peak_hour
+  weather_predictors:
+  - "temperature_2m (\xB0C)"
+  - "apparent_temperature (\xB0C)"
+  - relative_humidity_2m (%)
+  - cloud_cover (%)
+  - wind_speed_10m (km/h)
+  - wind_gusts_10m (km/h)
+  - precipitation (mm)
+  - wet_bulb_temperature_2m
+  - cloud_cover_total
+  - cloud_cover_low
+  - cloud_cover_mid
+  - cloud_cover_high
+  - wind_direction_10m
+  - wind_direction_100m
+last_updated: '2025-07-25T13:12:06.454207'
+paths:
+  correlation_analysis: dataset/correlation_analysis_summary.json
+  main_dataset: dataset/delhi_weather_load_v2_complete.csv
+  metadata: dataset/delhi_weather_load_v2_metadata.json
+total_features: 44

@@ -1,0 +1,20 @@
+"""
+SIH 2024 Enhancement Components Package
+Core enhancement modules for spike detection, peak forecasting, and holiday awareness
+"""
+
+from .core_enhancements import (
+    SIHForecastingConfig,
+    DelhiHolidayCalendar,
+    EnhancedWeatherIntegration,
+    SpikeDetectionSystem,
+    PeakDemandForecaster
+)
+
+__all__ = [
+    'SIHForecastingConfig',
+    'DelhiHolidayCalendar',
+    'EnhancedWeatherIntegration', 
+    'SpikeDetectionSystem',
+    'PeakDemandForecaster'
+]

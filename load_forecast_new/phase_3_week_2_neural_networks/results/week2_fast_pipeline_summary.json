@@ -1,0 +1,22 @@
+{
+  "execution_date": "2025-08-08T23:34:35.545774",
+  "total_execution_time": 31.934041261672974,
+  "successful_steps": 0,
+  "total_steps": 2,
+  "success_rate": 0.0,
+  "step_results": {
+    "01_fast_data_prep.py": {
+      "status": "failed",
+      "execution_time": 1.397475004196167,
+      "error": "Traceback (most recent call last):\n  File \"C:\\Users\\ansha\\Desktop\\SIH_new\\load_forecast\\phase_3_week_2_neural_networks\\scripts\\01_fast_data_prep.py\", line 220, in main\n    success = prep.run_fast_preparation()\n  File \"C:\\Users\\ansha\\Desktop\\SIH_new\\load_forecast\\phase_3_week_2_neural_networks\\scripts\\01_fast_data_prep.py\", line 182, in run_fast_preparation\n    print(\"\\U0001f680 Week 2 Neural Network Data Preparation - FAST MODE\")\n    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+      "description": "Prepare data for neural networks"
+    },
+    "02_fast_lstm_gru.py": {
+      "status": "failed",
+      "execution_time": 12.740359783172607,
+      "error": "Traceback (most recent call last):\n  File \"C:\\Users\\ansha\\Desktop\\SIH_new\\load_forecast\\phase_3_week_2_neural_networks\\scripts\\02_fast_lstm_gru.py\", line 362, in main\n    success = trainer.run_fast_training()\n  File \"C:\\Users\\ansha\\Desktop\\SIH_new\\load_forecast\\phase_3_week_2_neural_networks\\scripts\\02_fast_lstm_gru.py\", line 277, in run_fast_training\n    print(\"\\U0001f680 Week 2 Fast LSTM/GRU Training\")\n    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\ansha\\AppData\\Local\\Programs\\",
+      "description": "Train LSTM and GRU models quickly"
+    }
+  },
+  "status": "partial"
+}

@@ -1,0 +1,11 @@
+# Ignore all `.npy` files in the data directory
+load_forecast/phase_3_week_2_neural_networks/data/*.npy
+
+# Exclude large .npy files
+Desktop/SIH_new/load_forecast_new/phase_3_week_2_neural_networks/data/X_train_seq.npy
+Desktop/SIH_new/load_forecast_new/phase_3_week_2_neural_networks/data/X_test_seq.npy
+Desktop/SIH_new/load_forecast_new/phase_3_week_2_neural_networks/data/X_val_seq.npy
+
+Desktop/SIH_new/load_forecast_new/phase_3_week_2_neural_networks/data/X_train_seq.npy
+Desktop/SIH_new/load_forecast_new/phase_3_week_2_neural_networks/data/X_test_seq.npy
+Desktop/SIH_new/load_forecast_new/phase_3_week_2_neural_networks/data/X_val_seq.npy

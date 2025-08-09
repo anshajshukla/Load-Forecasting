@@ -1,0 +1,193 @@
+# Delhi Load Forecasting Model Configuration
+# Phase 3 Week 1: Baseline Model Development
+
+# Data Configuration
+data:
+  sequence_length: 24  # Hours to look back
+  prediction_horizon: 24  # Hours to predict ahead
+  train_split: 0.7
+  validation_split: 0.2
+  test_split: 0.1
+  target_variables:
+    - delhi_load
+    - brpl_load
+    - bypl_load
+    - ndmc_load
+    - mes_load
+  
+  feature_columns:
+    load_features:
+      - delhi_load
+      - brpl_load
+      - bypl_load
+      - ndmc_load
+      - mes_load
+    weather_features:
+      - temperature_2m (°C)
+      - relative_humidity_2m (%)
+      - wind_speed_10m (km/h)
+      - precipitation (mm)
+      - surface_pressure (hPa)
+      - cloud_cover (%)
+    temporal_features:
+      - hour
+      - day_of_week
+      - month
+      - is_weekend
+      - is_peak_hour
+      - hour_sin
+      - hour_cos
+      - day_of_year_sin
+      - day_of_year_cos
+    engineered_features:
+      - load_lag_1h
+      - load_lag_24h
+      - load_lag_168h
+      - load_24h_mean
+      - load_7d_mean
+      - load_30d_mean
+      - load_24h_std
+      - load_7d_std
+      - net_load_ramp_rate_mw_per_hour
+
+# Model Architectures
+models:
+  gru_baseline:
+    type: "GRU"
+    layers:
+      - units: 128
+        dropout: 0.2
+        return_sequences: true
+        batch_normalization: true
+      - units: 64
+        dropout: 0.2
+        return_sequences: true
+        batch_normalization: true
+      - units: 32
+        dropout: 0.2
+        return_sequences: false
+        batch_normalization: true
+    dense_layers:
+      - units: 16
+        activation: "relu"
+        dropout: 0.1
+      - units: 120  # prediction_horizon * n_targets (24 * 5)
+        activation: "linear"
+    
+  lstm_baseline:
+    type: "LSTM"
+    layers:
+      - units: 128
+        dropout: 0.2
+        return_sequences: true
+        batch_normalization: true
+      - units: 64
+        dropout: 0.2
+        return_sequences: true
+        batch_normalization: true
+      - units: 32
+        dropout: 0.2
+        return_sequences: false
+        batch_normalization: true
+    dense_layers:
+      - units: 16
+        activation: "relu"
+        dropout: 0.1
+      - units: 120
+        activation: "linear"
+  
+  cnn_gru_hybrid:
+    type: "CNN_GRU"
+    cnn_layers:
+      - filters: 64
+        kernel_size: 3
+        activation: "relu"
+        dropout: 0.1
+      - filters: 32
+        kernel_size: 3
+        activation: "relu"
+        dropout: 0.1
+    gru_layers:
+      - units: 64
+        dropout: 0.2
+        return_sequences: false
+        batch_normalization: true
+    dense_layers:
+      - units: 16
+        activation: "relu"
+        dropout: 0.1
+      - units: 120
+        activation: "linear"
+
+# Training Configuration
+training:
+  batch_size: 32
+  epochs: 100
+  learning_rate: 0.001
+  optimizer: "adam"
+  loss_function: "mse"
+  metrics:
+    - "mae"
+    - "mape"
+  
+  callbacks:
+    early_stopping:
+      monitor: "val_loss"
+      patience: 15
+      restore_best_weights: true
+    
+    reduce_lr:
+      monitor: "val_loss"
+      factor: 0.5
+      patience: 8
+      min_lr: 1e-6
+    
+    model_checkpoint:
+      monitor: "val_loss"
+      save_best_only: true
+      save_weights_only: false
+
+# Evaluation Metrics
+evaluation:
+  metrics:
+    - MAPE  # Mean Absolute Percentage Error
+    - RMSE  # Root Mean Squared Error
+    - MAE   # Mean Absolute Error
+    - R2    # R-squared
+    - NRMSE # Normalized RMSE
+  
+  thresholds:
+    excellent_mape: 5.0
+    good_mape: 10.0
+    acceptable_mape: 15.0
+    
+  business_metrics:
+    peak_hour_accuracy: true
+    seasonal_performance: true
+    utility_specific_metrics: true
+
+# Delhi-Specific Configuration
+delhi_config:
+  peak_hours:
+    morning: [8, 9, 10, 11]
+    evening: [18, 19, 20, 21]
+  
+  seasonal_patterns:
+    summer_months: [4, 5, 6, 7, 8, 9]
+    winter_months: [12, 1, 2, 3]
+    monsoon_months: [7, 8, 9]
+  
+  load_characteristics:
+    base_load_percentage: 60
+    peak_load_multiplier: 1.8
+    minimum_load_threshold: 2000  # MW
+    maximum_load_threshold: 8000  # MW
+
+# File Paths
+paths:
+  data_dir: "data/"
+  model_dir: "models/"
+  evaluation_dir: "evaluation/"
+  logs_dir: "logs/"
+  checkpoints_dir: "models/checkpoints/"
+  figures_dir: "evaluation/figures/"

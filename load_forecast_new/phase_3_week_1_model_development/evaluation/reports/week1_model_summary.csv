@@ -1,0 +1,17 @@
+model_name,validation_mape,training_mape,validation_rmse,source,category
+extra_trees,9.160451094408137,825490.00646124,78.62843635999393,enhanced_baseline_results,Enhanced Baseline
+ultimate_ensemble,9.20644343937733,984207.78684794,58.34768517805919,enhanced_baseline_results,Enhanced Baseline
+elastic_net_cv,12.470448087761271,1200278.0944299886,51.37501251138558,enhanced_baseline_results,Enhanced Baseline
+elastic_net,13.662039540316783,1242887.6306200996,66.49386101859803,super_fast_baseline_results,Initial Baseline
+weighted_ensemble,13.723412566133511,1315355.8741414363,51.08629854266101,enhanced_baseline_results,Enhanced Baseline
+tuned_gradient_boosting,15.497334378253374,1100596.9090457116,177.89590959844418,advanced_models_results,Advanced Models
+ensemble,15.774849210797228,1397856.2604185226,52.04155000164371,enhanced_baseline_results,Enhanced Baseline
+advanced_ensemble,15.806268084177296,1032158.8635975288,160.9984564127426,advanced_models_results,Advanced Models
+ada_boost,16.24267653485014,927371.5400046336,162.0588846567826,advanced_models_results,Advanced Models
+ridge_cv,16.950321820549927,1471775.544115282,51.44391129619507,enhanced_baseline_results,Enhanced Baseline
+ridge,17.52792214460871,1446274.494016912,54.210420443121066,super_fast_baseline_results,Initial Baseline
+bayesian_ridge,17.77387545651526,1472709.883580751,55.33385546649913,enhanced_baseline_results,Enhanced Baseline
+linear_regression,18.7724184285271,1443962.6687456325,57.17583761881993,super_fast_baseline_results,Initial Baseline
+gradient_boosting,19.30936451149036,1071461.2222831591,219.68388150263485,advanced_models_results,Advanced Models
+polynomial_ridge,22.629103330416584,905883.3192656216,167.2056898760368,enhanced_baseline_results,Enhanced Baseline
+pca_ridge,39.6781205607688,1200890.717637292,531.8232990372808,enhanced_baseline_results,Enhanced Baseline

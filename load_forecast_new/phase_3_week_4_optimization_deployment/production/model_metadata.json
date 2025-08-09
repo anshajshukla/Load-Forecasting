@@ -1,0 +1,24 @@
+{
+  "model_name": "Random Forest (Optimized)",
+  "model_type": "traditional_ml_optimized",
+  "mape_performance": 1.2254105909170108,
+  "training_week": 4,
+  "deployment_timestamp": "2025-08-09T02:02:39.931187",
+  "version": "1.0.0",
+  "features": {
+    "total_features": 67,
+    "feature_engineering": true,
+    "scaling_required": true
+  },
+  "performance_metrics": {
+    "mape_percent": 1.2254105909170108,
+    "target_threshold": 10.0,
+    "status": "production_ready"
+  },
+  "optimization": {
+    "optimized": true,
+    "feature_reduction": "110 -> 44",
+    "speed_improvement_percent": -35.35047414214488,
+    "size_reduction_percent": 0.0
+  }
+}

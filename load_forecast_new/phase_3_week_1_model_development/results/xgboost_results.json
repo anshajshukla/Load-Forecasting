@@ -1,0 +1,20 @@
+{
+  "delhi_load": {
+    "val_mape": 1.0093247614578478
+  },
+  "brpl_load": {
+    "val_mape": 3.771632040221863
+  },
+  "bypl_load": {
+    "val_mape": 3.8888465561990944
+  },
+  "ndpl_load": {
+    "val_mape": 4.25614879087112
+  },
+  "ndmc_load": {
+    "val_mape": 10.315089737079127
+  },
+  "mes_load": {
+    "val_mape": 17.880155830414626
+  }
+}

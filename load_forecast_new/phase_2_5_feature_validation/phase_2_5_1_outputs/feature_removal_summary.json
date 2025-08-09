@@ -1,0 +1,45 @@
+{
+  "original_shape": [
+    26472,
+    267
+  ],
+  "cleaned_shape": [
+    26472,
+    251
+  ],
+  "features_removed_count": 16,
+  "features_removed_percentage": 5.99,
+  "rows_affected": 0,
+  "cleaning_date": "2025-08-07T12:48:48.043723",
+  "severe_leakage_removed": [
+    "net_load_mw"
+  ],
+  "identical_features_removed": [
+    "rain (mm)",
+    "heat_wave_season",
+    "is_summer_session",
+    "is_monsoon_month",
+    "is_monsoon_session",
+    "delhi_morning_peak",
+    "is_stubble_burning_period",
+    "is_diwali_season"
+  ],
+  "additional_high_corr_removed": [
+    "day_of_year",
+    "load_diff_1h",
+    "week_of_year_sin",
+    "week_of_year_cos",
+    "net_cooling_demand",
+    "weekly_thermal_stress",
+    "temperature_adjusted_solar"
+  ],
+  "targets_present": [
+    "delhi_load",
+    "brpl_load",
+    "bypl_load",
+    "ndpl_load",
+    "ndmc_load",
+    "mes_load"
+  ],
+  "targets_missing": []
+}

@@ -1,0 +1,134 @@
+{
+  "evaluation_timestamp": "2025-08-08T03:28:15.218111",
+  "week_1_baseline_evaluation": {
+    "total_models_trained": 5,
+    "successful_models": 5,
+    "best_performing_model": "Xgboost",
+    "best_mape": 6.85,
+    "target_achieved": "True"
+  },
+  "detailed_results": {
+    "ridge": {
+      "individual_mapes": {
+        "delhi_load": 0.25647835519220497,
+        "brpl_load": 5.33007833558816,
+        "bypl_load": 4.241877025429782,
+        "ndpl_load": 5.896067595174693,
+        "ndmc_load": 20.266231395650358,
+        "mes_load": 69.17680016061706
+      },
+      "average_mape": 17.52792214460871,
+      "min_mape": 0.25647835519220497,
+      "max_mape": 69.17680016061706,
+      "std_mape": 23.92353839908558,
+      "targets_count": 6
+    },
+    "lasso": {
+      "individual_mapes": {
+        "delhi_load": 0.4311418175787501,
+        "brpl_load": 4.913596718424887,
+        "bypl_load": 4.329560748363445,
+        "ndpl_load": 5.669322758486351,
+        "ndmc_load": 14.438238773176392,
+        "mes_load": 52.21035958999557
+      },
+      "average_mape": 13.6653700676709,
+      "min_mape": 0.4311418175787501,
+      "max_mape": 52.21035958999557,
+      "std_mape": 17.744229041491035,
+      "targets_count": 6
+    },
+    "random_forest": {
+      "individual_mapes": {
+        "delhi_load": 4.684037456562331,
+        "brpl_load": 7.585313663572292,
+        "bypl_load": 7.10857532912372,
+        "ndpl_load": 7.97031253815883,
+        "ndmc_load": 10.405646394939087,
+        "mes_load": 30.61240217055851
+      },
+      "average_mape": 11.394381258819129,
+      "min_mape": 4.684037456562331,
+      "max_mape": 30.61240217055851,
+      "std_mape": 8.75537942596404,
+      "targets_count": 6
+    },
+    "xgboost": {
+      "individual_mapes": {
+        "delhi_load": 1.0093247614578478,
+        "brpl_load": 3.771632040221863,
+        "bypl_load": 3.8888465561990944,
+        "ndpl_load": 4.25614879087112,
+        "ndmc_load": 10.315089737079127,
+        "mes_load": 17.880155830414626
+      },
+      "average_mape": 6.85353295270728,
+      "min_mape": 1.0093247614578478,
+      "max_mape": 17.880155830414626,
+      "std_mape": 5.668001411277365,
+      "targets_count": 6
+    },
+    "lightgbm": {
+      "individual_mapes": {
+        "delhi_load": 0.9776496494783574,
+        "brpl_load": 3.80641487540279,
+        "bypl_load": 3.941978597673253,
+        "ndpl_load": 4.280458240060491,
+        "ndmc_load": 10.748918519833907,
+        "mes_load": 17.580755185021996
+      },
+      "average_mape": 6.889362511245132,
+      "min_mape": 0.9776496494783574,
+      "max_mape": 17.580755185021996,
+      "std_mape": 5.614689341418568,
+      "targets_count": 6
+    }
+  },
+  "performance_comparison_table": [
+    {
+      "Model": "Xgboost",
+      "Average MAPE (%)": 6.85,
+      "Min MAPE (%)": 1.01,
+      "Max MAPE (%)": 17.88,
+      "Std MAPE (%)": 5.67,
+      "Targets": 6,
+      "Status": "\u2713 Success"
+    },
+    {
+      "Model": "Lightgbm",
+      "Average MAPE (%)": 6.89,
+      "Min MAPE (%)": 0.98,
+      "Max MAPE (%)": 17.58,
+      "Std MAPE (%)": 5.61,
+      "Targets": 6,
+      "Status": "\u2713 Success"
+    },
+    {
+      "Model": "Random Forest",
+      "Average MAPE (%)": 11.39,
+      "Min MAPE (%)": 4.68,
+      "Max MAPE (%)": 30.61,
+      "Std MAPE (%)": 8.76,
+      "Targets": 6,
+      "Status": "\u2713 Success"
+    },
+    {
+      "Model": "Lasso",
+      "Average MAPE (%)": 13.67,
+      "Min MAPE (%)": 0.43,
+      "Max MAPE (%)": 52.21,
+      "Std MAPE (%)": 17.74,
+      "Targets": 6,
+      "Status": "\u2713 Success"
+    },
+    {
+      "Model": "Ridge",
+      "Average MAPE (%)": 17.53,
+      "Min MAPE (%)": 0.26,
+      "Max MAPE (%)": 69.18,
+      "Std MAPE (%)": 23.92,
+      "Targets": 6,
+      "Status": "\u26a0 Review"
+    }
+  ]
+}

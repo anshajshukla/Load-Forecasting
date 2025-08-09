@@ -1,0 +1,236 @@
+{
+  "data_quality": {
+    "total_records": 26472,
+    "total_features": 110,
+    "missing_values": 831,
+    "infinite_values": 0,
+    "completeness_percent": 99.97,
+    "date_range": {
+      "start": "2022-07-25 00:00:00",
+      "end": "2025-07-31 23:00:00"
+    }
+  },
+  "data_splits": {
+    "train_size": 18530,
+    "val_size": 3970,
+    "test_size": 3972,
+    "train_ratio": 0.7,
+    "val_ratio": 0.15,
+    "test_ratio": 0.15,
+    "train_period": {
+      "start": "2022-07-25 00:00:00",
+      "end": "2024-09-04 01:00:00"
+    },
+    "val_period": {
+      "start": "2024-09-04 02:00:00",
+      "end": "2025-02-16 11:00:00"
+    },
+    "test_period": {
+      "start": "2025-02-16 12:00:00",
+      "end": "2025-07-31 23:00:00"
+    }
+  },
+  "feature_scaling": {
+    "scaler_type": "robust",
+    "features_count": 110,
+    "scaling_stats": {
+      "train_mean": 0.3885978502544594,
+      "train_std": 1.7102621534155076,
+      "val_mean": 0.07495626707298307,
+      "val_std": 0.6961821569313454
+    }
+  },
+  "cross_validation": {
+    "type": "TimeSeriesSplit",
+    "n_splits": 5,
+    "max_train_size": null,
+    "cv_folds": [
+      {
+        "fold": 1,
+        "train_size": 3090,
+        "val_size": 3088,
+        "train_period": [
+          "2022-07-25 00:00:00",
+          "2022-11-30 17:00:00"
+        ],
+        "val_period": [
+          "2022-11-30 18:00:00",
+          "2023-04-08 09:00:00"
+        ]
+      },
+      {
+        "fold": 2,
+        "train_size": 6178,
+        "val_size": 3088,
+        "train_period": [
+          "2022-07-25 00:00:00",
+          "2023-04-08 09:00:00"
+        ],
+        "val_period": [
+          "2023-04-08 10:00:00",
+          "2023-08-15 01:00:00"
+        ]
+      },
+      {
+        "fold": 3,
+        "train_size": 9266,
+        "val_size": 3088,
+        "train_period": [
+          "2022-07-25 00:00:00",
+          "2023-08-15 01:00:00"
+        ],
+        "val_period": [
+          "2023-08-15 02:00:00",
+          "2023-12-21 17:00:00"
+        ]
+      },
+      {
+        "fold": 4,
+        "train_size": 12354,
+        "val_size": 3088,
+        "train_period": [
+          "2022-07-25 00:00:00",
+          "2023-12-21 17:00:00"
+        ],
+        "val_period": [
+          "2023-12-21 18:00:00",
+          "2024-04-28 09:00:00"
+        ]
+      },
+      {
+        "fold": 5,
+        "train_size": 15442,
+        "val_size": 3088,
+        "train_period": [
+          "2022-07-25 00:00:00",
+          "2024-04-28 09:00:00"
+        ],
+        "val_period": [
+          "2024-04-28 10:00:00",
+          "2024-09-04 01:00:00"
+        ]
+      }
+    ]
+  },
+  "preparation_timestamp": "2025-08-08T04:01:11.754160",
+  "feature_list": [
+    "daily_temp_range",
+    "cumulative_thermal_load",
+    "solar_penetration_percent",
+    "load_30d_mean",
+    "cooling_degree_hours",
+    "hourly_thermal_stress",
+    "load_24h_range",
+    "solar_irradiance_dni_wm2",
+    "net_load_minimum_value",
+    "duck_curve_temperature_stability",
+    "evening_peak_duration",
+    "surface_pressure (hPa)",
+    "load_7d_mean",
+    "daily_heat_index_mean",
+    "day_of_month_cos",
+    "daily_heat_index_max",
+    "et0_fao_evapotranspiration (mm)",
+    "net_load_minimum_timing",
+    "wind_speed_10m (km/h)",
+    "heat_index_celsius",
+    "relative_humidity_2m (%)",
+    "max_solar_decline",
+    "day_of_year_cos",
+    "solar_temperature_load_factor",
+    "solar_direct_radiation_wm2",
+    "diffuse_radiation",
+    "duck_curve_depth_mw",
+    "load_24h_mean",
+    "weekday_weather_sensitivity",
+    "day",
+    "day_of_month_sin",
+    "heat_index_persistence_24h",
+    "daily_heat_index_std",
+    "daily_heat_index_min",
+    "wind_direction_100m",
+    "solar_diffuse_radiation_wm2",
+    "afternoon_discomfort_index",
+    "cloud_cover (%)",
+    "day_of_week_cos",
+    "ac_load_probability",
+    "temp_humidity_hour",
+    "solar_decline_rate",
+    "week_of_year",
+    "peak_temp_volatility_impact",
+    "is_peak_hour",
+    "daily_cooling_degree_days",
+    "evening_cooling_index",
+    "load_24h_std",
+    "peak_amplitude_ratio",
+    "temperature_2m (\u00b0C)",
+    "metro_operational_hours",
+    "max_ramp_hour",
+    "cumulative_heat_stress",
+    "seasonal_temp_anomaly",
+    "month_cos",
+    "heat_index_stress",
+    "wind_gusts_10m (km/h)",
+    "cloud_cover_total",
+    "heat_index_delta",
+    "cooling_load_index_7d",
+    "day_of_year_sin",
+    "post_duck_recovery_intensity",
+    "daily_thermal_stress",
+    "monsoon_cooling_effect",
+    "morning_peak_intensity",
+    "commercial_activity_index",
+    "cumulative_cdd_monthly",
+    "daily_thermal_stress_accumulation",
+    "cloud_cover_mid",
+    "renewable_stress_level",
+    "load_diff_168h",
+    "solar_irradiance_ghi_wm2",
+    "comprehensive_activity_score",
+    "duck_severity_factor",
+    "central_business_activity",
+    "hour_cos",
+    "load_diff_24h",
+    "load_lag_1h",
+    "load_7d_std",
+    "net_load_ramp_rate_mw_per_hour",
+    "load_24h_min",
+    "direct_radiation",
+    "evening_ramp_severity",
+    "shortwave_radiation",
+    "cooling_discomfort_index",
+    "evening_peak_intensity",
+    "consecutive_heat_wave_days",
+    "load_24h_max",
+    "temperature_driven_ramp",
+    "wind_direction_10m",
+    "load_lag_24h",
+    "load_lag_168h",
+    "grid_flexibility_index",
+    "evening_weather_adaptation",
+    "solar_capacity_factor",
+    "festival_comfort_weekend_interaction",
+    "hour",
+    "hour_sin",
+    "wet_bulb_temperature_2m",
+    "ac_demand_probability",
+    "apparent_temperature (\u00b0C)",
+    "dew_point_2m (\u00b0C)",
+    "humidity_time_interaction",
+    "evening_peak_shift",
+    "heat_wave_intensity",
+    "solar_generation_mw",
+    "next_hour_is_peak",
+    "day_of_week_sin",
+    "evening_ramp_intensity",
+    "cloud_cover_high"
+  ],
+  "target_columns": [
+    "delhi_load",
+    "brpl_load",
+    "bypl_load",
+    "ndpl_load",
+    "ndmc_load",
+    "mes_load"
+  ]
+}

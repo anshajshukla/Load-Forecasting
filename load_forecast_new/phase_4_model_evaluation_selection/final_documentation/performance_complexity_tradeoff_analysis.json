@@ -1,0 +1,88 @@
+{
+  "Week3_Hybrid_RF_Linear": {
+    "performance_mape": 4.09,
+    "implementation_complexity": 6,
+    "maintenance_complexity": 5,
+    "interpretability_score": 9,
+    "deployment_ease": 7,
+    "computational_requirements": 6,
+    "training_time_hours": 2,
+    "inference_time_ms": 50,
+    "model_size_mb": 25,
+    "advantages": [
+      "Excellent performance (<5% target)",
+      "High interpretability with SHAP",
+      "Balanced complexity",
+      "Good deployment feasibility",
+      "Robust across seasons"
+    ],
+    "disadvantages": [
+      "Moderate implementation complexity",
+      "Requires ensemble coordination",
+      "Medium computational requirements"
+    ],
+    "scores": {
+      "performance_score": 59.1,
+      "complexity_score": 45.0,
+      "efficiency_score": 64.7,
+      "target_achievement": true
+    }
+  },
+  "Week2_BiLSTM": {
+    "performance_mape": 11.71,
+    "implementation_complexity": 8,
+    "maintenance_complexity": 7,
+    "interpretability_score": 5,
+    "deployment_ease": 5,
+    "computational_requirements": 8,
+    "training_time_hours": 6,
+    "inference_time_ms": 80,
+    "model_size_mb": 150,
+    "advantages": [
+      "Good temporal pattern capture",
+      "Neural network sophistication",
+      "Handles sequential dependencies"
+    ],
+    "disadvantages": [
+      "Higher MAPE (11.71%)",
+      "Complex implementation",
+      "Lower interpretability",
+      "High computational requirements"
+    ],
+    "scores": {
+      "performance_score": 0,
+      "complexity_score": 25.0,
+      "efficiency_score": 25.0,
+      "target_achievement": false
+    }
+  },
+  "Week1_XGBoost": {
+    "performance_mape": 6.85,
+    "implementation_complexity": 4,
+    "maintenance_complexity": 3,
+    "interpretability_score": 7,
+    "deployment_ease": 9,
+    "computational_requirements": 4,
+    "training_time_hours": 1,
+    "inference_time_ms": 20,
+    "model_size_mb": 10,
+    "advantages": [
+      "Good performance (6.85%)",
+      "Low complexity",
+      "Easy deployment",
+      "Fast inference",
+      "Small model size"
+    ],
+    "disadvantages": [
+      "Does not meet <5% target",
+      "Less sophisticated feature handling",
+      "Limited ensemble benefits"
+    ],
+    "scores": {
+      "performance_score": 31.5,
+      "complexity_score": 65.0,
+      "efficiency_score": 55.5,
+      "target_achievement": false
+    }
+  }
+}

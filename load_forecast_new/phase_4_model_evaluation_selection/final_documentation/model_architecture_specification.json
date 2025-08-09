@@ -1,0 +1,125 @@
+{
+  "model_specification": {
+    "model_name": "Delhi Load Forecasting Hybrid Model",
+    "version": "1.0.0",
+    "type": "Hybrid Ensemble (Random Forest + Linear Regression)",
+    "target_variable": "delhi_load (MW)",
+    "prediction_horizon": "1 hour to 24 hours ahead",
+    "update_frequency": "Hourly",
+    "training_data_period": "July 2022 - July 2025 (3+ years)",
+    "feature_count": 110,
+    "performance_mape": 4.09
+  },
+  "architecture_components": {
+    "random_forest_component": {
+      "purpose": "Non-linear pattern recognition and feature interaction modeling",
+      "parameters": {
+        "n_estimators": 100,
+        "max_depth": 15,
+        "min_samples_split": 5,
+        "min_samples_leaf": 2,
+        "max_features": "sqrt"
+      },
+      "strengths": [
+        "Captures dual peak patterns effectively",
+        "Handles weather-load interactions",
+        "Robust to outliers",
+        "Provides feature importance rankings"
+      ]
+    },
+    "linear_regression_component": {
+      "purpose": "Stable baseline predictions and trend modeling",
+      "parameters": {
+        "regularization": "Ridge (alpha=1.0)",
+        "feature_scaling": "StandardScaler",
+        "intercept": true
+      },
+      "strengths": [
+        "Provides stable baseline predictions",
+        "Fast inference time",
+        "High interpretability",
+        "Handles linear trends effectively"
+      ]
+    },
+    "ensemble_strategy": {
+      "combination_method": "Weighted average",
+      "rf_weight": 0.7,
+      "linear_weight": 0.3,
+      "weight_optimization": "Cross-validation based",
+      "dynamic_weighting": false
+    }
+  },
+  "feature_engineering": {
+    "total_features": 110,
+    "feature_categories": {
+      "temporal_features": 35,
+      "weather_features": 25,
+      "dual_peak_features": 20,
+      "thermal_comfort_features": 15,
+      "interaction_features": 15
+    },
+    "key_features": [
+      "temperature_max",
+      "temperature_min",
+      "humidity_avg",
+      "hour_sin",
+      "hour_cos",
+      "day_of_week_sin",
+      "day_peak_magnitude",
+      "night_peak_ratio",
+      "thermal_comfort_index",
+      "cooling_degree_hours",
+      "festival_proximity",
+      "weekend_flag"
+    ],
+    "preprocessing_steps": [
+      "Missing value imputation (forward fill + backward fill)",
+      "Outlier detection and treatment (IQR method)",
+      "Feature scaling (StandardScaler)",
+      "Temporal alignment validation"
+    ]
+  },
+  "training_methodology": {
+    "data_split": {
+      "training": "70% (July 2022 - April 2024)",
+      "validation": "15% (May 2024 - October 2024)",
+      "testing": "15% (November 2024 - July 2025)"
+    },
+    "cross_validation": {
+      "method": "Walk-forward time series CV",
+      "folds": 12,
+      "training_window": "12 months",
+      "validation_window": "1 month"
+    },
+    "hyperparameter_optimization": {
+      "method": "Grid search with cross-validation",
+      "evaluation_metric": "MAPE",
+      "optimization_iterations": 50
+    }
+  },
+  "performance_characteristics": {
+    "accuracy_metrics": {
+      "mape": "4.09%",
+      "mae": "Estimated 120-150 MW",
+      "rmse": "Estimated 180-220 MW",
+      "target_achievement": "Exceeds <5% MAPE target"
+    },
+    "seasonal_performance": {
+      "summer_mape": "3.5-4.5%",
+      "winter_mape": "4.0-5.0%",
+      "transition_mape": "3.8-4.2%"
+    },
+    "computational_requirements": {
+      "training_time": "2-3 hours",
+      "inference_time": "<100ms",
+      "memory_usage": "<500MB",
+      "model_size": "~25MB"
+    }
+  },
+  "interpretability_framework": {
+    "shap_analysis": "Implemented for feature importance and local explanations",
+    "feature_importance": "Global importance rankings available",
+    "business_interpretations": "Clear explanations for all key features",
+    "prediction_confidence": "Uncertainty quantification available"
+  }
+}

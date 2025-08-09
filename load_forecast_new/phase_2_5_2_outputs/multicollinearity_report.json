@@ -1,0 +1,3141 @@
+{
+  "vif_analysis": {
+    "vif_dataframe": [
+      {
+        "Feature": "shortwave_radiation",
+        "VIF_Score": 41109.81831494572
+      },
+      {
+        "Feature": "direct_radiation",
+        "VIF_Score": 19765.938919682845
+      },
+      {
+        "Feature": "is_monsoon",
+        "VIF_Score": 13297.644420446193
+      },
+      {
+        "Feature": "diffuse_radiation",
+        "VIF_Score": 5298.626215830755
+      },
+      {
+        "Feature": "prev_day_same_hour_weekend",
+        "VIF_Score": 3684.38154428279
+      },
+      {
+        "Feature": "temperature_2m (\u00b0C)",
+        "VIF_Score": 2710.21235645636
+      },
+      {
+        "Feature": "cloud_cover_total",
+        "VIF_Score": 2132.4622886310076
+      },
+      {
+        "Feature": "morning_weather_adaptation",
+        "VIF_Score": 2059.8646908817113
+      },
+      {
+        "Feature": "cooling_discomfort_index",
+        "VIF_Score": 1728.7621141202058
+      },
+      {
+        "Feature": "morning_peak_humidity_impact",
+        "VIF_Score": 1679.1344195603945
+      },
+      {
+        "Feature": "heat_index_delta",
+        "VIF_Score": 1372.1274709432312
+      },
+      {
+        "Feature": "load_lag_24h",
+        "VIF_Score": 1311.8617328960445
+      },
+      {
+        "Feature": "load_lag_1h",
+        "VIF_Score": 1232.7778171644652
+      },
+      {
+        "Feature": "heat_index_stress",
+        "VIF_Score": 987.7481643330156
+      },
+      {
+        "Feature": "cloud_cover_high",
+        "VIF_Score": 883.7599995041462
+      },
+      {
+        "Feature": "apparent_temperature (\u00b0C)",
+        "VIF_Score": 848.0227105633435
+      },
+      {
+        "Feature": "grid_flexibility_index",
+        "VIF_Score": 805.4507556963395
+      },
+      {
+        "Feature": "hour_cos",
+        "VIF_Score": 591.2204630200781
+      },
+      {
+        "Feature": "hour",
+        "VIF_Score": 564.4342011141591
+      },
+      {
+        "Feature": "evening_ramp_severity",
+        "VIF_Score": 562.7645306611586
+      },
+      {
+        "Feature": "market_activity",
+        "VIF_Score": 547.1703863202245
+      },
+      {
+        "Feature": "day_of_year_sin",
+        "VIF_Score": 465.59489330847197
+      },
+      {
+        "Feature": "cloud_cover_low",
+        "VIF_Score": 383.06122034292986
+      },
+      {
+        "Feature": "duck_curve_depth",
+        "VIF_Score": 361.2643386593243
+      },
+      {
+        "Feature": "evening_peak_intensity",
+        "VIF_Score": 308.6658749068749
+      },
+      {
+        "Feature": "duck_severity_factor",
+        "VIF_Score": 298.7600354917727
+      },
+      {
+        "Feature": "daily_heat_index_mean",
+        "VIF_Score": 278.1089100668052
+      },
+      {
+        "Feature": "temperature_driven_ramp",
+        "VIF_Score": 273.51661726813234
+      },
+      {
+        "Feature": "cloud_cover_mid",
+        "VIF_Score": 261.88144602305005
+      },
+      {
+        "Feature": "hour_sin",
+        "VIF_Score": 260.5270942963038
+      },
+      {
+        "Feature": "delhi_evening_peak",
+        "VIF_Score": 252.86347638613802
+      },
+      {
+        "Feature": "relative_humidity_2m (%)",
+        "VIF_Score": 239.61123913209897
+      },
+      {
+        "Feature": "cumulative_cdd_monthly",
+        "VIF_Score": 236.02476745233307
+      },
+      {
+        "Feature": "cooling_degree_hours",
+        "VIF_Score": 222.7563313978012
+      },
+      {
+        "Feature": "load_diff_24h",
+        "VIF_Score": 209.94274514113292
+      },
+      {
+        "Feature": "daily_heat_index_max",
+        "VIF_Score": 204.6187941754633
+      },
+      {
+        "Feature": "evening_weather_adaptation",
+        "VIF_Score": 191.11411232153466
+      },
+      {
+        "Feature": "commercial_activity_index",
+        "VIF_Score": 190.64525625974764
+      },
+      {
+        "Feature": "duck_curve_depth_mw",
+        "VIF_Score": 177.04117951844432
+      },
+      {
+        "Feature": "solar_irradiance_ghi_wm2",
+        "VIF_Score": 174.31430323828684
+      },
+      {
+        "Feature": "shopping_activity_index",
+        "VIF_Score": 172.50047307364989
+      },
+      {
+        "Feature": "evening_ramp_intensity",
+        "VIF_Score": 170.89571769327193
+      },
+      {
+        "Feature": "morning_peak_temp_sensitivity",
+        "VIF_Score": 170.31151513488194
+      },
+      {
+        "Feature": "day_of_year_cos",
+        "VIF_Score": 168.9896416317084
+      },
+      {
+        "Feature": "is_morning_peak",
+        "VIF_Score": 165.4560604792473
+      },
+      {
+        "Feature": "cumulative_thermal_load",
+        "VIF_Score": 164.11234979434133
+      },
+      {
+        "Feature": "dew_point_2m (\u00b0C)",
+        "VIF_Score": 155.69065890840582
+      },
+      {
+        "Feature": "evening_peak_temp_sensitivity",
+        "VIF_Score": 151.8516066551979
+      },
+      {
+        "Feature": "net_load_ramp_rate_mw_per_hour",
+        "VIF_Score": 147.45800305215133
+      },
+      {
+        "Feature": "daily_cooling_degree_days",
+        "VIF_Score": 138.79787177019006
+      },
+      {
+        "Feature": "morning_peak_intensity",
+        "VIF_Score": 133.87423772419223
+      },
+      {
+        "Feature": "daily_heat_index_min",
+        "VIF_Score": 130.0743259248287
+      },
+      {
+        "Feature": "comprehensive_activity_score",
+        "VIF_Score": 117.30446987415621
+      },
+      {
+        "Feature": "duck_curve_temperature_stability",
+        "VIF_Score": 116.13509002309338
+      },
+      {
+        "Feature": "estimated_solar_generation",
+        "VIF_Score": 113.74121464656587
+      },
+      {
+        "Feature": "peak_amplitude_ratio",
+        "VIF_Score": 102.68297206895333
+      },
+      {
+        "Feature": "solar_direct_radiation_wm2",
+        "VIF_Score": 101.08023524733653
+      },
+      {
+        "Feature": "load_24h_mean",
+        "VIF_Score": 99.55510086602055
+      },
+      {
+        "Feature": "load_lag_168h",
+        "VIF_Score": 96.0059679788905
+      },
+      {
+        "Feature": "is_night_valley",
+        "VIF_Score": 93.89418278929462
+      },
+      {
+        "Feature": "ac_load_probability",
+        "VIF_Score": 91.31219283857571
+      },
+      {
+        "Feature": "prev_hour_is_peak",
+        "VIF_Score": 88.14180807373938
+      },
+      {
+        "Feature": "solar_capacity_factor",
+        "VIF_Score": 85.99468695187952
+      },
+      {
+        "Feature": "solar_penetration_percent",
+        "VIF_Score": 75.98444961377136
+      },
+      {
+        "Feature": "daily_thermal_stress",
+        "VIF_Score": 73.47746778664124
+      },
+      {
+        "Feature": "heat_index_celsius",
+        "VIF_Score": 70.5397444384208
+      },
+      {
+        "Feature": "humidity_discomfort",
+        "VIF_Score": 70.20044947040799
+      },
+      {
+        "Feature": "is_midday_low",
+        "VIF_Score": 67.06174099460645
+      },
+      {
+        "Feature": "is_business_hour",
+        "VIF_Score": 62.89619578638639
+      },
+      {
+        "Feature": "solar_irradiance_dni_wm2",
+        "VIF_Score": 60.25491359057925
+      },
+      {
+        "Feature": "solar_temperature_load_factor",
+        "VIF_Score": 53.785330751755154
+      },
+      {
+        "Feature": "ac_demand_probability",
+        "VIF_Score": 52.57506153251304
+      },
+      {
+        "Feature": "et0_fao_evapotranspiration (mm)",
+        "VIF_Score": 51.238686104151796
+      },
+      {
+        "Feature": "load_30d_mean",
+        "VIF_Score": 50.310045227978094
+      },
+      {
+        "Feature": "midday_temp_sensitivity",
+        "VIF_Score": 48.328478129437116
+      },
+      {
+        "Feature": "is_peak_hour",
+        "VIF_Score": 46.356822200859696
+      },
+      {
+        "Feature": "central_business_activity",
+        "VIF_Score": 44.024944169627126
+      },
+      {
+        "Feature": "morning_comfort_index",
+        "VIF_Score": 43.951435048130705
+      },
+      {
+        "Feature": "seasonal_temp_anomaly",
+        "VIF_Score": 42.07998610059895
+      },
+      {
+        "Feature": "wet_bulb_temperature_2m",
+        "VIF_Score": 41.23041647735674
+      },
+      {
+        "Feature": "week_of_year",
+        "VIF_Score": 39.6644828762893
+      },
+      {
+        "Feature": "solar_generation_mw",
+        "VIF_Score": 37.50851694092766
+      },
+      {
+        "Feature": "is_morning_ramp",
+        "VIF_Score": 36.164331714336754
+      },
+      {
+        "Feature": "net_load_minimum_value",
+        "VIF_Score": 36.05571237894384
+      },
+      {
+        "Feature": "load_diff_168h",
+        "VIF_Score": 32.43020255213769
+      },
+      {
+        "Feature": "weekend_morning",
+        "VIF_Score": 31.49059758341205
+      },
+      {
+        "Feature": "evening_peak_humidity_impact",
+        "VIF_Score": 30.960863598332367
+      },
+      {
+        "Feature": "college_hours_activity",
+        "VIF_Score": 28.845227784976128
+      },
+      {
+        "Feature": "festival_comfort_weekend_interaction",
+        "VIF_Score": 28.38299086293794
+      },
+      {
+        "Feature": "humidity_time_interaction",
+        "VIF_Score": 27.168627545408
+      },
+      {
+        "Feature": "cooling_load_index_7d",
+        "VIF_Score": 26.58662129588666
+      },
+      {
+        "Feature": "solar_diffuse_radiation_wm2",
+        "VIF_Score": 26.340022290286676
+      },
+      {
+        "Feature": "temp_humidity_hour",
+        "VIF_Score": 25.60644450494408
+      },
+      {
+        "Feature": "load_24h_std",
+        "VIF_Score": 24.620734341788054
+      },
+      {
+        "Feature": "solar_capacity_factor_percent",
+        "VIF_Score": 24.323614098022226
+      },
+      {
+        "Feature": "weekday_morning",
+        "VIF_Score": 23.688728261488443
+      },
+      {
+        "Feature": "solar_cooling_offset",
+        "VIF_Score": 23.309389141406403
+      },
+      {
+        "Feature": "weekend_weather_sensitivity",
+        "VIF_Score": 22.83928615426654
+      },
+      {
+        "Feature": "load_7d_mean",
+        "VIF_Score": 22.776461813946984
+      },
+      {
+        "Feature": "weekday_weather_sensitivity",
+        "VIF_Score": 21.921056106129647
+      },
+      {
+        "Feature": "evening_commute_activity",
+        "VIF_Score": 21.889042689304787
+      },
+      {
+        "Feature": "day",
+        "VIF_Score": 18.924897289689
+      },
+      {
+        "Feature": "post_festival_recovery",
+        "VIF_Score": 16.551728878407438
+      },
+      {
+        "Feature": "weekday_evening_rush",
+        "VIF_Score": 16.539130859954184
+      },
+      {
+        "Feature": "daily_temp_range",
+        "VIF_Score": 16.32037115687112
+      },
+      {
+        "Feature": "heat_index_persistence_24h",
+        "VIF_Score": 15.45707587212277
+      },
+      {
+        "Feature": "morning_commute_activity",
+        "VIF_Score": 14.846161136710984
+      },
+      {
+        "Feature": "post_duck_recovery_intensity",
+        "VIF_Score": 14.040815545534699
+      },
+      {
+        "Feature": "cumulative_heat_stress",
+        "VIF_Score": 13.182205306386956
+      },
+      {
+        "Feature": "evening_cooling_index",
+        "VIF_Score": 12.91279925049083
+      },
+      {
+        "Feature": "surface_pressure (hPa)",
+        "VIF_Score": 12.678131716799307
+      },
+      {
+        "Feature": "daily_thermal_stress_accumulation",
+        "VIF_Score": 12.365139216306483
+      },
+      {
+        "Feature": "festival_evening",
+        "VIF_Score": 12.29449971980854
+      },
+      {
+        "Feature": "wind_speed_10m (km/h)",
+        "VIF_Score": 11.990802309613434
+      },
+      {
+        "Feature": "evening_peak_weather_stress",
+        "VIF_Score": 11.27006872434199
+      },
+      {
+        "Feature": "daily_heat_index_std",
+        "VIF_Score": 11.005308816672791
+      },
+      {
+        "Feature": "festival_humid_weather_load",
+        "VIF_Score": 10.87734682814465
+      },
+      {
+        "Feature": "school_hours_activity",
+        "VIF_Score": 10.393545508190197
+      },
+      {
+        "Feature": "weekday_morning_rush",
+        "VIF_Score": 10.135395295510996
+      },
+      {
+        "Feature": "pre_festival_prep",
+        "VIF_Score": 10.078720462087848
+      },
+      {
+        "Feature": "weekend_academic_activity",
+        "VIF_Score": 9.663864510560446
+      },
+      {
+        "Feature": "extreme_humidity_peak_stress",
+        "VIF_Score": 9.627026019343615
+      },
+      {
+        "Feature": "wind_gusts_10m (km/h)",
+        "VIF_Score": 9.520495350462982
+      },
+      {
+        "Feature": "heat_wave_intensity",
+        "VIF_Score": 9.105402189522195
+      },
+      {
+        "Feature": "shallow_duck_curve",
+        "VIF_Score": 8.814449552656606
+      },
+      {
+        "Feature": "festival_night",
+        "VIF_Score": 8.747676739042843
+      },
+      {
+        "Feature": "peak_temp_volatility_impact",
+        "VIF_Score": 8.433093164433757
+      },
+      {
+        "Feature": "monsoon_humidity_stress",
+        "VIF_Score": 8.216711164492073
+      },
+      {
+        "Feature": "morning_peak_weather_stress",
+        "VIF_Score": 7.951435196372683
+      },
+      {
+        "Feature": "saturday_morning",
+        "VIF_Score": 7.897081579020032
+      },
+      {
+        "Feature": "monsoon_cooling_effect",
+        "VIF_Score": 7.0008438188512265
+      },
+      {
+        "Feature": "sunday_evening",
+        "VIF_Score": 6.912670639974518
+      },
+      {
+        "Feature": "offpeak_temp_sensitivity",
+        "VIF_Score": 6.784405430289643
+      },
+      {
+        "Feature": "consecutive_heat_wave_days",
+        "VIF_Score": 6.735027451229448
+      },
+      {
+        "Feature": "solar_decline_rate",
+        "VIF_Score": 6.721976403254487
+      },
+      {
+        "Feature": "weekend_afternoon",
+        "VIF_Score": 6.45391674388923
+      },
+      {
+        "Feature": "renewable_stress_level",
+        "VIF_Score": 6.431505424759215
+      },
+      {
+        "Feature": "year",
+        "VIF_Score": 6.277972343276425
+      },
+      {
+        "Feature": "net_load_minimum_timing",
+        "VIF_Score": 6.205121030342512
+      },
+      {
+        "Feature": "max_solar_decline",
+        "VIF_Score": 5.887897486859313
+      },
+      {
+        "Feature": "duck_curve_net_load_variability",
+        "VIF_Score": 5.693683383885324
+      },
+      {
+        "Feature": "monsoon_reduced_activity",
+        "VIF_Score": 5.635794136946185
+      },
+      {
+        "Feature": "heat_index_above_35",
+        "VIF_Score": 5.304934932546041
+      },
+      {
+        "Feature": "peak_cooling_demand",
+        "VIF_Score": 5.179833929539391
+      },
+      {
+        "Feature": "evening_peak_shift",
+        "VIF_Score": 5.170598680595349
+      },
+      {
+        "Feature": "festival_extreme_weather_load",
+        "VIF_Score": 5.032440936154453
+      },
+      {
+        "Feature": "afternoon_discomfort_index",
+        "VIF_Score": 4.960509784093568
+      },
+      {
+        "Feature": "load_7d_std",
+        "VIF_Score": 4.910435459471547
+      },
+      {
+        "Feature": "summer_evening_peak",
+        "VIF_Score": 4.604015439706018
+      },
+      {
+        "Feature": "wind_direction_10m",
+        "VIF_Score": 4.59824036159357
+      },
+      {
+        "Feature": "deep_duck_curve",
+        "VIF_Score": 4.555026335491996
+      },
+      {
+        "Feature": "wind_direction_100m",
+        "VIF_Score": 4.472831722705989
+      },
+      {
+        "Feature": "day_of_month_sin",
+        "VIF_Score": 4.470734729572727
+      },
+      {
+        "Feature": "winter_morning_peak",
+        "VIF_Score": 3.828189083465708
+      },
+      {
+        "Feature": "is_month_end",
+        "VIF_Score": 3.703875345137462
+      },
+      {
+        "Feature": "festival_pleasant_weather_activity",
+        "VIF_Score": 3.586245957036769
+      },
+      {
+        "Feature": "weekday_festival_evening_load",
+        "VIF_Score": 3.4871526469300655
+      },
+      {
+        "Feature": "evening_peak_duration",
+        "VIF_Score": 3.3908141698824235
+      },
+      {
+        "Feature": "extended_duck_curve",
+        "VIF_Score": 3.289382464423005
+      },
+      {
+        "Feature": "is_political_event",
+        "VIF_Score": 3.0155576151395165
+      },
+      {
+        "Feature": "max_ramp_hour",
+        "VIF_Score": 2.916761597658427
+      },
+      {
+        "Feature": "early_duck_curve",
+        "VIF_Score": 2.8511187286633284
+      },
+      {
+        "Feature": "heat_stress_index",
+        "VIF_Score": 2.7277680463520997
+      },
+      {
+        "Feature": "morning_peak_duration",
+        "VIF_Score": 2.6202900328886445
+      },
+      {
+        "Feature": "extreme_heat_peak_stress",
+        "VIF_Score": 2.435991296130838
+      },
+      {
+        "Feature": "monday_morning",
+        "VIF_Score": 2.34147634081242
+      },
+      {
+        "Feature": "morning_peak_shift",
+        "VIF_Score": 2.258979011573701
+      },
+      {
+        "Feature": "cloud_cover (%)",
+        "VIF_Score": 2.1990590484023467
+      },
+      {
+        "Feature": "weekend_festival_pleasant_activity",
+        "VIF_Score": 2.091745846821833
+      },
+      {
+        "Feature": "is_diwali_period",
+        "VIF_Score": 2.0521174126702713
+      },
+      {
+        "Feature": "festival_hot_weather_load",
+        "VIF_Score": 1.997523027576235
+      },
+      {
+        "Feature": "day_of_month_cos",
+        "VIF_Score": 1.9296148282173742
+      },
+      {
+        "Feature": "is_christmas",
+        "VIF_Score": 1.7765448986664811
+      },
+      {
+        "Feature": "friday_evening",
+        "VIF_Score": 1.7340594751018608
+      },
+      {
+        "Feature": "post_heat_wave",
+        "VIF_Score": 1.5001270285707644
+      },
+      {
+        "Feature": "pre_heat_wave",
+        "VIF_Score": 1.3836132898295088
+      },
+      {
+        "Feature": "weekend_festival_hot_load",
+        "VIF_Score": 1.3746383443344146
+      },
+      {
+        "Feature": "is_new_year",
+        "VIF_Score": 1.3220322034609415
+      },
+      {
+        "Feature": "post_festival_day",
+        "VIF_Score": 1.2906194633560015
+      },
+      {
+        "Feature": "pre_festival_day",
+        "VIF_Score": 1.2427933663631743
+      },
+      {
+        "Feature": "precipitation (mm)",
+        "VIF_Score": 1.1628361382432206
+      },
+      {
+        "Feature": "evening_ramp_stress",
+        "VIF_Score": 1.1041560670063475
+      }
+    ],
+    "high_vif_features": {
+      "temperature_2m (\u00b0C)": 2710.21235645636,
+      "apparent_temperature (\u00b0C)": 848.0227105633435,
+      "relative_humidity_2m (%)": 239.61123913209897,
+      "dew_point_2m (\u00b0C)": 155.69065890840582,
+      "wind_speed_10m (km/h)": 11.990802309613434,
+      "surface_pressure (hPa)": 12.678131716799307,
+      "et0_fao_evapotranspiration (mm)": 51.238686104151796,
+      "hour": 564.4342011141591,
+      "is_monsoon": 13297.644420446193,
+      "is_morning_peak": 165.4560604792473,
+      "is_peak_hour": 46.356822200859696,
+      "shortwave_radiation": 41109.81831494572,
+      "wet_bulb_temperature_2m": 41.23041647735674,
+      "direct_radiation": 19765.938919682845,
+      "diffuse_radiation": 5298.626215830755,
+      "cloud_cover_total": 2132.4622886310076,
+      "cloud_cover_low": 383.06122034292986,
+      "cloud_cover_mid": 261.88144602305005,
+      "cloud_cover_high": 883.7599995041462,
+      "solar_generation_mw": 37.50851694092766,
+      "solar_irradiance_ghi_wm2": 174.31430323828684,
+      "solar_irradiance_dni_wm2": 60.25491359057925,
+      "solar_direct_radiation_wm2": 101.08023524733653,
+      "solar_diffuse_radiation_wm2": 26.340022290286676,
+      "solar_capacity_factor_percent": 24.323614098022226,
+      "solar_penetration_percent": 75.98444961377136,
+      "net_load_ramp_rate_mw_per_hour": 147.45800305215133,
+      "duck_curve_depth_mw": 177.04117951844432,
+      "duck_severity_factor": 298.7600354917727,
+      "solar_capacity_factor": 85.99468695187952,
+      "delhi_evening_peak": 252.86347638613802,
+      "morning_peak_intensity": 133.87423772419223,
+      "evening_peak_intensity": 308.6658749068749,
+      "peak_amplitude_ratio": 102.68297206895333,
+      "evening_ramp_severity": 562.7645306611586,
+      "net_load_minimum_value": 36.05571237894384,
+      "grid_flexibility_index": 805.4507556963395,
+      "hour_sin": 260.5270942963038,
+      "hour_cos": 591.2204630200781,
+      "day_of_year_sin": 465.59489330847197,
+      "day_of_year_cos": 168.9896416317084,
+      "is_morning_ramp": 36.164331714336754,
+      "is_midday_low": 67.06174099460645,
+      "is_night_valley": 93.89418278929462,
+      "weekday_morning": 23.688728261488443,
+      "load_24h_mean": 99.55510086602055,
+      "load_7d_mean": 22.776461813946984,
+      "load_30d_mean": 50.310045227978094,
+      "load_24h_std": 24.620734341788054,
+      "load_lag_1h": 1232.7778171644652,
+      "load_lag_24h": 1311.8617328960445,
+      "load_lag_168h": 96.0059679788905,
+      "load_diff_24h": 209.94274514113292,
+      "load_diff_168h": 32.43020255213769,
+      "heat_index_celsius": 70.5397444384208,
+      "heat_index_stress": 987.7481643330156,
+      "heat_index_delta": 1372.1274709432312,
+      "daily_heat_index_mean": 278.1089100668052,
+      "daily_heat_index_max": 204.6187941754633,
+      "daily_heat_index_min": 130.0743259248287,
+      "daily_heat_index_std": 11.005308816672791,
+      "heat_index_persistence_24h": 15.45707587212277,
+      "cooling_degree_hours": 222.7563313978012,
+      "daily_cooling_degree_days": 138.79787177019006,
+      "cumulative_cdd_monthly": 236.02476745233307,
+      "cooling_load_index_7d": 26.58662129588666,
+      "cooling_discomfort_index": 1728.7621141202058,
+      "ac_load_probability": 91.31219283857571,
+      "cumulative_heat_stress": 13.182205306386956,
+      "humidity_discomfort": 70.20044947040799,
+      "seasonal_temp_anomaly": 42.07998610059895,
+      "daily_temp_range": 16.32037115687112,
+      "daily_thermal_stress": 73.47746778664124,
+      "cumulative_thermal_load": 164.11234979434133,
+      "day": 18.924897289689,
+      "week_of_year": 39.6644828762893,
+      "is_business_hour": 62.89619578638639,
+      "pre_festival_prep": 10.078720462087848,
+      "post_festival_recovery": 16.551728878407438,
+      "commercial_activity_index": 190.64525625974764,
+      "shopping_activity_index": 172.50047307364989,
+      "central_business_activity": 44.024944169627126,
+      "market_activity": 547.1703863202245,
+      "morning_commute_activity": 14.846161136710984,
+      "evening_commute_activity": 21.889042689304787,
+      "school_hours_activity": 10.393545508190197,
+      "college_hours_activity": 28.845227784976128,
+      "weekend_morning": 31.49059758341205,
+      "weekday_morning_rush": 10.135395295510996,
+      "weekday_evening_rush": 16.539130859954184,
+      "festival_evening": 12.29449971980854,
+      "comprehensive_activity_score": 117.30446987415621,
+      "prev_hour_is_peak": 88.14180807373938,
+      "prev_day_same_hour_weekend": 3684.38154428279,
+      "temp_humidity_hour": 25.60644450494408,
+      "morning_comfort_index": 43.951435048130705,
+      "evening_cooling_index": 12.91279925049083,
+      "ac_demand_probability": 52.57506153251304,
+      "daily_thermal_stress_accumulation": 12.365139216306483,
+      "humidity_time_interaction": 27.168627545408,
+      "estimated_solar_generation": 113.74121464656587,
+      "solar_cooling_offset": 23.309389141406403,
+      "duck_curve_depth": 361.2643386593243,
+      "evening_ramp_intensity": 170.89571769327193,
+      "solar_temperature_load_factor": 53.785330751755154,
+      "festival_humid_weather_load": 10.87734682814465,
+      "weekend_weather_sensitivity": 22.83928615426654,
+      "weekday_weather_sensitivity": 21.921056106129647,
+      "festival_comfort_weekend_interaction": 28.38299086293794,
+      "morning_peak_temp_sensitivity": 170.31151513488194,
+      "evening_peak_temp_sensitivity": 151.8516066551979,
+      "midday_temp_sensitivity": 48.328478129437116,
+      "morning_peak_humidity_impact": 1679.1344195603945,
+      "evening_peak_humidity_impact": 30.960863598332367,
+      "evening_peak_weather_stress": 11.27006872434199,
+      "morning_weather_adaptation": 2059.8646908817113,
+      "evening_weather_adaptation": 191.11411232153466,
+      "temperature_driven_ramp": 273.51661726813234,
+      "duck_curve_temperature_stability": 116.13509002309338,
+      "post_duck_recovery_intensity": 14.040815545534699
+    },
+    "vif_threshold": 10.0,
+    "zero_variance_features": [
+      "is_odd_even_scheme"
+    ],
+    "total_features_analyzed": 182
+  },
+  "correlation_analysis": {
+    "correlation_matrix_shape": [
+      234,
+      234
+    ],
+    "high_correlation_pairs": [
+      {
+        "feature1": "is_evening_ramp",
+        "feature2": "next_hour_is_peak",
+        "correlation": 1.0
+      },
+      {
+        "feature1": "apparent_temperature (\u00b0C)",
+        "feature2": "cooling_discomfort_index",
+        "correlation": 0.9892021236726636
+      },
+      {
+        "feature1": "heat_index_stress",
+        "feature2": "heat_index_delta",
+        "correlation": 0.986170540071145
+      },
+      {
+        "feature1": "daily_heat_index_mean",
+        "feature2": "daily_heat_index_max",
+        "correlation": 0.9852878255891897
+      },
+      {
+        "feature1": "month",
+        "feature2": "week_of_year",
+        "correlation": 0.9813691148427403
+      },
+      {
+        "feature1": "daily_heat_index_mean",
+        "feature2": "daily_heat_index_min",
+        "correlation": 0.9809853637594129
+      },
+      {
+        "feature1": "shortwave_radiation",
+        "feature2": "direct_radiation",
+        "correlation": 0.9749772295892682
+      },
+      {
+        "feature1": "apparent_temperature (\u00b0C)",
+        "feature2": "heat_index_delta",
+        "correlation": 0.974108514724011
+      },
+      {
+        "feature1": "month",
+        "feature2": "quarter",
+        "correlation": 0.9711345770383175
+      },
+      {
+        "feature1": "is_morning_peak",
+        "feature2": "morning_comfort_index",
+        "correlation": 0.9706957304194813
+      },
+      {
+        "feature1": "temperature_2m (\u00b0C)",
+        "feature2": "heat_index_delta",
+        "correlation": 0.9692116076450696
+      },
+      {
+        "feature1": "hourly_thermal_stress",
+        "feature2": "net_thermal_balance",
+        "correlation": 0.9678073837669586
+      },
+      {
+        "feature1": "heat_index_delta",
+        "feature2": "cooling_discomfort_index",
+        "correlation": 0.9662477775586338
+      },
+      {
+        "feature1": "solar_irradiance_ghi_wm2",
+        "feature2": "solar_direct_radiation_wm2",
+        "correlation": 0.9651106836393035
+      },
+      {
+        "feature1": "temperature_2m (\u00b0C)",
+        "feature2": "apparent_temperature (\u00b0C)",
+        "correlation": 0.9568426555196095
+      },
+      {
+        "feature1": "week_of_year",
+        "feature2": "quarter",
+        "correlation": 0.955537273772699
+      },
+      {
+        "feature1": "day_of_year_cos",
+        "feature2": "month_cos",
+        "correlation": 0.9551665788883613
+      },
+      {
+        "feature1": "day_of_year_sin",
+        "feature2": "month_sin",
+        "correlation": 0.9550781935027874
+      },
+      {
+        "feature1": "commercial_activity_index",
+        "feature2": "comprehensive_activity_score",
+        "correlation": 0.9546906183330229
+      },
+      {
+        "feature1": "morning_peak_humidity_impact",
+        "feature2": "morning_weather_adaptation",
+        "correlation": 0.9530756599215414
+      },
+      {
+        "feature1": "temperature_2m (\u00b0C)",
+        "feature2": "cooling_discomfort_index",
+        "correlation": 0.9529403145043496
+      },
+      {
+        "feature1": "solar_irradiance_ghi_wm2",
+        "feature2": "estimated_solar_generation",
+        "correlation": 0.952190293713035
+      },
+      {
+        "feature1": "apparent_temperature (\u00b0C)",
+        "feature2": "heat_index_stress",
+        "correlation": 0.9501542547426434
+      },
+      {
+        "feature1": "daily_heat_index_max",
+        "feature2": "daily_heat_index_min",
+        "correlation": 0.9489416957993785
+      },
+      {
+        "feature1": "evening_peak_intensity",
+        "feature2": "net_load_minimum_value",
+        "correlation": 0.9463607159772114
+      },
+      {
+        "feature1": "solar_irradiance_dni_wm2",
+        "feature2": "solar_direct_radiation_wm2",
+        "correlation": 0.9440836093956992
+      },
+      {
+        "feature1": "temperature_2m (\u00b0C)",
+        "feature2": "heat_index_stress",
+        "correlation": 0.9431028675087659
+      },
+      {
+        "feature1": "load_24h_mean",
+        "feature2": "load_7d_mean",
+        "correlation": 0.943066281329564
+      },
+      {
+        "feature1": "evening_peak_intensity",
+        "feature2": "load_24h_mean",
+        "correlation": 0.9400415871041984
+      },
+      {
+        "feature1": "load_24h_mean",
+        "feature2": "load_24h_max",
+        "correlation": 0.9395587788900724
+      },
+      {
+        "feature1": "solar_irradiance_ghi_wm2",
+        "feature2": "solar_irradiance_dni_wm2",
+        "correlation": 0.9359740085610321
+      },
+      {
+        "feature1": "day_of_year_cos",
+        "feature2": "daily_heat_index_mean",
+        "correlation": 0.9339299420119429
+      },
+      {
+        "feature1": "daily_cooling_degree_days",
+        "feature2": "cooling_load_index_7d",
+        "correlation": 0.9318799531504484
+      },
+      {
+        "feature1": "is_business_hour",
+        "feature2": "central_business_activity",
+        "correlation": 0.9265734498411518
+      },
+      {
+        "feature1": "heat_index_stress",
+        "feature2": "cooling_discomfort_index",
+        "correlation": 0.9263732179061914
+      },
+      {
+        "feature1": "day_of_year_cos",
+        "feature2": "daily_heat_index_max",
+        "correlation": 0.9228483829241433
+      },
+      {
+        "feature1": "solar_direct_radiation_wm2",
+        "feature2": "estimated_solar_generation",
+        "correlation": 0.9224401192448665
+      },
+      {
+        "feature1": "evening_ramp_intensity",
+        "feature2": "temperature_driven_ramp",
+        "correlation": 0.9218665206276705
+      },
+      {
+        "feature1": "festival_intensity",
+        "feature2": "festival_comfort_weekend_interaction",
+        "correlation": 0.9213577612051217
+      },
+      {
+        "feature1": "day_of_year_cos",
+        "feature2": "daily_heat_index_min",
+        "correlation": 0.9201760500986133
+      },
+      {
+        "feature1": "morning_peak_intensity",
+        "feature2": "load_24h_max",
+        "correlation": 0.918716359617227
+      },
+      {
+        "feature1": "cumulative_cdd_monthly",
+        "feature2": "cumulative_thermal_load",
+        "correlation": 0.9178735438015367
+      },
+      {
+        "feature1": "solar_irradiance_dni_wm2",
+        "feature2": "estimated_solar_generation",
+        "correlation": 0.9169745631372432
+      },
+      {
+        "feature1": "surface_pressure (hPa)",
+        "feature2": "day_of_year_cos",
+        "correlation": 0.9126062542474521
+      },
+      {
+        "feature1": "load_7d_mean",
+        "feature2": "load_30d_mean",
+        "correlation": 0.9122919553778698
+      },
+      {
+        "feature1": "duck_curve_depth",
+        "feature2": "duck_curve_temperature_stability",
+        "correlation": 0.9088433316987351
+      },
+      {
+        "feature1": "shortwave_radiation",
+        "feature2": "diffuse_radiation",
+        "correlation": 0.9031057670000834
+      },
+      {
+        "feature1": "cooling_degree_hours",
+        "feature2": "ac_load_probability",
+        "correlation": 0.9019438985944586
+      },
+      {
+        "feature1": "commercial_activity_index",
+        "feature2": "market_activity",
+        "correlation": 0.9018084183002646
+      },
+      {
+        "feature1": "apparent_temperature (\u00b0C)",
+        "feature2": "daily_heat_index_mean",
+        "correlation": 0.9011911320973474
+      },
+      {
+        "feature1": "day_of_year_cos",
+        "feature2": "is_winter_session",
+        "correlation": 0.9009352131760153
+      },
+      {
+        "feature1": "evening_commute_activity",
+        "feature2": "weekday_evening_rush",
+        "correlation": 0.9008739250024895
+      },
+      {
+        "feature1": "morning_commute_activity",
+        "feature2": "weekday_morning_rush",
+        "correlation": 0.9008739250024865
+      },
+      {
+        "feature1": "is_night_valley",
+        "feature2": "is_late_night",
+        "correlation": 0.899735410842444
+      },
+      {
+        "feature1": "is_late_night",
+        "feature2": "metro_operational_hours",
+        "correlation": 0.8997354108424362
+      },
+      {
+        "feature1": "load_24h_std",
+        "feature2": "load_24h_range",
+        "correlation": 0.8995350779171133
+      },
+      {
+        "feature1": "daily_cooling_degree_days",
+        "feature2": "daily_thermal_stress",
+        "correlation": 0.8990723421866339
+      },
+      {
+        "feature1": "net_load_minimum_value",
+        "feature2": "load_24h_mean",
+        "correlation": 0.8976920055891877
+      },
+      {
+        "feature1": "is_major_festival",
+        "feature2": "is_religious_festival",
+        "correlation": 0.8974047319982484
+      },
+      {
+        "feature1": "daily_heat_index_mean",
+        "feature2": "cooling_discomfort_index",
+        "correlation": 0.8961932374715038
+      },
+      {
+        "feature1": "cooling_degree_hours",
+        "feature2": "net_thermal_balance",
+        "correlation": 0.8948067103553059
+      },
+      {
+        "feature1": "apparent_temperature (\u00b0C)",
+        "feature2": "daily_heat_index_min",
+        "correlation": 0.8935056940062718
+      },
+      {
+        "feature1": "surface_pressure (hPa)",
+        "feature2": "daily_heat_index_mean",
+        "correlation": 0.8921352983067311
+      },
+      {
+        "feature1": "daily_heat_index_min",
+        "feature2": "cooling_discomfort_index",
+        "correlation": 0.8896670795320532
+      },
+      {
+        "feature1": "delhi_evening_peak",
+        "feature2": "shopping_activity_index",
+        "correlation": 0.8889879853305642
+      },
+      {
+        "feature1": "is_evening_peak",
+        "feature2": "delhi_evening_peak",
+        "correlation": 0.8881297440691964
+      },
+      {
+        "feature1": "delhi_evening_peak",
+        "feature2": "is_evening_ramp",
+        "correlation": 0.8876998998758867
+      },
+      {
+        "feature1": "delhi_evening_peak",
+        "feature2": "next_hour_is_peak",
+        "correlation": 0.8876998998758867
+      },
+      {
+        "feature1": "apparent_temperature (\u00b0C)",
+        "feature2": "daily_heat_index_max",
+        "correlation": 0.8873091277360571
+      },
+      {
+        "feature1": "solar_irradiance_ghi_wm2",
+        "feature2": "solar_diffuse_radiation_wm2",
+        "correlation": 0.8863777517729712
+      },
+      {
+        "feature1": "estimated_solar_generation",
+        "feature2": "duck_curve_depth",
+        "correlation": 0.8854409936060068
+      },
+      {
+        "feature1": "load_lag_1h",
+        "feature2": "load_lag_24h",
+        "correlation": 0.8852936193103764
+      },
+      {
+        "feature1": "solar_generation_mw",
+        "feature2": "solar_irradiance_ghi_wm2",
+        "correlation": 0.8851919932956687
+      },
+      {
+        "feature1": "relative_humidity_2m (%)",
+        "feature2": "humidity_discomfort",
+        "correlation": 0.8847053421358388
+      },
+      {
+        "feature1": "load_7d_mean",
+        "feature2": "load_24h_max",
+        "correlation": 0.8843728117445689
+      },
+      {
+        "feature1": "is_business_hour",
+        "feature2": "college_hours_activity",
+        "correlation": 0.8841725457801702
+      },
+      {
+        "feature1": "air_quality_temp_interaction",
+        "feature2": "is_winter_session",
+        "correlation": 0.8839182466323064
+      },
+      {
+        "feature1": "evening_peak_intensity",
+        "feature2": "load_7d_mean",
+        "correlation": 0.8835815602745812
+      },
+      {
+        "feature1": "evening_peak_intensity",
+        "feature2": "load_24h_max",
+        "correlation": 0.8824258491416725
+      },
+      {
+        "feature1": "evening_ramp_severity",
+        "feature2": "grid_flexibility_index",
+        "correlation": 0.8823625637063647
+      },
+      {
+        "feature1": "surface_pressure (hPa)",
+        "feature2": "daily_heat_index_min",
+        "correlation": 0.8822367706621423
+      },
+      {
+        "feature1": "daily_heat_index_max",
+        "feature2": "cooling_discomfort_index",
+        "correlation": 0.8819468841184858
+      },
+      {
+        "feature1": "wet_bulb_temperature_2m",
+        "feature2": "daily_heat_index_min",
+        "correlation": 0.8819435752422345
+      },
+      {
+        "feature1": "consecutive_heat_wave_days",
+        "feature2": "heat_wave_intensity",
+        "correlation": 0.88116439372112
+      },
+      {
+        "feature1": "month_cos",
+        "feature2": "is_winter_session",
+        "correlation": 0.8805670256856963
+      },
+      {
+        "feature1": "surface_pressure (hPa)",
+        "feature2": "daily_heat_index_max",
+        "correlation": 0.8802221411493217
+      },
+      {
+        "feature1": "solar_irradiance_ghi_wm2",
+        "feature2": "duck_curve_depth",
+        "correlation": 0.8799662989385882
+      },
+      {
+        "feature1": "hour_cos",
+        "feature2": "estimated_solar_generation",
+        "correlation": 0.8791534466309691
+      },
+      {
+        "feature1": "heat_index_delta",
+        "feature2": "daily_heat_index_mean",
+        "correlation": 0.878336083874145
+      },
+      {
+        "feature1": "solar_generation_mw",
+        "feature2": "estimated_solar_generation",
+        "correlation": 0.8782443178323505
+      },
+      {
+        "feature1": "wet_bulb_temperature_2m",
+        "feature2": "daily_heat_index_mean",
+        "correlation": 0.8757730456523967
+      },
+      {
+        "feature1": "wind_direction_10m",
+        "feature2": "wind_direction_100m",
+        "correlation": 0.8756615144120424
+      },
+      {
+        "feature1": "cooling_degree_hours",
+        "feature2": "hourly_thermal_stress",
+        "correlation": 0.8749864017731391
+      },
+      {
+        "feature1": "festival_humid_weather_load",
+        "feature2": "festival_extreme_weather_load",
+        "correlation": 0.8743702896887691
+      },
+      {
+        "feature1": "heat_index_stress",
+        "feature2": "cooling_degree_hours",
+        "correlation": 0.8735342586769155
+      },
+      {
+        "feature1": "is_evening_peak",
+        "feature2": "restaurant_activity_index",
+        "correlation": 0.8733647766733381
+      },
+      {
+        "feature1": "restaurant_activity_index",
+        "feature2": "prev_hour_is_peak",
+        "correlation": 0.8733647766733379
+      },
+      {
+        "feature1": "solar_diffuse_radiation_wm2",
+        "feature2": "estimated_solar_generation",
+        "correlation": 0.867958526223267
+      },
+      {
+        "feature1": "solar_generation_mw",
+        "feature2": "solar_irradiance_dni_wm2",
+        "correlation": 0.8679528620182185
+      },
+      {
+        "feature1": "heat_index_delta",
+        "feature2": "daily_heat_index_max",
+        "correlation": 0.8654138502168834
+      },
+      {
+        "feature1": "daily_heat_index_mean",
+        "feature2": "cooling_load_index_7d",
+        "correlation": 0.8644275798164545
+      },
+      {
+        "feature1": "solar_direct_radiation_wm2",
+        "feature2": "duck_curve_depth",
+        "correlation": 0.8642436423167458
+      },
+      {
+        "feature1": "market_activity",
+        "feature2": "comprehensive_activity_score",
+        "correlation": 0.8632401773302354
+      },
+      {
+        "feature1": "heat_index_stress",
+        "feature2": "daily_heat_index_mean",
+        "correlation": 0.863151116026344
+      },
+      {
+        "feature1": "heat_index_delta",
+        "feature2": "daily_heat_index_min",
+        "correlation": 0.8616348427422997
+      },
+      {
+        "feature1": "dew_point_2m (\u00b0C)",
+        "feature2": "wet_bulb_temperature_2m",
+        "correlation": 0.8614700074992472
+      },
+      {
+        "feature1": "solar_generation_mw",
+        "feature2": "hour_cos",
+        "correlation": 0.8613580148418627
+      },
+      {
+        "feature1": "daily_heat_index_min",
+        "feature2": "cooling_load_index_7d",
+        "correlation": 0.8606888855760321
+      },
+      {
+        "feature1": "wet_bulb_temperature_2m",
+        "feature2": "daily_heat_index_max",
+        "correlation": 0.8598006329048615
+      },
+      {
+        "feature1": "daily_heat_index_mean",
+        "feature2": "month_cos",
+        "correlation": 0.8591420113612498
+      },
+      {
+        "feature1": "temperature_2m (\u00b0C)",
+        "feature2": "cooling_degree_hours",
+        "correlation": 0.8563983370369028
+      },
+      {
+        "feature1": "evening_peak_temp_sensitivity",
+        "feature2": "evening_weather_adaptation",
+        "correlation": 0.8561543054353977
+      },
+      {
+        "feature1": "daily_heat_index_mean",
+        "feature2": "daily_cooling_degree_days",
+        "correlation": 0.8530329917933263
+      },
+      {
+        "feature1": "daily_heat_index_max",
+        "feature2": "month_cos",
+        "correlation": 0.852541481941657
+      },
+      {
+        "feature1": "heat_index_stress",
+        "feature2": "daily_heat_index_max",
+        "correlation": 0.8511553666386292
+      },
+      {
+        "feature1": "heat_index_persistence_24h",
+        "feature2": "daily_cooling_degree_days",
+        "correlation": 0.850771028523137
+      },
+      {
+        "feature1": "day_of_year_cos",
+        "feature2": "cooling_load_index_7d",
+        "correlation": 0.8496928407271155
+      },
+      {
+        "feature1": "is_weekend",
+        "feature2": "weekend_weather_sensitivity",
+        "correlation": 0.8492626000464369
+      },
+      {
+        "feature1": "temperature_2m (\u00b0C)",
+        "feature2": "daily_heat_index_mean",
+        "correlation": 0.848563605526199
+      },
+      {
+        "feature1": "is_wedding_season",
+        "feature2": "is_winter_session",
+        "correlation": 0.847979930333465
+      },
+      {
+        "feature1": "load_24h_mean",
+        "feature2": "load_30d_mean",
+        "correlation": 0.8475067970815313
+      },
+      {
+        "feature1": "solar_capacity_factor_percent",
+        "feature2": "solar_capacity_factor",
+        "correlation": 0.8470398465495086
+      },
+      {
+        "feature1": "solar_irradiance_ghi_wm2",
+        "feature2": "hour_cos",
+        "correlation": 0.846916747927647
+      },
+      {
+        "feature1": "apparent_temperature (\u00b0C)",
+        "feature2": "day_of_year_cos",
+        "correlation": 0.8468454607481648
+      },
+      {
+        "feature1": "duck_severity_factor",
+        "feature2": "market_activity",
+        "correlation": 0.8463347396017472
+      },
+      {
+        "feature1": "heat_index_stress",
+        "feature2": "daily_heat_index_min",
+        "correlation": 0.8453830125875635
+      },
+      {
+        "feature1": "daily_heat_index_mean",
+        "feature2": "is_winter_session",
+        "correlation": 0.8440158768313029
+      },
+      {
+        "feature1": "wet_bulb_temperature_2m",
+        "feature2": "load_30d_mean",
+        "correlation": 0.8428234793381959
+      },
+      {
+        "feature1": "estimated_solar_generation",
+        "feature2": "duck_curve_temperature_stability",
+        "correlation": 0.8413689037985843
+      },
+      {
+        "feature1": "duck_severity_factor",
+        "feature2": "commercial_activity_index",
+        "correlation": 0.840323368062475
+      },
+      {
+        "feature1": "wet_bulb_temperature_2m",
+        "feature2": "day_of_year_cos",
+        "correlation": 0.839886068512906
+      },
+      {
+        "feature1": "surface_pressure (hPa)",
+        "feature2": "month_cos",
+        "correlation": 0.8398177127500897
+      },
+      {
+        "feature1": "surface_pressure (hPa)",
+        "feature2": "is_winter_session",
+        "correlation": 0.8387854659278534
+      },
+      {
+        "feature1": "heat_index_delta",
+        "feature2": "cooling_degree_hours",
+        "correlation": 0.8383850671807188
+      },
+      {
+        "feature1": "day_of_year_cos",
+        "feature2": "cooling_discomfort_index",
+        "correlation": 0.8382216155541694
+      },
+      {
+        "feature1": "daily_heat_index_min",
+        "feature2": "daily_cooling_degree_days",
+        "correlation": 0.8382088090428278
+      },
+      {
+        "feature1": "load_24h_max",
+        "feature2": "heat_index_persistence_24h",
+        "correlation": 0.8377405826068285
+      },
+      {
+        "feature1": "daily_heat_index_max",
+        "feature2": "cooling_load_index_7d",
+        "correlation": 0.837507421906662
+      },
+      {
+        "feature1": "wind_speed_10m (km/h)",
+        "feature2": "wind_gusts_10m (km/h)",
+        "correlation": 0.8369261177457763
+      },
+      {
+        "feature1": "solar_diffuse_radiation_wm2",
+        "feature2": "hour_cos",
+        "correlation": 0.8368474602463776
+      },
+      {
+        "feature1": "daily_heat_index_min",
+        "feature2": "month_cos",
+        "correlation": 0.8360222990403722
+      },
+      {
+        "feature1": "temperature_2m (\u00b0C)",
+        "feature2": "daily_heat_index_min",
+        "correlation": 0.8356496466509069
+      },
+      {
+        "feature1": "net_load_minimum_value",
+        "feature2": "load_7d_mean",
+        "correlation": 0.8354753163526041
+      },
+      {
+        "feature1": "solar_cooling_offset",
+        "feature2": "deep_duck_curve",
+        "correlation": 0.8354374173188199
+      },
+      {
+        "feature1": "temperature_2m (\u00b0C)",
+        "feature2": "daily_heat_index_max",
+        "correlation": 0.8353803214917751
+      },
+      {
+        "feature1": "daily_heat_index_max",
+        "feature2": "is_winter_session",
+        "correlation": 0.8342278807883713
+      },
+      {
+        "feature1": "heat_index_stress",
+        "feature2": "ac_demand_probability",
+        "correlation": 0.8338651797256051
+      },
+      {
+        "feature1": "solar_irradiance_dni_wm2",
+        "feature2": "hour_cos",
+        "correlation": 0.8328918864757471
+      },
+      {
+        "feature1": "daily_heat_index_min",
+        "feature2": "is_winter_session",
+        "correlation": 0.8328772612366869
+      },
+      {
+        "feature1": "heat_index_celsius",
+        "feature2": "daily_thermal_stress_accumulation",
+        "correlation": 0.8322140254720377
+      },
+      {
+        "feature1": "daily_heat_index_mean",
+        "feature2": "heat_index_persistence_24h",
+        "correlation": 0.8320825366301432
+      },
+      {
+        "feature1": "daily_heat_index_max",
+        "feature2": "daily_cooling_degree_days",
+        "correlation": 0.8310743417855817
+      },
+      {
+        "feature1": "morning_peak_intensity",
+        "feature2": "load_24h_mean",
+        "correlation": 0.8303731990664821
+      },
+      {
+        "feature1": "load_24h_mean",
+        "feature2": "heat_index_persistence_24h",
+        "correlation": 0.8297055363733078
+      },
+      {
+        "feature1": "solar_irradiance_ghi_wm2",
+        "feature2": "duck_curve_temperature_stability",
+        "correlation": 0.8275261137611147
+      },
+      {
+        "feature1": "load_24h_mean",
+        "feature2": "load_24h_min",
+        "correlation": 0.8267912400895633
+      },
+      {
+        "feature1": "solar_direct_radiation_wm2",
+        "feature2": "solar_diffuse_radiation_wm2",
+        "correlation": 0.825334967284842
+      },
+      {
+        "feature1": "duck_curve_depth",
+        "feature2": "duck_curve_net_load_variability",
+        "correlation": 0.8250887696925098
+      },
+      {
+        "feature1": "ac_load_probability",
+        "feature2": "net_thermal_balance",
+        "correlation": 0.8247800762209619
+      },
+      {
+        "feature1": "net_load_minimum_value",
+        "feature2": "load_24h_max",
+        "correlation": 0.8230516755210664
+      },
+      {
+        "feature1": "load_24h_mean",
+        "feature2": "load_lag_1h",
+        "correlation": 0.8223544762945368
+      },
+      {
+        "feature1": "day_of_year_cos",
+        "feature2": "heat_index_delta",
+        "correlation": 0.8203043678795789
+      },
+      {
+        "feature1": "is_monsoon",
+        "feature2": "quarter_sin",
+        "correlation": 0.819976338847042
+      },
+      {
+        "feature1": "central_business_activity",
+        "feature2": "college_hours_activity",
+        "correlation": 0.8192508059983614
+      },
+      {
+        "feature1": "day_of_year_cos",
+        "feature2": "heat_index_stress",
+        "correlation": 0.8183596057896999
+      },
+      {
+        "feature1": "load_lag_24h",
+        "feature2": "load_lag_168h",
+        "correlation": 0.8163317712719425
+      },
+      {
+        "feature1": "load_24h_mean",
+        "feature2": "load_lag_24h",
+        "correlation": 0.8159153956731884
+      },
+      {
+        "feature1": "apparent_temperature (\u00b0C)",
+        "feature2": "wet_bulb_temperature_2m",
+        "correlation": 0.8158324275210412
+      },
+      {
+        "feature1": "is_summer",
+        "feature2": "quarter_cos",
+        "correlation": 0.8151296735485329
+      },
+      {
+        "feature1": "day_of_year_cos",
+        "feature2": "load_7d_mean",
+        "correlation": 0.8148281010732571
+      },
+      {
+        "feature1": "day_of_year_cos",
+        "feature2": "daily_cooling_degree_days",
+        "correlation": 0.8145111332305849
+      },
+      {
+        "feature1": "cooling_load_index_7d",
+        "feature2": "month_cos",
+        "correlation": 0.8141226098714576
+      },
+      {
+        "feature1": "daily_heat_index_min",
+        "feature2": "heat_index_persistence_24h",
+        "correlation": 0.8138233932621359
+      },
+      {
+        "feature1": "surface_pressure (hPa)",
+        "feature2": "load_7d_mean",
+        "correlation": 0.8136578220521562
+      },
+      {
+        "feature1": "heat_index_persistence_24h",
+        "feature2": "cooling_load_index_7d",
+        "correlation": 0.8129744711266725
+      },
+      {
+        "feature1": "morning_peak_humidity_impact",
+        "feature2": "extreme_humidity_peak_stress",
+        "correlation": 0.8119518123657843
+      },
+      {
+        "feature1": "cooling_load_index_7d",
+        "feature2": "daily_thermal_stress",
+        "correlation": 0.8101016929942128
+      },
+      {
+        "feature1": "peak_amplitude_ratio",
+        "feature2": "net_load_minimum_timing",
+        "correlation": 0.8093193004784999
+      },
+      {
+        "feature1": "daily_heat_index_max",
+        "feature2": "heat_index_persistence_24h",
+        "correlation": 0.8085636954201388
+      },
+      {
+        "feature1": "duck_severity_factor",
+        "feature2": "hour_sin",
+        "correlation": 0.8083416031528133
+      },
+      {
+        "feature1": "surface_pressure (hPa)",
+        "feature2": "wet_bulb_temperature_2m",
+        "correlation": 0.8083078985714521
+      },
+      {
+        "feature1": "evening_ramp_intensity",
+        "feature2": "post_duck_recovery_intensity",
+        "correlation": 0.8077064785245673
+      },
+      {
+        "feature1": "heat_index_celsius",
+        "feature2": "ac_demand_probability",
+        "correlation": 0.8073046917258508
+      },
+      {
+        "feature1": "wet_bulb_temperature_2m",
+        "feature2": "cooling_discomfort_index",
+        "correlation": 0.8071394654372068
+      },
+      {
+        "feature1": "apparent_temperature (\u00b0C)",
+        "feature2": "surface_pressure (hPa)",
+        "correlation": 0.8069775815464822
+      },
+      {
+        "feature1": "solar_generation_mw",
+        "feature2": "solar_diffuse_radiation_wm2",
+        "correlation": 0.8062119022292799
+      },
+      {
+        "feature1": "solar_diffuse_radiation_wm2",
+        "feature2": "duck_curve_temperature_stability",
+        "correlation": 0.805544495864675
+      },
+      {
+        "feature1": "surface_pressure (hPa)",
+        "feature2": "load_30d_mean",
+        "correlation": 0.8046876772637412
+      },
+      {
+        "feature1": "cooling_discomfort_index",
+        "feature2": "thermal_recovery",
+        "correlation": 0.8043659853971424
+      },
+      {
+        "feature1": "morning_peak_intensity",
+        "feature2": "evening_peak_intensity",
+        "correlation": 0.8043562775601893
+      },
+      {
+        "feature1": "day_of_year_sin",
+        "feature2": "quarter",
+        "correlation": 0.8039656443770257
+      },
+      {
+        "feature1": "heat_index_stress",
+        "feature2": "ac_load_probability",
+        "correlation": 0.803739683921041
+      },
+      {
+        "feature1": "evening_peak_intensity",
+        "feature2": "load_lag_1h",
+        "correlation": 0.8034911789660181
+      },
+      {
+        "feature1": "dew_point_2m (\u00b0C)",
+        "feature2": "load_30d_mean",
+        "correlation": 0.8033958643429914
+      },
+      {
+        "feature1": "surface_pressure (hPa)",
+        "feature2": "cooling_load_index_7d",
+        "correlation": 0.8026027964282257
+      },
+      {
+        "feature1": "diffuse_radiation",
+        "feature2": "hour_sin",
+        "correlation": 0.8021277899848767
+      },
+      {
+        "feature1": "ac_load_probability",
+        "feature2": "hourly_thermal_stress",
+        "correlation": 0.801019959046463
+      }
+    ],
+    "correlation_threshold": 0.8,
+    "total_pairs_analyzed": 27261
+  },
+  "cluster_analysis": {
+    "clusters": [
+      {
+        "cluster_id": 1,
+        "features": [
+          "temperature_2m (\u00b0C)",
+          "apparent_temperature (\u00b0C)",
+          "heat_index_stress",
+          "heat_index_delta",
+          "daily_heat_index_mean",
+          "daily_heat_index_max",
+          "daily_heat_index_min",
+          "cooling_degree_hours",
+          "cooling_discomfort_index"
+        ],
+        "cluster_size": 9,
+        "representative_feature": "temperature_2m (\u00b0C)"
+      },
+      {
+        "cluster_id": 2,
+        "features": [
+          "relative_humidity_2m (%)",
+          "humidity_discomfort"
+        ],
+        "cluster_size": 2,
+        "representative_feature": "relative_humidity_2m (%)"
+      },
+      {
+        "cluster_id": 3,
+        "features": [
+          "dew_point_2m (\u00b0C)",
+          "wet_bulb_temperature_2m",
+          "load_30d_mean"
+        ],
+        "cluster_size": 3,
+        "representative_feature": "dew_point_2m (\u00b0C)"
+      },
+      {
+        "cluster_id": 4,
+        "features": [
+          "wind_speed_10m (km/h)",
+          "wind_gusts_10m (km/h)"
+        ],
+        "cluster_size": 2,
+        "representative_feature": "wind_speed_10m (km/h)"
+      },
+      {
+        "cluster_id": 5,
+        "features": [
+          "surface_pressure (hPa)",
+          "day_of_year_cos",
+          "load_7d_mean",
+          "cooling_load_index_7d",
+          "month_cos",
+          "is_winter_session"
+        ],
+        "cluster_size": 6,
+        "representative_feature": "surface_pressure (hPa)"
+      },
+      {
+        "cluster_id": 6,
+        "features": [
+          "month",
+          "week_of_year",
+          "quarter"
+        ],
+        "cluster_size": 3,
+        "representative_feature": "month"
+      },
+      {
+        "cluster_id": 7,
+        "features": [
+          "is_weekend",
+          "weekend_weather_sensitivity"
+        ],
+        "cluster_size": 2,
+        "representative_feature": "is_weekend"
+      },
+      {
+        "cluster_id": 8,
+        "features": [
+          "is_summer",
+          "quarter_cos"
+        ],
+        "cluster_size": 2,
+        "representative_feature": "is_summer"
+      },
+      {
+        "cluster_id": 9,
+        "features": [
+          "is_monsoon",
+          "quarter_sin"
+        ],
+        "cluster_size": 2,
+        "representative_feature": "is_monsoon"
+      },
+      {
+        "cluster_id": 10,
+        "features": [
+          "is_morning_peak",
+          "morning_comfort_index"
+        ],
+        "cluster_size": 2,
+        "representative_feature": "is_morning_peak"
+      },
+      {
+        "cluster_id": 11,
+        "features": [
+          "is_evening_peak",
+          "delhi_evening_peak",
+          "restaurant_activity_index"
+        ],
+        "cluster_size": 3,
+        "representative_feature": "is_evening_peak"
+      },
+      {
+        "cluster_id": 12,
+        "features": [
+          "shortwave_radiation",
+          "direct_radiation",
+          "diffuse_radiation"
+        ],
+        "cluster_size": 3,
+        "representative_feature": "shortwave_radiation"
+      },
+      {
+        "cluster_id": 13,
+        "features": [
+          "wind_direction_10m",
+          "wind_direction_100m"
+        ],
+        "cluster_size": 2,
+        "representative_feature": "wind_direction_10m"
+      },
+      {
+        "cluster_id": 14,
+        "features": [
+          "is_major_festival",
+          "is_religious_festival"
+        ],
+        "cluster_size": 2,
+        "representative_feature": "is_major_festival"
+      },
+      {
+        "cluster_id": 15,
+        "features": [
+          "festival_intensity",
+          "festival_comfort_weekend_interaction"
+        ],
+        "cluster_size": 2,
+        "representative_feature": "festival_intensity"
+      },
+      {
+        "cluster_id": 16,
+        "features": [
+          "solar_generation_mw",
+          "solar_irradiance_ghi_wm2",
+          "solar_irradiance_dni_wm2",
+          "solar_diffuse_radiation_wm2",
+          "hour_cos",
+          "estimated_solar_generation"
+        ],
+        "cluster_size": 6,
+        "representative_feature": "solar_generation_mw"
+      },
+      {
+        "cluster_id": 17,
+        "features": [
+          "solar_direct_radiation_wm2",
+          "duck_curve_depth"
+        ],
+        "cluster_size": 2,
+        "representative_feature": "solar_direct_radiation_wm2"
+      },
+      {
+        "cluster_id": 18,
+        "features": [
+          "solar_capacity_factor_percent",
+          "solar_capacity_factor"
+        ],
+        "cluster_size": 2,
+        "representative_feature": "solar_capacity_factor_percent"
+      },
+      {
+        "cluster_id": 19,
+        "features": [
+          "duck_severity_factor",
+          "hour_sin",
+          "commercial_activity_index",
+          "market_activity"
+        ],
+        "cluster_size": 4,
+        "representative_feature": "duck_severity_factor"
+      },
+      {
+        "cluster_id": 20,
+        "features": [
+          "morning_peak_intensity",
+          "evening_peak_intensity",
+          "load_24h_mean",
+          "load_24h_max"
+        ],
+        "cluster_size": 4,
+        "representative_feature": "morning_peak_intensity"
+      },
+      {
+        "cluster_id": 21,
+        "features": [
+          "peak_amplitude_ratio",
+          "net_load_minimum_timing"
+        ],
+        "cluster_size": 2,
+        "representative_feature": "peak_amplitude_ratio"
+      },
+      {
+        "cluster_id": 22,
+        "features": [
+          "evening_ramp_severity",
+          "grid_flexibility_index"
+        ],
+        "cluster_size": 2,
+        "representative_feature": "evening_ramp_severity"
+      },
+      {
+        "cluster_id": 23,
+        "features": [
+          "day_of_year_sin",
+          "month_sin"
+        ],
+        "cluster_size": 2,
+        "representative_feature": "day_of_year_sin"
+      },
+      {
+        "cluster_id": 24,
+        "features": [
+          "is_evening_ramp",
+          "next_hour_is_peak"
+        ],
+        "cluster_size": 2,
+        "representative_feature": "is_evening_ramp"
+      },
+      {
+        "cluster_id": 25,
+        "features": [
+          "is_night_valley",
+          "is_late_night"
+        ],
+        "cluster_size": 2,
+        "representative_feature": "is_night_valley"
+      },
+      {
+        "cluster_id": 26,
+        "features": [
+          "load_24h_std",
+          "load_24h_range"
+        ],
+        "cluster_size": 2,
+        "representative_feature": "load_24h_std"
+      },
+      {
+        "cluster_id": 27,
+        "features": [
+          "load_lag_1h",
+          "load_lag_24h"
+        ],
+        "cluster_size": 2,
+        "representative_feature": "load_lag_1h"
+      },
+      {
+        "cluster_id": 28,
+        "features": [
+          "heat_index_celsius",
+          "ac_demand_probability",
+          "daily_thermal_stress_accumulation"
+        ],
+        "cluster_size": 3,
+        "representative_feature": "heat_index_celsius"
+      },
+      {
+        "cluster_id": 29,
+        "features": [
+          "heat_index_persistence_24h",
+          "daily_cooling_degree_days"
+        ],
+        "cluster_size": 2,
+        "representative_feature": "heat_index_persistence_24h"
+      },
+      {
+        "cluster_id": 30,
+        "features": [
+          "cumulative_cdd_monthly",
+          "cumulative_thermal_load"
+        ],
+        "cluster_size": 2,
+        "representative_feature": "cumulative_cdd_monthly"
+      },
+      {
+        "cluster_id": 31,
+        "features": [
+          "ac_load_probability",
+          "hourly_thermal_stress",
+          "net_thermal_balance"
+        ],
+        "cluster_size": 3,
+        "representative_feature": "ac_load_probability"
+      },
+      {
+        "cluster_id": 32,
+        "features": [
+          "consecutive_heat_wave_days",
+          "heat_wave_intensity"
+        ],
+        "cluster_size": 2,
+        "representative_feature": "consecutive_heat_wave_days"
+      },
+      {
+        "cluster_id": 33,
+        "features": [
+          "is_business_hour",
+          "central_business_activity",
+          "college_hours_activity"
+        ],
+        "cluster_size": 3,
+        "representative_feature": "is_business_hour"
+      },
+      {
+        "cluster_id": 34,
+        "features": [
+          "morning_commute_activity",
+          "weekday_morning_rush"
+        ],
+        "cluster_size": 2,
+        "representative_feature": "morning_commute_activity"
+      },
+      {
+        "cluster_id": 35,
+        "features": [
+          "evening_commute_activity",
+          "weekday_evening_rush"
+        ],
+        "cluster_size": 2,
+        "representative_feature": "evening_commute_activity"
+      },
+      {
+        "cluster_id": 36,
+        "features": [
+          "solar_cooling_offset",
+          "deep_duck_curve"
+        ],
+        "cluster_size": 2,
+        "representative_feature": "solar_cooling_offset"
+      },
+      {
+        "cluster_id": 37,
+        "features": [
+          "evening_ramp_intensity",
+          "temperature_driven_ramp",
+          "post_duck_recovery_intensity"
+        ],
+        "cluster_size": 3,
+        "representative_feature": "evening_ramp_intensity"
+      },
+      {
+        "cluster_id": 38,
+        "features": [
+          "festival_humid_weather_load",
+          "festival_extreme_weather_load"
+        ],
+        "cluster_size": 2,
+        "representative_feature": "festival_humid_weather_load"
+      },
+      {
+        "cluster_id": 39,
+        "features": [
+          "evening_peak_temp_sensitivity",
+          "evening_weather_adaptation"
+        ],
+        "cluster_size": 2,
+        "representative_feature": "evening_peak_temp_sensitivity"
+      },
+      {
+        "cluster_id": 40,
+        "features": [
+          "morning_peak_humidity_impact",
+          "extreme_humidity_peak_stress",
+          "morning_weather_adaptation"
+        ],
+        "cluster_size": 3,
+        "representative_feature": "morning_peak_humidity_impact"
+      }
+    ],
+    "total_clusters": 40,
+    "total_clustered_features": 108
+  },
+  "removal_recommendations": {
+    "recommendations": [
+      {
+        "feature": "shortwave_radiation",
+        "reason": "HIGH_VIF",
+        "metric_value": 41109.81831494572,
+        "priority": "HIGH"
+      },
+      {
+        "feature": "direct_radiation",
+        "reason": "HIGH_VIF",
+        "metric_value": 19765.938919682845,
+        "priority": "HIGH"
+      },
+      {
+        "feature": "is_monsoon",
+        "reason": "HIGH_VIF",
+        "metric_value": 13297.644420446193,
+        "priority": "HIGH"
+      },
+      {
+        "feature": "diffuse_radiation",
+        "reason": "HIGH_VIF",
+        "metric_value": 5298.626215830755,
+        "priority": "HIGH"
+      },
+      {
+        "feature": "prev_day_same_hour_weekend",
+        "reason": "HIGH_VIF",
+        "metric_value": 3684.38154428279,
+        "priority": "HIGH"
+      },
+      {
+        "feature": "cloud_cover_total",
+        "reason": "HIGH_VIF",
+        "metric_value": 2132.4622886310076,
+        "priority": "HIGH"
+      },
+      {
+        "feature": "morning_weather_adaptation",
+        "reason": "HIGH_VIF",
+        "metric_value": 2059.8646908817113,
+        "priority": "HIGH"
+      },
+      {
+        "feature": "morning_peak_humidity_impact",
+        "reason": "HIGH_VIF",
+        "metric_value": 1679.1344195603945,
+        "priority": "HIGH"
+      },
+      {
+        "feature": "load_lag_24h",
+        "reason": "HIGH_VIF",
+        "metric_value": 1311.8617328960445,
+        "priority": "HIGH"
+      },
+      {
+        "feature": "load_lag_1h",
+        "reason": "HIGH_VIF",
+        "metric_value": 1232.7778171644652,
+        "priority": "HIGH"
+      },
+      {
+        "feature": "cloud_cover_high",
+        "reason": "HIGH_VIF",
+        "metric_value": 883.7599995041462,
+        "priority": "HIGH"
+      },
+      {
+        "feature": "grid_flexibility_index",
+        "reason": "HIGH_VIF",
+        "metric_value": 805.4507556963395,
+        "priority": "HIGH"
+      },
+      {
+        "feature": "hour",
+        "reason": "HIGH_VIF",
+        "metric_value": 564.4342011141591,
+        "priority": "HIGH"
+      },
+      {
+        "feature": "evening_ramp_severity",
+        "reason": "HIGH_VIF",
+        "metric_value": 562.7645306611586,
+        "priority": "HIGH"
+      },
+      {
+        "feature": "market_activity",
+        "reason": "HIGH_VIF",
+        "metric_value": 547.1703863202245,
+        "priority": "HIGH"
+      },
+      {
+        "feature": "day_of_year_sin",
+        "reason": "HIGH_VIF",
+        "metric_value": 465.59489330847197,
+        "priority": "HIGH"
+      },
+      {
+        "feature": "cloud_cover_low",
+        "reason": "HIGH_VIF",
+        "metric_value": 383.06122034292986,
+        "priority": "HIGH"
+      },
+      {
+        "feature": "duck_severity_factor",
+        "reason": "HIGH_VIF",
+        "metric_value": 298.7600354917727,
+        "priority": "HIGH"
+      },
+      {
+        "feature": "temperature_driven_ramp",
+        "reason": "HIGH_VIF",
+        "metric_value": 273.51661726813234,
+        "priority": "HIGH"
+      },
+      {
+        "feature": "cloud_cover_mid",
+        "reason": "HIGH_VIF",
+        "metric_value": 261.88144602305005,
+        "priority": "HIGH"
+      },
+      {
+        "feature": "hour_sin",
+        "reason": "HIGH_VIF",
+        "metric_value": 260.5270942963038,
+        "priority": "HIGH"
+      },
+      {
+        "feature": "delhi_evening_peak",
+        "reason": "HIGH_VIF",
+        "metric_value": 252.86347638613802,
+        "priority": "HIGH"
+      },
+      {
+        "feature": "relative_humidity_2m (%)",
+        "reason": "HIGH_VIF",
+        "metric_value": 239.61123913209897,
+        "priority": "HIGH"
+      },
+      {
+        "feature": "cumulative_cdd_monthly",
+        "reason": "HIGH_VIF",
+        "metric_value": 236.02476745233307,
+        "priority": "HIGH"
+      },
+      {
+        "feature": "load_diff_24h",
+        "reason": "HIGH_VIF",
+        "metric_value": 209.94274514113292,
+        "priority": "HIGH"
+      },
+      {
+        "feature": "evening_weather_adaptation",
+        "reason": "HIGH_VIF",
+        "metric_value": 191.11411232153466,
+        "priority": "HIGH"
+      },
+      {
+        "feature": "commercial_activity_index",
+        "reason": "HIGH_VIF",
+        "metric_value": 190.64525625974764,
+        "priority": "HIGH"
+      },
+      {
+        "feature": "duck_curve_depth_mw",
+        "reason": "HIGH_VIF",
+        "metric_value": 177.04117951844432,
+        "priority": "HIGH"
+      },
+      {
+        "feature": "shopping_activity_index",
+        "reason": "HIGH_VIF",
+        "metric_value": 172.50047307364989,
+        "priority": "HIGH"
+      },
+      {
+        "feature": "evening_ramp_intensity",
+        "reason": "HIGH_VIF",
+        "metric_value": 170.89571769327193,
+        "priority": "HIGH"
+      },
+      {
+        "feature": "morning_peak_temp_sensitivity",
+        "reason": "HIGH_VIF",
+        "metric_value": 170.31151513488194,
+        "priority": "HIGH"
+      },
+      {
+        "feature": "is_morning_peak",
+        "reason": "HIGH_VIF",
+        "metric_value": 165.4560604792473,
+        "priority": "HIGH"
+      },
+      {
+        "feature": "cumulative_thermal_load",
+        "reason": "HIGH_VIF",
+        "metric_value": 164.11234979434133,
+        "priority": "HIGH"
+      },
+      {
+        "feature": "dew_point_2m (\u00b0C)",
+        "reason": "HIGH_VIF",
+        "metric_value": 155.69065890840582,
+        "priority": "HIGH"
+      },
+      {
+        "feature": "evening_peak_temp_sensitivity",
+        "reason": "HIGH_VIF",
+        "metric_value": 151.8516066551979,
+        "priority": "HIGH"
+      },
+      {
+        "feature": "net_load_ramp_rate_mw_per_hour",
+        "reason": "HIGH_VIF",
+        "metric_value": 147.45800305215133,
+        "priority": "HIGH"
+      },
+      {
+        "feature": "morning_peak_intensity",
+        "reason": "HIGH_VIF",
+        "metric_value": 133.87423772419223,
+        "priority": "HIGH"
+      },
+      {
+        "feature": "comprehensive_activity_score",
+        "reason": "HIGH_VIF",
+        "metric_value": 117.30446987415621,
+        "priority": "HIGH"
+      },
+      {
+        "feature": "duck_curve_temperature_stability",
+        "reason": "HIGH_VIF",
+        "metric_value": 116.13509002309338,
+        "priority": "HIGH"
+      },
+      {
+        "feature": "peak_amplitude_ratio",
+        "reason": "HIGH_VIF",
+        "metric_value": 102.68297206895333,
+        "priority": "HIGH"
+      },
+      {
+        "feature": "load_lag_168h",
+        "reason": "HIGH_VIF",
+        "metric_value": 96.0059679788905,
+        "priority": "HIGH"
+      },
+      {
+        "feature": "is_night_valley",
+        "reason": "HIGH_VIF",
+        "metric_value": 93.89418278929462,
+        "priority": "HIGH"
+      },
+      {
+        "feature": "ac_load_probability",
+        "reason": "HIGH_VIF",
+        "metric_value": 91.31219283857571,
+        "priority": "HIGH"
+      },
+      {
+        "feature": "prev_hour_is_peak",
+        "reason": "HIGH_VIF",
+        "metric_value": 88.14180807373938,
+        "priority": "HIGH"
+      },
+      {
+        "feature": "solar_capacity_factor",
+        "reason": "HIGH_VIF",
+        "metric_value": 85.99468695187952,
+        "priority": "HIGH"
+      },
+      {
+        "feature": "solar_penetration_percent",
+        "reason": "HIGH_VIF",
+        "metric_value": 75.98444961377136,
+        "priority": "HIGH"
+      },
+      {
+        "feature": "daily_thermal_stress",
+        "reason": "HIGH_VIF",
+        "metric_value": 73.47746778664124,
+        "priority": "HIGH"
+      },
+      {
+        "feature": "heat_index_celsius",
+        "reason": "HIGH_VIF",
+        "metric_value": 70.5397444384208,
+        "priority": "HIGH"
+      },
+      {
+        "feature": "humidity_discomfort",
+        "reason": "HIGH_VIF",
+        "metric_value": 70.20044947040799,
+        "priority": "HIGH"
+      },
+      {
+        "feature": "is_midday_low",
+        "reason": "HIGH_VIF",
+        "metric_value": 67.06174099460645,
+        "priority": "HIGH"
+      },
+      {
+        "feature": "is_business_hour",
+        "reason": "HIGH_VIF",
+        "metric_value": 62.89619578638639,
+        "priority": "HIGH"
+      },
+      {
+        "feature": "solar_temperature_load_factor",
+        "reason": "HIGH_VIF",
+        "metric_value": 53.785330751755154,
+        "priority": "HIGH"
+      },
+      {
+        "feature": "ac_demand_probability",
+        "reason": "HIGH_VIF",
+        "metric_value": 52.57506153251304,
+        "priority": "HIGH"
+      },
+      {
+        "feature": "et0_fao_evapotranspiration (mm)",
+        "reason": "HIGH_VIF",
+        "metric_value": 51.238686104151796,
+        "priority": "HIGH"
+      },
+      {
+        "feature": "midday_temp_sensitivity",
+        "reason": "HIGH_VIF",
+        "metric_value": 48.328478129437116,
+        "priority": "HIGH"
+      },
+      {
+        "feature": "is_peak_hour",
+        "reason": "HIGH_VIF",
+        "metric_value": 46.356822200859696,
+        "priority": "HIGH"
+      },
+      {
+        "feature": "central_business_activity",
+        "reason": "HIGH_VIF",
+        "metric_value": 44.024944169627126,
+        "priority": "HIGH"
+      },
+      {
+        "feature": "morning_comfort_index",
+        "reason": "HIGH_VIF",
+        "metric_value": 43.951435048130705,
+        "priority": "HIGH"
+      },
+      {
+        "feature": "seasonal_temp_anomaly",
+        "reason": "HIGH_VIF",
+        "metric_value": 42.07998610059895,
+        "priority": "HIGH"
+      },
+      {
+        "feature": "week_of_year",
+        "reason": "HIGH_VIF",
+        "metric_value": 39.6644828762893,
+        "priority": "HIGH"
+      },
+      {
+        "feature": "is_morning_ramp",
+        "reason": "HIGH_VIF",
+        "metric_value": 36.164331714336754,
+        "priority": "HIGH"
+      },
+      {
+        "feature": "net_load_minimum_value",
+        "reason": "HIGH_VIF",
+        "metric_value": 36.05571237894384,
+        "priority": "HIGH"
+      },
+      {
+        "feature": "load_diff_168h",
+        "reason": "HIGH_VIF",
+        "metric_value": 32.43020255213769,
+        "priority": "HIGH"
+      },
+      {
+        "feature": "weekend_morning",
+        "reason": "HIGH_VIF",
+        "metric_value": 31.49059758341205,
+        "priority": "HIGH"
+      },
+      {
+        "feature": "evening_peak_humidity_impact",
+        "reason": "HIGH_VIF",
+        "metric_value": 30.960863598332367,
+        "priority": "HIGH"
+      },
+      {
+        "feature": "college_hours_activity",
+        "reason": "HIGH_VIF",
+        "metric_value": 28.845227784976128,
+        "priority": "HIGH"
+      },
+      {
+        "feature": "festival_comfort_weekend_interaction",
+        "reason": "HIGH_VIF",
+        "metric_value": 28.38299086293794,
+        "priority": "HIGH"
+      },
+      {
+        "feature": "humidity_time_interaction",
+        "reason": "HIGH_VIF",
+        "metric_value": 27.168627545408,
+        "priority": "HIGH"
+      },
+      {
+        "feature": "temp_humidity_hour",
+        "reason": "HIGH_VIF",
+        "metric_value": 25.60644450494408,
+        "priority": "HIGH"
+      },
+      {
+        "feature": "load_24h_std",
+        "reason": "HIGH_VIF",
+        "metric_value": 24.620734341788054,
+        "priority": "HIGH"
+      },
+      {
+        "feature": "solar_capacity_factor_percent",
+        "reason": "HIGH_VIF",
+        "metric_value": 24.323614098022226,
+        "priority": "HIGH"
+      },
+      {
+        "feature": "weekday_morning",
+        "reason": "HIGH_VIF",
+        "metric_value": 23.688728261488443,
+        "priority": "HIGH"
+      },
+      {
+        "feature": "solar_cooling_offset",
+        "reason": "HIGH_VIF",
+        "metric_value": 23.309389141406403,
+        "priority": "HIGH"
+      },
+      {
+        "feature": "weekend_weather_sensitivity",
+        "reason": "HIGH_VIF",
+        "metric_value": 22.83928615426654,
+        "priority": "HIGH"
+      },
+      {
+        "feature": "weekday_weather_sensitivity",
+        "reason": "HIGH_VIF",
+        "metric_value": 21.921056106129647,
+        "priority": "HIGH"
+      },
+      {
+        "feature": "evening_commute_activity",
+        "reason": "HIGH_VIF",
+        "metric_value": 21.889042689304787,
+        "priority": "HIGH"
+      },
+      {
+        "feature": "daily_heat_index_mean",
+        "reason": "MULTIPLE_HIGH_CORRELATIONS",
+        "metric_value": 15,
+        "priority": "HIGH"
+      },
+      {
+        "feature": "daily_heat_index_max",
+        "reason": "MULTIPLE_HIGH_CORRELATIONS",
+        "metric_value": 15,
+        "priority": "HIGH"
+      },
+      {
+        "feature": "daily_heat_index_min",
+        "reason": "MULTIPLE_HIGH_CORRELATIONS",
+        "metric_value": 15,
+        "priority": "HIGH"
+      },
+      {
+        "feature": "day_of_year_cos",
+        "reason": "MULTIPLE_HIGH_CORRELATIONS",
+        "metric_value": 14,
+        "priority": "HIGH"
+      },
+      {
+        "feature": "surface_pressure (hPa)",
+        "reason": "MULTIPLE_HIGH_CORRELATIONS",
+        "metric_value": 11,
+        "priority": "HIGH"
+      },
+      {
+        "feature": "heat_index_stress",
+        "reason": "MULTIPLE_HIGH_CORRELATIONS",
+        "metric_value": 11,
+        "priority": "HIGH"
+      },
+      {
+        "feature": "apparent_temperature (\u00b0C)",
+        "reason": "MULTIPLE_HIGH_CORRELATIONS",
+        "metric_value": 10,
+        "priority": "HIGH"
+      },
+      {
+        "feature": "load_24h_mean",
+        "reason": "MULTIPLE_HIGH_CORRELATIONS",
+        "metric_value": 10,
+        "priority": "HIGH"
+      },
+      {
+        "feature": "cooling_discomfort_index",
+        "reason": "MULTIPLE_HIGH_CORRELATIONS",
+        "metric_value": 10,
+        "priority": "HIGH"
+      },
+      {
+        "feature": "wet_bulb_temperature_2m",
+        "reason": "MULTIPLE_HIGH_CORRELATIONS",
+        "metric_value": 9,
+        "priority": "HIGH"
+      },
+      {
+        "feature": "heat_index_delta",
+        "reason": "MULTIPLE_HIGH_CORRELATIONS",
+        "metric_value": 9,
+        "priority": "HIGH"
+      },
+      {
+        "feature": "cooling_load_index_7d",
+        "reason": "MULTIPLE_HIGH_CORRELATIONS",
+        "metric_value": 9,
+        "priority": "HIGH"
+      },
+      {
+        "feature": "temperature_2m (\u00b0C)",
+        "reason": "MULTIPLE_HIGH_CORRELATIONS",
+        "metric_value": 8,
+        "priority": "HIGH"
+      },
+      {
+        "feature": "solar_irradiance_ghi_wm2",
+        "reason": "MULTIPLE_HIGH_CORRELATIONS",
+        "metric_value": 8,
+        "priority": "HIGH"
+      },
+      {
+        "feature": "estimated_solar_generation",
+        "reason": "MULTIPLE_HIGH_CORRELATIONS",
+        "metric_value": 8,
+        "priority": "HIGH"
+      },
+      {
+        "feature": "is_winter_session",
+        "reason": "MULTIPLE_HIGH_CORRELATIONS",
+        "metric_value": 8,
+        "priority": "HIGH"
+      },
+      {
+        "feature": "load_7d_mean",
+        "reason": "MULTIPLE_HIGH_CORRELATIONS",
+        "metric_value": 7,
+        "priority": "HIGH"
+      },
+      {
+        "feature": "heat_index_persistence_24h",
+        "reason": "MULTIPLE_HIGH_CORRELATIONS",
+        "metric_value": 7,
+        "priority": "HIGH"
+      },
+      {
+        "feature": "daily_cooling_degree_days",
+        "reason": "MULTIPLE_HIGH_CORRELATIONS",
+        "metric_value": 7,
+        "priority": "HIGH"
+      },
+      {
+        "feature": "month_cos",
+        "reason": "MULTIPLE_HIGH_CORRELATIONS",
+        "metric_value": 7,
+        "priority": "HIGH"
+      },
+      {
+        "feature": "solar_diffuse_radiation_wm2",
+        "reason": "MULTIPLE_HIGH_CORRELATIONS",
+        "metric_value": 6,
+        "priority": "HIGH"
+      },
+      {
+        "feature": "evening_peak_intensity",
+        "reason": "MULTIPLE_HIGH_CORRELATIONS",
+        "metric_value": 6,
+        "priority": "HIGH"
+      },
+      {
+        "feature": "cooling_degree_hours",
+        "reason": "MULTIPLE_HIGH_CORRELATIONS",
+        "metric_value": 6,
+        "priority": "HIGH"
+      },
+      {
+        "feature": "load_24h_max",
+        "reason": "MULTIPLE_HIGH_CORRELATIONS",
+        "metric_value": 6,
+        "priority": "HIGH"
+      },
+      {
+        "feature": "solar_generation_mw",
+        "reason": "MULTIPLE_HIGH_CORRELATIONS",
+        "metric_value": 5,
+        "priority": "HIGH"
+      },
+      {
+        "feature": "solar_irradiance_dni_wm2",
+        "reason": "MULTIPLE_HIGH_CORRELATIONS",
+        "metric_value": 5,
+        "priority": "HIGH"
+      },
+      {
+        "feature": "solar_direct_radiation_wm2",
+        "reason": "MULTIPLE_HIGH_CORRELATIONS",
+        "metric_value": 5,
+        "priority": "HIGH"
+      },
+      {
+        "feature": "hour_cos",
+        "reason": "MULTIPLE_HIGH_CORRELATIONS",
+        "metric_value": 5,
+        "priority": "HIGH"
+      },
+      {
+        "feature": "load_30d_mean",
+        "reason": "MULTIPLE_HIGH_CORRELATIONS",
+        "metric_value": 5,
+        "priority": "HIGH"
+      },
+      {
+        "feature": "duck_curve_depth",
+        "reason": "MULTIPLE_HIGH_CORRELATIONS",
+        "metric_value": 5,
+        "priority": "HIGH"
+      },
+      {
+        "feature": "day",
+        "reason": "HIGH_VIF",
+        "metric_value": 18.924897289689,
+        "priority": "MEDIUM"
+      },
+      {
+        "feature": "post_festival_recovery",
+        "reason": "HIGH_VIF",
+        "metric_value": 16.551728878407438,
+        "priority": "MEDIUM"
+      },
+      {
+        "feature": "weekday_evening_rush",
+        "reason": "HIGH_VIF",
+        "metric_value": 16.539130859954184,
+        "priority": "MEDIUM"
+      },
+      {
+        "feature": "daily_temp_range",
+        "reason": "HIGH_VIF",
+        "metric_value": 16.32037115687112,
+        "priority": "MEDIUM"
+      },
+      {
+        "feature": "morning_commute_activity",
+        "reason": "HIGH_VIF",
+        "metric_value": 14.846161136710984,
+        "priority": "MEDIUM"
+      },
+      {
+        "feature": "post_duck_recovery_intensity",
+        "reason": "HIGH_VIF",
+        "metric_value": 14.040815545534699,
+        "priority": "MEDIUM"
+      },
+      {
+        "feature": "cumulative_heat_stress",
+        "reason": "HIGH_VIF",
+        "metric_value": 13.182205306386956,
+        "priority": "MEDIUM"
+      },
+      {
+        "feature": "evening_cooling_index",
+        "reason": "HIGH_VIF",
+        "metric_value": 12.91279925049083,
+        "priority": "MEDIUM"
+      },
+      {
+        "feature": "daily_thermal_stress_accumulation",
+        "reason": "HIGH_VIF",
+        "metric_value": 12.365139216306483,
+        "priority": "MEDIUM"
+      },
+      {
+        "feature": "festival_evening",
+        "reason": "HIGH_VIF",
+        "metric_value": 12.29449971980854,
+        "priority": "MEDIUM"
+      },
+      {
+        "feature": "wind_speed_10m (km/h)",
+        "reason": "HIGH_VIF",
+        "metric_value": 11.990802309613434,
+        "priority": "MEDIUM"
+      },
+      {
+        "feature": "evening_peak_weather_stress",
+        "reason": "HIGH_VIF",
+        "metric_value": 11.27006872434199,
+        "priority": "MEDIUM"
+      },
+      {
+        "feature": "daily_heat_index_std",
+        "reason": "HIGH_VIF",
+        "metric_value": 11.005308816672791,
+        "priority": "MEDIUM"
+      },
+      {
+        "feature": "festival_humid_weather_load",
+        "reason": "HIGH_VIF",
+        "metric_value": 10.87734682814465,
+        "priority": "MEDIUM"
+      },
+      {
+        "feature": "school_hours_activity",
+        "reason": "HIGH_VIF",
+        "metric_value": 10.393545508190197,
+        "priority": "MEDIUM"
+      },
+      {
+        "feature": "weekday_morning_rush",
+        "reason": "HIGH_VIF",
+        "metric_value": 10.135395295510996,
+        "priority": "MEDIUM"
+      },
+      {
+        "feature": "pre_festival_prep",
+        "reason": "HIGH_VIF",
+        "metric_value": 10.078720462087848,
+        "priority": "MEDIUM"
+      },
+      {
+        "feature": "quarter",
+        "reason": "MULTIPLE_HIGH_CORRELATIONS",
+        "metric_value": 3,
+        "priority": "MEDIUM"
+      },
+      {
+        "feature": "hourly_thermal_stress",
+        "reason": "MULTIPLE_HIGH_CORRELATIONS",
+        "metric_value": 3,
+        "priority": "MEDIUM"
+      },
+      {
+        "feature": "net_thermal_balance",
+        "reason": "MULTIPLE_HIGH_CORRELATIONS",
+        "metric_value": 3,
+        "priority": "MEDIUM"
+      },
+      {
+        "feature": "restaurant_activity_index",
+        "reason": "CLUSTER_REDUNDANCY",
+        "metric_value": 3,
+        "priority": "MEDIUM",
+        "cluster_representative": "is_evening_peak"
+      },
+      {
+        "feature": "extreme_humidity_peak_stress",
+        "reason": "CLUSTER_REDUNDANCY",
+        "metric_value": 3,
+        "priority": "MEDIUM",
+        "cluster_representative": "morning_peak_humidity_impact"
+      },
+      {
+        "feature": "wind_gusts_10m (km/h)",
+        "reason": "CLUSTER_REDUNDANCY",
+        "metric_value": 2,
+        "priority": "MEDIUM",
+        "cluster_representative": "wind_speed_10m (km/h)"
+      },
+      {
+        "feature": "quarter_cos",
+        "reason": "CLUSTER_REDUNDANCY",
+        "metric_value": 2,
+        "priority": "MEDIUM",
+        "cluster_representative": "is_summer"
+      },
+      {
+        "feature": "quarter_sin",
+        "reason": "CLUSTER_REDUNDANCY",
+        "metric_value": 2,
+        "priority": "MEDIUM",
+        "cluster_representative": "is_monsoon"
+      },
+      {
+        "feature": "wind_direction_100m",
+        "reason": "CLUSTER_REDUNDANCY",
+        "metric_value": 2,
+        "priority": "MEDIUM",
+        "cluster_representative": "wind_direction_10m"
+      },
+      {
+        "feature": "is_religious_festival",
+        "reason": "CLUSTER_REDUNDANCY",
+        "metric_value": 2,
+        "priority": "MEDIUM",
+        "cluster_representative": "is_major_festival"
+      },
+      {
+        "feature": "net_load_minimum_timing",
+        "reason": "CLUSTER_REDUNDANCY",
+        "metric_value": 2,
+        "priority": "MEDIUM",
+        "cluster_representative": "peak_amplitude_ratio"
+      },
+      {
+        "feature": "month_sin",
+        "reason": "CLUSTER_REDUNDANCY",
+        "metric_value": 2,
+        "priority": "MEDIUM",
+        "cluster_representative": "day_of_year_sin"
+      },
+      {
+        "feature": "next_hour_is_peak",
+        "reason": "CLUSTER_REDUNDANCY",
+        "metric_value": 2,
+        "priority": "MEDIUM",
+        "cluster_representative": "is_evening_ramp"
+      },
+      {
+        "feature": "is_late_night",
+        "reason": "CLUSTER_REDUNDANCY",
+        "metric_value": 2,
+        "priority": "MEDIUM",
+        "cluster_representative": "is_night_valley"
+      },
+      {
+        "feature": "load_24h_range",
+        "reason": "CLUSTER_REDUNDANCY",
+        "metric_value": 2,
+        "priority": "MEDIUM",
+        "cluster_representative": "load_24h_std"
+      },
+      {
+        "feature": "heat_wave_intensity",
+        "reason": "CLUSTER_REDUNDANCY",
+        "metric_value": 2,
+        "priority": "MEDIUM",
+        "cluster_representative": "consecutive_heat_wave_days"
+      },
+      {
+        "feature": "deep_duck_curve",
+        "reason": "CLUSTER_REDUNDANCY",
+        "metric_value": 2,
+        "priority": "MEDIUM",
+        "cluster_representative": "solar_cooling_offset"
+      },
+      {
+        "feature": "festival_extreme_weather_load",
+        "reason": "CLUSTER_REDUNDANCY",
+        "metric_value": 2,
+        "priority": "MEDIUM",
+        "cluster_representative": "festival_humid_weather_load"
+      }
+    ],
+    "total_recommendations": 141,
+    "high_priority_count": 106,
+    "medium_priority_count": 35
+  },
+  "metadata": {
+    "analysis_date": "2025-08-07T12:54:45.819632",
+    "data_path": "phase_2_5_1_outputs/delhi_interaction_enhanced_cleaned.csv",
+    "vif_threshold": 10.0,
+    "correlation_threshold": 0.8,
+    "target_columns": [
+      "delhi_load",
+      "brpl_load",
+      "bypl_load",
+      "ndpl_load",
+      "ndmc_load",
+      "mes_load"
+    ]
+  },
+  "summary": {
+    "total_multicollinearity_issues": 317,
+    "critical_issues": [
+      "VIF Analysis: 120 features with VIF > 10.0",
+      "Correlation Analysis: 197 highly correlated pairs",
+      "High Priority Removals: 106 features recommended"
+    ],
+    "multicollinearity_detected": true
+  }
+}

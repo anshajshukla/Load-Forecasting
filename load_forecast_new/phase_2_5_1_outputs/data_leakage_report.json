@@ -1,0 +1,400 @@
+{
+  "correlation_analysis": {
+    "delhi_load": {
+      "total_features": 250,
+      "high_correlation_count": 1,
+      "high_correlation_features": {
+        "net_load_mw": 0.9992368973223462
+      },
+      "top_10_correlations": {
+        "net_load_mw": 0.9992368973223462,
+        "load_lag_1h": 0.9396448103805385,
+        "load_lag_24h": 0.9201551146880778,
+        "load_24h_mean": 0.819562079694859,
+        "load_lag_168h": 0.8134215221287715,
+        "evening_peak_intensity": 0.8072266170793955,
+        "net_load_minimum_value": 0.77757350247999,
+        "load_24h_max": 0.7765654245416935,
+        "load_7d_mean": 0.7709775644199747,
+        "heat_index_stress": 0.7252165013388789
+      },
+      "correlation_threshold": 0.95
+    },
+    "brpl_load": {
+      "total_features": 250,
+      "high_correlation_count": 1,
+      "high_correlation_features": {
+        "net_load_mw": 0.9812555172467583
+      },
+      "top_10_correlations": {
+        "net_load_mw": 0.9812555172467583,
+        "load_lag_1h": 0.9096841429936615,
+        "load_lag_24h": 0.8913117028628351,
+        "evening_peak_intensity": 0.8321419253674602,
+        "load_24h_mean": 0.8248613793267509,
+        "net_load_minimum_value": 0.8112298775892389,
+        "load_7d_mean": 0.770840494368028,
+        "load_lag_168h": 0.7703219376495207,
+        "load_24h_max": 0.7606017219119382,
+        "load_24h_min": 0.7032462333577002
+      },
+      "correlation_threshold": 0.95
+    },
+    "bypl_load": {
+      "total_features": 250,
+      "high_correlation_count": 1,
+      "high_correlation_features": {
+        "net_load_mw": 0.9892668917930904
+      },
+      "top_10_correlations": {
+        "net_load_mw": 0.9892668917930904,
+        "load_lag_1h": 0.9370669529705514,
+        "load_lag_24h": 0.9213252050634811,
+        "load_24h_mean": 0.8276905936343084,
+        "load_lag_168h": 0.815769194927559,
+        "evening_peak_intensity": 0.807286347425513,
+        "load_7d_mean": 0.7860084309795414,
+        "load_24h_max": 0.7727531598166377,
+        "net_load_minimum_value": 0.7720708572392377,
+        "heat_index_stress": 0.7519020175433022
+      },
+      "correlation_threshold": 0.95
+    },
+    "ndpl_load": {
+      "total_features": 250,
+      "high_correlation_count": 1,
+      "high_correlation_features": {
+        "net_load_mw": 0.9647441700292946
+      },
+      "top_10_correlations": {
+        "net_load_mw": 0.9647441700292946,
+        "load_lag_1h": 0.8849288123601985,
+        "load_lag_24h": 0.8635548766720915,
+        "evening_peak_intensity": 0.7616152552453017,
+        "net_load_minimum_value": 0.7592373524362682,
+        "load_lag_168h": 0.7568125624396602,
+        "load_24h_mean": 0.7442506176821746,
+        "load_7d_mean": 0.6864934007621326,
+        "load_24h_max": 0.6693335219575752,
+        "load_24h_min": 0.6404893403939862
+      },
+      "correlation_threshold": 0.95
+    },
+    "ndmc_load": {
+      "total_features": 250,
+      "high_correlation_count": 0,
+      "high_correlation_features": {},
+      "top_10_correlations": {
+        "heat_index_stress": 0.6113711420536995,
+        "cooling_degree_hours": 0.6029232811661851,
+        "ac_demand_probability": 0.5979115243725643,
+        "net_cooling_demand": 0.5911756521000827,
+        "heat_index_celsius": 0.5889609991291946,
+        "heat_index_delta": 0.5823573490983663,
+        "load_lag_1h": 0.5612963267488817,
+        "morning_peak_intensity": 0.5594565835925948,
+        "apparent_temperature (\u00b0C)": 0.5561936121534287,
+        "peak_cooling_demand": 0.553064898526095
+      },
+      "correlation_threshold": 0.95
+    },
+    "mes_load": {
+      "total_features": 250,
+      "high_correlation_count": 0,
+      "high_correlation_features": {},
+      "top_10_correlations": {
+        "renewable_stress_level": 0.44774905561846506,
+        "load_24h_std": 0.43680522899969243,
+        "load_7d_std": 0.4291795739317843,
+        "peak_amplitude_ratio": 0.3867821063195313,
+        "solar_capacity_factor": 0.3719482585867018,
+        "net_load_minimum_timing": 0.35966568081243455,
+        "heat_wave_intensity": 0.3542895457519983,
+        "evening_ramp_severity": 0.35361666629760785,
+        "load_24h_range": 0.352222122226081,
+        "grid_flexibility_index": 0.34884508707215395
+      },
+      "correlation_threshold": 0.95
+    }
+  },
+  "temporal_analysis": {
+    "delhi_load": {
+      "suspicious_named_features": [
+        "next_hour_is_peak"
+      ],
+      "perfect_correlations": {
+        "net_load_mw": 0.9992368973223462
+      },
+      "temporal_threshold": 0.98
+    },
+    "brpl_load": {
+      "suspicious_named_features": [
+        "next_hour_is_peak"
+      ],
+      "perfect_correlations": {
+        "net_load_mw": 0.9812555172467583
+      },
+      "temporal_threshold": 0.98
+    },
+    "bypl_load": {
+      "suspicious_named_features": [
+        "next_hour_is_peak"
+      ],
+      "perfect_correlations": {
+        "net_load_mw": 0.9892668917930904
+      },
+      "temporal_threshold": 0.98
+    },
+    "ndpl_load": {
+      "suspicious_named_features": [
+        "next_hour_is_peak"
+      ],
+      "perfect_correlations": {},
+      "temporal_threshold": 0.98
+    },
+    "ndmc_load": {
+      "suspicious_named_features": [
+        "next_hour_is_peak"
+      ],
+      "perfect_correlations": {},
+      "temporal_threshold": 0.98
+    },
+    "mes_load": {
+      "suspicious_named_features": [
+        "next_hour_is_peak"
+      ],
+      "perfect_correlations": {},
+      "temporal_threshold": 0.98
+    }
+  },
+  "identical_features": {
+    "identical_pairs": [
+      {
+        "feature1": "precipitation (mm)",
+        "feature2": "rain (mm)",
+        "correlation": 1.0
+      },
+      {
+        "feature1": "month",
+        "feature2": "day_of_year",
+        "correlation": 0.9964641561785557
+      },
+      {
+        "feature1": "is_summer",
+        "feature2": "heat_wave_season",
+        "correlation": 1.0
+      },
+      {
+        "feature1": "is_summer",
+        "feature2": "is_summer_session",
+        "correlation": 1.0
+      },
+      {
+        "feature1": "is_monsoon",
+        "feature2": "is_monsoon_month",
+        "correlation": 0.9999579536176835
+      },
+      {
+        "feature1": "is_monsoon",
+        "feature2": "is_monsoon_session",
+        "correlation": 0.9999579536176835
+      },
+      {
+        "feature1": "is_morning_peak",
+        "feature2": "delhi_morning_peak",
+        "correlation": 0.9993128393236953
+      },
+      {
+        "feature1": "is_pollution_emergency",
+        "feature2": "is_stubble_burning_period",
+        "correlation": 1.0
+      },
+      {
+        "feature1": "is_pollution_emergency",
+        "feature2": "is_diwali_season",
+        "correlation": 1.0
+      },
+      {
+        "feature1": "is_stubble_burning_period",
+        "feature2": "is_diwali_season",
+        "correlation": 1.0
+      },
+      {
+        "feature1": "net_load_mw",
+        "feature2": "delhi_load",
+        "correlation": 0.9992368973223476
+      },
+      {
+        "feature1": "net_load_ramp_rate_mw_per_hour",
+        "feature2": "load_diff_1h",
+        "correlation": 0.9990154946535565
+      },
+      {
+        "feature1": "is_monsoon_month",
+        "feature2": "is_monsoon_session",
+        "correlation": 1.0
+      },
+      {
+        "feature1": "day_of_year_sin",
+        "feature2": "week_of_year_sin",
+        "correlation": 0.9974938582666112
+      },
+      {
+        "feature1": "day_of_year_cos",
+        "feature2": "week_of_year_cos",
+        "correlation": 0.9977382618387814
+      },
+      {
+        "feature1": "is_evening_ramp",
+        "feature2": "next_hour_is_peak",
+        "correlation": 1.0
+      },
+      {
+        "feature1": "cooling_degree_hours",
+        "feature2": "net_cooling_demand",
+        "correlation": 0.9964528561620333
+      },
+      {
+        "feature1": "heat_wave_season",
+        "feature2": "is_summer_session",
+        "correlation": 1.0
+      },
+      {
+        "feature1": "daily_thermal_stress",
+        "feature2": "weekly_thermal_stress",
+        "correlation": 0.9965740504212577
+      },
+      {
+        "feature1": "estimated_solar_generation",
+        "feature2": "temperature_adjusted_solar",
+        "correlation": 0.9997054138539871
+      }
+    ],
+    "identical_threshold": 0.99,
+    "total_pairs_found": 20
+  },
+  "target_leakage": {
+    "target_correlations": [
+      {
+        "target1": "delhi_load",
+        "target2": "brpl_load",
+        "correlation": 0.9752736681476153
+      },
+      {
+        "target1": "delhi_load",
+        "target2": "bypl_load",
+        "correlation": 0.9896413351798011
+      },
+      {
+        "target1": "delhi_load",
+        "target2": "ndpl_load",
+        "correlation": 0.9568599236727078
+      },
+      {
+        "target1": "brpl_load",
+        "target2": "bypl_load",
+        "correlation": 0.9616799018377445
+      },
+      {
+        "target1": "brpl_load",
+        "target2": "ndpl_load",
+        "correlation": 0.9636408666161105
+      },
+      {
+        "target1": "bypl_load",
+        "target2": "ndpl_load",
+        "correlation": 0.9379154651241067
+      },
+      {
+        "target1": "ndmc_load",
+        "target2": "mes_load",
+        "correlation": 0.7303672857748219
+      }
+    ],
+    "correlation_matrix": {
+      "delhi_load": {
+        "delhi_load": 1.0,
+        "brpl_load": 0.9752736681476153,
+        "bypl_load": 0.9896413351798011,
+        "ndpl_load": 0.9568599236727078,
+        "ndmc_load": 0.5717398670804967,
+        "mes_load": 0.04137541469914267
+      },
+      "brpl_load": {
+        "delhi_load": 0.9752736681476153,
+        "brpl_load": 1.0,
+        "bypl_load": 0.9616799018377445,
+        "ndpl_load": 0.9636408666161105,
+        "ndmc_load": 0.4069690663183715,
+        "mes_load": 0.13826777595221634
+      },
+      "bypl_load": {
+        "delhi_load": 0.9896413351798011,
+        "brpl_load": 0.9616799018377445,
+        "bypl_load": 1.0,
+        "ndpl_load": 0.9379154651241067,
+        "ndmc_load": 0.5609837943824928,
+        "mes_load": 0.05350805597019674
+      },
+      "ndpl_load": {
+        "delhi_load": 0.9568599236727078,
+        "brpl_load": 0.9636408666161105,
+        "bypl_load": 0.9379154651241067,
+        "ndpl_load": 1.0,
+        "ndmc_load": 0.3953037628494808,
+        "mes_load": 0.19817795279256387
+      },
+      "ndmc_load": {
+        "delhi_load": 0.5717398670804967,
+        "brpl_load": 0.4069690663183715,
+        "bypl_load": 0.5609837943824928,
+        "ndpl_load": 0.3953037628494808,
+        "ndmc_load": 1.0,
+        "mes_load": 0.7303672857748219
+      },
+      "mes_load": {
+        "delhi_load": 0.04137541469914267,
+        "brpl_load": 0.13826777595221634,
+        "bypl_load": 0.05350805597019674,
+        "ndpl_load": 0.19817795279256387,
+        "ndmc_load": 0.7303672857748219,
+        "mes_load": 1.0
+      }
+    },
+    "available_targets": [
+      "delhi_load",
+      "brpl_load",
+      "bypl_load",
+      "ndpl_load",
+      "ndmc_load",
+      "mes_load"
+    ]
+  },
+  "metadata": {
+    "analysis_date": "2025-08-07T12:39:59.597121",
+    "data_path": "data_preprocessing/phase 2/delhi_interaction_enhanced.csv",
+    "correlation_threshold": 0.95,
+    "temporal_threshold": 0.98,
+    "target_columns": [
+      "delhi_load",
+      "brpl_load",
+      "bypl_load",
+      "ndpl_load",
+      "ndmc_load",
+      "mes_load"
+    ]
+  },
+  "summary": {
+    "total_leakage_features": 4,
+    "critical_issues": [
+      "delhi_load: 1 high correlation features",
+      "brpl_load: 1 high correlation features",
+      "bypl_load: 1 high correlation features",
+      "ndpl_load: 1 high correlation features",
+      "delhi_load: 1 perfect correlations (temporal leakage)",
+      "brpl_load: 1 perfect correlations (temporal leakage)",
+      "bypl_load: 1 perfect correlations (temporal leakage)"
+    ],
+    "leakage_detected": true
+  }
+}

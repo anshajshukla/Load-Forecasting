@@ -1,0 +1,15 @@
+{
+  "evaluation_summary": {
+    "xgboost": {
+      "avg_val_mape": 6.85353295270728
+    },
+    "lightgbm": {
+      "avg_val_mape": 6.889362511245132
+    }
+  },
+  "best_model": {
+    "name": "xgboost",
+    "val_mape": 6.85353295270728
+  },
+  "training_timestamp": "2025-08-08T03:28:10.391169"
+}

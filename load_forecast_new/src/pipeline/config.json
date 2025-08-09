@@ -1,0 +1,103 @@
+{
+  "pipeline": {
+    "fetch_historical_years": 5,
+    "fetch_parallel_workers": 3,
+    "retrain_schedule": "weekly",
+    "validation_interval_minutes": 60,
+    "enable_real_time_monitoring": true,
+    "enable_alerts": true
+  },
+  
+  "data_collection": {
+    "base_url": "https://www.delhisldc.org/Loaddata.aspx?mode=",
+    "realtime_url": "https://www.delhisldc.org/Redirect.aspx?Loc=0805",
+    "request_delay_seconds": 2,
+    "max_retries": 3,
+    "timeout_seconds": 15,
+    "targets": ["DELHI", "BRPL", "BYPL", "NDMC", "MES"],
+    "data_frequency": "hourly",
+    "records_per_day": 24,
+    "filter_minute_data": true
+  },
+  
+  "training": {
+    "sequence_length": 24,
+    "prediction_horizon": 24,
+    "validation_split": 0.2,
+    "test_split": 0.1,
+    "batch_size": 32,
+    "epochs": 100,
+    "learning_rate": 0.001,
+    "gru_units": [128, 64, 32],
+    "dropout_rate": 0.2,
+    "patience": 15
+  },
+  
+  "validation": {
+    "validation_window_hours": 24,
+    "min_accuracy_threshold": 85.0,
+    "max_error_threshold": 500.0,
+    "data_quality_checks": true,
+    "alert_thresholds": {
+      "low_accuracy": 80.0,
+      "high_error": 1000.0,
+      "data_missing": 0.1,
+      "model_drift": 0.15
+    }
+  },
+  
+  "database": {
+    "type": "sqlite",
+    "sqlite_path": "data_pipeline/database/forecasting.db",
+    "postgresql": {
+      "host": "localhost",
+      "port": 5432,
+      "database": "load_forecasting",
+      "user": "postgres",
+      "password": "password"
+    }
+  },
+  
+  "weather": {
+    "apis": {
+      "weatherapi": "http://api.weatherapi.com/v1/current.json",
+      "openweather": "https://api.openweathermap.org/data/2.5/weather"
+    },
+    "location": "Delhi,India"
+  },
+  
+  "paths": {
+    "base_path": "data_pipeline",
+    "models_dir": "data_pipeline/models/trained_models",
+    "scalers_dir": "data_pipeline/models/scalers",
+    "metrics_dir": "data_pipeline/models/metrics",
+    "plots_dir": "data_pipeline/models/plots",
+    "raw_data_dir": "data_pipeline/raw_data",
+    "validation_dir": "data_pipeline/validation",
+    "logs_dir": "data_pipeline/logs"
+  },
+  
+  "load_value_ranges": {
+    "DELHI": [4000, 8000],
+    "BRPL": [1800, 3500],
+    "BYPL": [900, 1800],
+    "NDMC": [150, 500],
+    "MES": [20, 100]
+  },
+  
+  "logging": {
+    "level": "INFO",
+    "format": "%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+    "file_handler": true,
+    "console_handler": true,
+    "max_file_size_mb": 100,
+    "backup_count": 5
+  },
+  
+  "monitoring": {
+    "performance_history_hours": 24,
+    "health_check_interval_minutes": 60,
+    "status_report_interval_minutes": 600,
+    "cleanup_old_logs_days": 30
+  }
+}
