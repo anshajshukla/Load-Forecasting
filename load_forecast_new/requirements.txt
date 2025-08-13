@@ -1,5 +1,11 @@
 # SIH 2024 Load Forecasting System Requirements
 
+# Dashboard Framework
+streamlit>=1.47.0
+plotly>=5.17.0
+seaborn>=0.12.0
+matplotlib>=3.7.0
+
 # Core Framework
 Flask>=2.0.0
 flask-cors>=4.0.0

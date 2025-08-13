@@ -52,129 +52,299 @@ st.set_page_config(
 )
 
 
-# Custom CSS for professional styling
+# Custom CSS for professional dark theme styling
 def load_custom_css() -> None:
-    """Load custom CSS for professional dashboard styling."""
+    """Load custom CSS for professional dark theme dashboard styling."""
     st.markdown(
         """
     <style>
-    /* Main theme colors */
+    /* Import Google Fonts */
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+    
+    /* Main theme colors for dark mode */
     :root {
-        --primary-color: #1f77b4;
-        --secondary-color: #ff7f0e;
-        --success-color: #2ca02c;
-        --warning-color: #d62728;
-        --background-color: #f8f9fa;
-        --text-color: #262730;
+        --primary-color: #FF6B6B;
+        --secondary-color: #4ECDC4;
+        --success-color: #95E1D3;
+        --warning-color: #FFD93D;
+        --error-color: #FF6B6B;
+        --background-primary: #0E1117;
+        --background-secondary: #262730;
+        --background-tertiary: #1E1E1E;
+        --text-primary: #FAFAFA;
+        --text-secondary: #B0B3B8;
+        --border-color: #3A3B3C;
+        --gradient-primary: linear-gradient(135deg, #FF6B6B 0%, #4ECDC4 100%);
+        --gradient-secondary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        --shadow-elevated: 0 8px 32px rgba(0, 0, 0, 0.3);
+        --shadow-medium: 0 4px 16px rgba(0, 0, 0, 0.2);
+    }
+    
+    /* Global font family */
+    html, body, [class*="css"] {
+        font-family: 'Inter', sans-serif;
+    }
+    
+    /* Main app background */
+    .stApp {
+        background-color: var(--background-primary);
+        color: var(--text-primary);
     }
     
     /* Custom header styling */
     .main-header {
-        background: linear-gradient(90deg, #1f77b4 0%, #2ca02c 100%);
-        padding: 2rem;
-        border-radius: 10px;
+        background: var(--gradient-primary);
+        padding: 3rem 2rem;
+        border-radius: 20px;
         margin-bottom: 2rem;
         color: white;
         text-align: center;
+        box-shadow: var(--shadow-elevated);
+        border: 1px solid rgba(255, 255, 255, 0.1);
     }
     
     .main-header h1 {
         color: white !important;
-        margin-bottom: 0.5rem;
-        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        font-size: 3rem;
         font-weight: 700;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
     }
     
-    .main-header p {
-        color: #e8f4fd !important;
-        font-size: 1.2rem;
+    .main-header .subtitle {
+        color: rgba(255, 255, 255, 0.9) !important;
+        font-size: 1.4rem;
         margin: 0;
+        font-weight: 400;
+    }
+    
+    /* Duck curve banner */
+    .duck-curve-banner {
+        background: var(--gradient-secondary);
+        padding: 1.5rem;
+        border-radius: 15px;
+        margin: 1rem 0;
+        text-align: center;
+        border: 2px solid var(--primary-color);
+        box-shadow: var(--shadow-medium);
+    }
+    
+    .duck-curve-banner h3 {
+        color: white !important;
+        margin: 0;
+        font-size: 1.5rem;
+        font-weight: 600;
+    }
+    
+    /* Navigation tabs styling */
+    .stTabs [data-baseweb="tab-list"] {
+        gap: 24px;
+        background-color: var(--background-secondary);
+        border-radius: 15px;
+        padding: 8px;
+        border: 1px solid var(--border-color);
+    }
+    
+    .stTabs [data-baseweb="tab"] {
+        height: 50px;
+        padding: 0px 24px;
+        background-color: transparent;
+        border-radius: 10px;
+        color: var(--text-secondary);
+        font-weight: 500;
+        border: none;
+        transition: all 0.3s ease;
+    }
+    
+    .stTabs [aria-selected="true"] {
+        background: var(--gradient-primary) !important;
+        color: white !important;
+        box-shadow: var(--shadow-medium);
     }
     
     /* Metric cards styling */
     .metric-card {
-        background: white;
-        padding: 1.5rem;
-        border-radius: 10px;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        border-left: 4px solid var(--primary-color);
+        background: var(--background-secondary);
+        padding: 2rem;
+        border-radius: 15px;
+        box-shadow: var(--shadow-medium);
+        border: 1px solid var(--border-color);
         margin-bottom: 1rem;
+        transition: transform 0.3s ease;
+    }
+    
+    .metric-card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-elevated);
     }
     
     .metric-value {
-        font-size: 2rem;
+        font-size: 2.5rem;
         font-weight: 700;
         color: var(--primary-color);
         margin: 0;
+        background: var(--gradient-primary);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
     }
     
     .metric-label {
-        font-size: 0.9rem;
-        color: #666;
-        margin: 0;
+        font-size: 1rem;
+        color: var(--text-secondary);
+        margin: 0.5rem 0 0 0;
+        font-weight: 500;
     }
     
     /* Success/warning badges */
     .status-badge {
-        padding: 0.3rem 0.8rem;
-        border-radius: 20px;
-        font-size: 0.8rem;
+        padding: 0.5rem 1rem;
+        border-radius: 25px;
+        font-size: 0.9rem;
         font-weight: 600;
         text-transform: uppercase;
+        letter-spacing: 0.5px;
+        display: inline-block;
+        margin: 0.5rem 0;
     }
     
     .status-success {
-        background-color: var(--success-color);
+        background: linear-gradient(135deg, #95E1D3, #2ca02c);
         color: white;
     }
     
     .status-warning {
-        background-color: var(--warning-color);
-        color: white;
+        background: linear-gradient(135deg, #FFD93D, #ff9800);
+        color: #333;
     }
     
     .status-info {
-        background-color: var(--primary-color);
+        background: var(--gradient-primary);
         color: white;
     }
     
-    /* Sidebar styling */
-    .sidebar .sidebar-content {
-        background: linear-gradient(180deg, #1f77b4 0%, #2ca02c 100%);
+    /* Feature cards */
+    .feature-card {
+        background: var(--background-secondary);
+        border: 1px solid var(--border-color);
+        border-radius: 15px;
+        padding: 1.5rem;
+        margin: 1rem 0;
+        box-shadow: var(--shadow-medium);
+        transition: all 0.3s ease;
+    }
+    
+    .feature-card:hover {
+        border-color: var(--primary-color);
+        box-shadow: var(--shadow-elevated);
     }
     
     /* Progress bar styling */
     .progress-container {
-        background-color: #e9ecef;
-        border-radius: 10px;
+        background-color: var(--background-tertiary);
+        border-radius: 15px;
         overflow: hidden;
         margin: 1rem 0;
+        border: 1px solid var(--border-color);
     }
     
     .progress-bar {
-        height: 25px;
-        border-radius: 10px;
+        height: 35px;
+        border-radius: 15px;
         display: flex;
         align-items: center;
         justify-content: center;
         color: white;
         font-weight: 600;
-        font-size: 0.9rem;
+        font-size: 1rem;
+        background: var(--gradient-primary);
+        transition: width 0.8s ease-in-out;
+    }
+    
+    /* Streamlit components dark theme */
+    .stSelectbox > div > div {
+        background-color: var(--background-secondary);
+        border: 1px solid var(--border-color);
+        border-radius: 10px;
+    }
+    
+    .stTextInput > div > div > input {
+        background-color: var(--background-secondary);
+        border: 1px solid var(--border-color);
+        border-radius: 10px;
+        color: var(--text-primary);
+    }
+    
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+        width: 8px;
+    }
+    
+    ::-webkit-scrollbar-track {
+        background: var(--background-secondary);
+        border-radius: 10px;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+        background: var(--gradient-primary);
+        border-radius: 10px;
+    }
+    
+    ::-webkit-scrollbar-thumb:hover {
+        background: var(--primary-color);
     }
     
     /* Hide Streamlit branding */
     #MainMenu {visibility: hidden;}
     footer {visibility: hidden;}
-    .stDeployButton {display:none;}
+    .stDeployButton {display: none;}
+    header {visibility: hidden;}
+    
+    /* Animation for cards */
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    .animated-card {
+        animation: fadeInUp 0.6s ease-out;
+    }
     
     /* Responsive design */
     @media (max-width: 768px) {
         .main-header h1 {
             font-size: 2rem;
         }
-        .main-header p {
+        .main-header .subtitle {
             font-size: 1rem;
         }
+        .metric-card {
+            padding: 1rem;
+        }
+        .metric-value {
+            font-size: 2rem;
+        }
+    }
+    
+    /* Enhanced plotly charts */
+    .js-plotly-plot .plotly .modebar {
+        background-color: var(--background-secondary) !important;
+        border: 1px solid var(--border-color) !important;
+        border-radius: 8px !important;
+    }
+    
+    .js-plotly-plot .plotly .modebar-btn {
+        color: var(--text-primary) !important;
+    }
+    
+    .js-plotly-plot .plotly .modebar-btn:hover {
+        background-color: var(--primary-color) !important;
     }
     </style>
     """,
