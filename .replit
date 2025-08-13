@@ -1,0 +1,7 @@
+# Replit Configuration for Delhi Load Forecasting Dashboard
+
+run = "cd load_forecast_new/delhi_forecasting_dashboard && python -m streamlit run main.py --server.port 8080 --server.address 0.0.0.0"
+language = "python3"
+
+[deployment]
+run = ["python", "-m", "streamlit", "run", "load_forecast_new/delhi_forecasting_dashboard/main.py", "--server.port", "8080", "--server.address", "0.0.0.0"]
