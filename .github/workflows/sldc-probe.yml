@@ -1,0 +1,16 @@
+name: sldc-probe
+on:
+  push:
+    branches: [claude/sldc-pipeline]
+    paths: [tools/sldc_probe.py, .github/workflows/sldc-probe.yml]
+  workflow_dispatch:
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: { sparse-checkout: tools }
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.11" }
+      - run: pip install requests beautifulsoup4
+      - run: python tools/sldc_probe.py
