@@ -20,12 +20,14 @@ from datetime import date, timedelta
 from html.parser import HTMLParser
 from pathlib import Path
 
+REPO_ROOT = Path(__file__).resolve().parents[1]
+
 import pandas as pd
 
 from . import TARGETS
 
 URL = "https://www.delhisldc.org/Loaddata.aspx?mode={d:%d/%m/%Y}"
-OUT = Path("data/sldc")
+OUT = REPO_ROOT / "data/sldc"
 # Page header -> pipeline column. NDPL is shown as TPDDL on newer pages.
 HEADERS = {"DELHI": "delhi", "BRPL": "brpl", "BYPL": "bypl", "NDPL": "ndpl", "TPDDL": "ndpl",
            "NDMC": "ndmc", "MES": "mes"}

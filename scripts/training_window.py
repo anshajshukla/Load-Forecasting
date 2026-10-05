@@ -43,9 +43,9 @@ for win, m, errs in rows:
     name = "All history (since 2013)" if win == "all" else f"{win} years"
     lines.append(f"| {name} | **{m:.2f}%** | " + " | ".join(f"{v:.2f}%" for v in errs) + " |")
 lines += ["", "## Checks (all passed)", "",
-          f"* Energy: `{DAILY_CSV}` (sha256 `{sha(DAILY_CSV)}…`), {len(e)} days, {e.index.min().date()} to {e.index.max().date()}.",
+          f"* Energy: `{DAILY_CSV.relative_to(DAILY_CSV.parents[2])}` (sha256 `{sha(DAILY_CSV)}…`), {len(e)} days, {e.index.min().date()} to {e.index.max().date()}.",
           f"  {missing} days are missing at the source (all before 2023); they are skipped, never filled in.",
-          f"* Weather: `{WEATHER_CSV}` (sha256 `{sha(WEATHER_CSV)}…`), {len(w)} hours, {int(w.isna().sum().sum())} missing values.",
+          f"* Weather: `{WEATHER_CSV.relative_to(WEATHER_CSV.parents[2])}` (sha256 `{sha(WEATHER_CSV)}…`), {len(w)} hours, {int(w.isna().sum().sum())} missing values.",
           "* Every energy value the model sees equals the file value (asserted).",
           "* Every training period ends before its test year (asserted).",
           f"* Real-event spot check: 21 Mar 2020 {e['2020-03-21']} MU → 22 Mar 2020 (Janata curfew) {e['2020-03-22']} MU.",

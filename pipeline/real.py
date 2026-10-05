@@ -8,6 +8,8 @@ from __future__ import annotations
 from datetime import date
 from pathlib import Path
 
+REPO_ROOT = Path(__file__).resolve().parents[1]
+
 import pandas as pd
 
 from . import LAT, LON, TARGETS, TZ
@@ -15,7 +17,7 @@ from .features import WEATHER_COLS
 from .sldc import load_hourly
 
 WEATHER_URL = "https://archive-api.open-meteo.com/v1/archive"
-WEATHER_CSV = Path("data/weather/delhi_hourly.csv")
+WEATHER_CSV = REPO_ROOT / "data/weather/delhi_hourly.csv"
 
 
 def fetch_weather(start: date, end: date, out: Path = WEATHER_CSV) -> pd.DataFrame:

@@ -143,6 +143,15 @@ Numbers are day-ahead MAPE unless stated. "Dev" means data used to make choices;
 
 The full list of models used in the project, and what each taught, is in [`models.md`](models.md).
 
+## Phase 6: live app
+
+### 24. Live dashboard that fetches data and forecasts
+* **Change:** `pipeline/live.py` downloads the latest Grid-India data and the Open-Meteo forecast, retrains on the latest 5 years, and forecasts up to 7 days ahead with ranges. The dashboard's new **Live forecast** tab shows it, refreshes hourly or on demand, labels days that have passed but aren't reported yet, and falls back to the committed data (saying so) if a source is down. Downloads retry on failure.
+* **Accuracy by day (2025, `scripts/multiday_check.py`):** day 1 2.26%; days 2–7 3.75–4.19%; the widened 95% ranges cover 92–100%.
+* **Bugs found by running the real app (not the automated test):** `streamlit run` doesn't put the repo root on the import path, and data paths were relative to the current folder. Both were fixed: the repo root is added to the path, and paths are anchored to the repo.
+* **A false alarm worth keeping:** a test asserting "day 1 within 10%" failed on 26 Sep 2026. The regular model had missed that day too (a sudden 17% drop), so the test now checks that the live forecast equals an independent one-step calculation instead of relying on luck.
+* **Lesson:** run the app the way users will, from another folder, and look at it. Automated tests can share the developer's setup and hide real failures. Multi-day forecasts that feed predictions back in get less accurate with each day, so say so and widen the ranges.
+
 ---
 
 ## Still open

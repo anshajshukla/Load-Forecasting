@@ -30,6 +30,7 @@
 | 24 | **Systematic under-forecast** (−0.94% on 2026) | Multiply each forecast by 1 + half the mean error of the last 28 days, using only errors known the day before; chosen on 2017–2025 | 2017–2025 MAPE 2.668% → **2.600%**; 2026 **2.57% → 2.45%**, bias −0.94% → **−0.41%** |
 | 25 | **Intervals too narrow** (80%/95% covered 76.9%/92.7%) | Quantiles of the last 365 days' errors instead of a fixed band from the previous year | 95% band covers **94.1%** of 2026 and 93–97% in every year since 2016; 80% band 77.7% (79% on 2017–2025) |
 | 26 | **Correction could overshoot after an unusual month** | Correction capped at ±2% (`CORR_CAP`) | Same accuracy (2.45% on 2026); binds on 15 days in 2017–2025 |
+| 27 | **No live UI** | `pipeline/live.py` + dashboard Live tab: live download, retrain, 7-day forecast with ranges, delay labels, honest fallback | Day 1 2.26%, days 2–7 3.75–4.19% (2025) |
 
 ## Still open
 

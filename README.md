@@ -14,6 +14,28 @@ Day-ahead forecast of Delhi's daily electricity demand, trained and tested on **
 * A linear model on the same features gets 2.61%, so most of the skill comes from the features, not the model's complexity.
 * Model v2 (heat build-up, growth, holiday-distance and weekday features, 5 training years) was chosen on the 2016–2025 yearly test, where it cut mean error from 2.82% to 2.69%; 2026 then improved from 2.73% to 2.57%.
 
+## Live dashboard
+
+`streamlit run app/dashboard.py` opens on a **Live forecast** tab. On load, and on **Refresh now** (otherwise hourly), it:
+
+1. downloads the latest Grid-India daily data (via Robbie Andrew's dataset on GitHub) and the Open-Meteo weather forecast;
+2. retrains the model on the latest 5 years;
+3. forecasts each day from the latest reported day up to 7 days ahead, with 80%/95% ranges, and marks which days
+   have already passed but aren't reported yet (Grid-India publishes with a delay).
+
+If a live source can't be reached, it falls back to the committed copy and says so; nothing is filled in.
+
+![Live forecast tab](docs/live_dashboard.png)
+
+| Days ahead | Error (2025 test) | 95% range covered |
+|---|---|---|
+| 1 | 2.26% | 96% |
+| 2–3 | 3.75–3.76% | 92–96% |
+| 4–7 | 3.90–4.19% | 98–100% |
+
+Days 2–7 feed earlier forecasts back in as "yesterday", so they are less accurate and their ranges are wider
+(`reports/multiday.md`; tested with recorded weather, so real days 2–7 also carry weather-forecast error).
+
 ## Why the model trains on the last 5 years
 
 More history helps up to about 5 years, then stops helping. Each year 2019–2025 is forecast day-ahead by a model
@@ -49,7 +71,8 @@ python scripts/rolling_years.py         # every year 2016–2026
 python scripts/overfit_check.py         # overfitting checks
 python scripts/training_window.py       # training-window test with provenance checks
 python -m pipeline.forecast             # forecast tomorrow (needs api.open-meteo.com)
-streamlit run app/dashboard.py          # dashboard
+streamlit run app/dashboard.py          # dashboard with live data and forecast
+python scripts/multiday_check.py        # accuracy of the live 7-day forecast, by day
 ```
 
 ## How it works
@@ -82,7 +105,7 @@ A test (`tests/test_daily.py`) fails if any feature for day d changes when energ
 | `pipeline/daily.py` | Daily model: features, backtest, holdout, bias correction, intervals |
 | `learning/` | `changes.md` (learning log), `models.md` (every model used and what it taught), `analysis.md` (audit and results), `gaps.md` (fixes and open gaps) |
 | `pipeline/forecast.py` | Tomorrow's forecast and live scoring (run daily by `.github/workflows/daily-forecast.yml`) |
-| `app/dashboard.py` | Streamlit dashboard on real data |
+| `app/dashboard.py`, `pipeline/live.py` | Streamlit dashboard; live data fetch and 7-day forecast |
 | `pipeline/sldc.py`, `pipeline/real.py` | Real hourly data: SLDC scraper (needs an Indian IP) and the all-real hourly path |
 | `pipeline/features.py`, `train.py`, `legacy.py` | Leak-free hourly pipeline (legacy, mostly synthetic data; `PIPELINE.md`) |
 | `reports/` | Every reported number, written by scripts |

@@ -19,6 +19,8 @@ import argparse
 from datetime import datetime, timezone
 from pathlib import Path
 
+REPO_ROOT = Path(__file__).resolve().parents[1]
+
 import pandas as pd
 
 from . import LAT, LON, TZ
@@ -26,7 +28,7 @@ from .daily import DAILY_CSV, WEATHER_CSV, YEARS_BACK, _fit_predict, _xy, featur
 from .features import WEATHER_COLS
 
 FORECAST_URL = "https://api.open-meteo.com/v1/forecast"
-LIVE_CSV = Path("reports/live/forecasts.csv")
+LIVE_CSV = REPO_ROOT / "reports/live/forecasts.csv"
 COLUMNS = ["target_date", "made_at_utc", "pred", "lo80", "hi80", "lo95", "hi95", "actual", "abs_pct_error"]
 
 

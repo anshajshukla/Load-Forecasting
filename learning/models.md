@@ -57,6 +57,17 @@ Real Grid-India daily energy plus Open-Meteo weather. Day-ahead forecast of the 
 | **Correction cap (±2%)** | The correction can never move a forecast by more than 2% | Same accuracy (binds on 15 days in 2017–2025); protects against one unusual month dragging every forecast |
 | **Rolling conformal intervals** | 80%/95% ranges from quantiles of the last 365 days' errors | 95% range covers 94.1% of 2026 days (93–97% every year since 2016) |
 
+### Live multi-day forecasting (`pipeline/live.py`)
+
+The same v2 model, stepped forward one day at a time: each day's forecast becomes the next day's "yesterday".
+Ranges are widened by the square root of the number of days ahead.
+
+| Days ahead | Error (2025) | 95% range covered |
+|---|---|---|
+| 1 | 2.26% | 96% |
+| 2–3 | 3.75–3.76% | 92–96% |
+| 4–7 | 3.90–4.19% | 98–100% |
+
 ## Why LightGBM
 
 * Works well on small tabular datasets (about 1,800 training days) with mixed features.

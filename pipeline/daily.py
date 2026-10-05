@@ -14,13 +14,15 @@ import argparse
 import json
 from pathlib import Path
 
+REPO_ROOT = Path(__file__).resolve().parents[1]
+
 import holidays
 import lightgbm as lgb
 import numpy as np
 import pandas as pd
 
-DAILY_CSV = Path("data/posoco/delhi_daily.csv")
-WEATHER_CSV = Path("data/weather/delhi_hourly.csv")
+DAILY_CSV = REPO_ROOT / "data/posoco/delhi_daily.csv"
+WEATHER_CSV = REPO_ROOT / "data/weather/delhi_hourly.csv"
 TRAIN_FROM, TEST_FROM = "2021-01-01", "2026-01-01"  # 5 training years (v2; v1 used 3)
 # v2 (chosen on the 2016-2025 rolling-year test, mean MAPE 2.82% -> 2.71%; 2026 not used):
 # extra heat build-up, growth, holiday-distance and weekday-ratio features, 5 training years,
