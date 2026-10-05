@@ -32,6 +32,7 @@
 | 26 | **Correction could overshoot after an unusual month** | Correction capped at ±2% (`CORR_CAP`) | Same accuracy (2.45% on 2026); binds on 15 days in 2017–2025 |
 | 27 | **No live UI** | `pipeline/live.py` + dashboard Live tab: live download, retrain, 7-day forecast with ranges, delay labels, honest fallback | Day 1 2.26%, days 2–7 3.75–4.19% (2025) |
 | 28 | **Untested extra drivers** (heatwaves, hot nights, humid heat, monsoon, school vacations, lockdown) | Six feature groups in `pipeline/daily.py` (`EXTRA`), off by default; `scripts/feature_ablation.py` tests each on 2016–2025 | No group helps clearly: best is hot nights, 2.627% → 2.621% (6/10 years); all groups 2.618%. The existing heat build-up and lag features already carry this information, so the model is unchanged (`reports/feature_ablation.md`) |
+| 29 | **No comparison with modern models** | `scripts/model_comparison.py` (Colab notebook in `notebooks/`): Ridge, N-HiTS, Chronos-Bolt and Chronos-2 on 2016–2026, with Diebold–Mariano tests | LightGBM 2.63% beats every single model (Chronos-2 2.72%, Ridge 2.95%, N-HiTS 3.66%, Chronos-Bolt 4.05%; all p<0.01). A 50/50 average of LightGBM and zero-shot Chronos-2 gets **2.49%** (9/10 years better, p<0.001; 2026 2.43%) (`reports/model_comparison.md`) |
 
 ## Still open
 
