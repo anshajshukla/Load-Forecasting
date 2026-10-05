@@ -10,6 +10,7 @@ Day-ahead forecast of Delhi's daily electricity demand, trained and tested on **
 | **2026 held out (1 Jan – 30 Sep, 273 days)** | **2.45%** | 4.55% | 10.12% |
 | Every year 2016–2026, each trained on the 5 years before | median 2.48% (2.37–3.14%) | beaten 11/11 years | |
 
+* **Live model: average of LightGBM and Chronos-2** (zero-shot foundation model with weather): 2.49% vs 2.63% for LightGBM alone on 2016–2025, better in 9 of 10 years (`reports/model_comparison.md`). LightGBM beats N-HiTS, Chronos and Ridge on its own.
 * Each forecast is corrected by half its mean error over the last 28 days, capped at ±2% (removes most of a small under-forecast: bias −0.94% → −0.41% on 2026).
 * Intervals come from the last 365 days' errors: the 95% interval covers 94.1% of 2026 days (93–97% in every year since 2016), the 80% interval 77.7%.
 * Without a weather forecast for the target day, the error is 3.35%. Results above use recorded weather as a stand-in for a forecast.

@@ -11,7 +11,8 @@ Numbers are day-ahead MAPE unless stated. "Dev" means data used to make choices;
 | First honest model on real data (v1, 15 leaves / 600 trees) | 2.82% | 3 training years |
 | v1 smaller (7 leaves / 300 trees) | 2.73% | Less memorisation |
 | v2 features + 5 training years | 2.57% | Chosen on 2016–2025 |
-| **v2 + recent-error bias correction (current)** | **2.45%** | Chosen on 2017–2025; 46% better than "same as yesterday" (4.55%) |
+| v2 + recent-error bias correction | 2.45% | Chosen on 2017–2025; 46% better than "same as yesterday" (4.55%) |
+| **LightGBM + Chronos-2 average (current live)** | **2.43%** | Rolling 5-year test (2.47% for LightGBM on the same test); 2016–2025 mean 2.49% vs 2.63% |
 
 ---
 
@@ -151,6 +152,29 @@ The full list of models used in the project, and what each taught, is in [`model
 * **Bugs found by running the real app (not the automated test):** `streamlit run` doesn't put the repo root on the import path, and data paths were relative to the current folder. Both were fixed: the repo root is added to the path, and paths are anchored to the repo.
 * **A false alarm worth keeping:** a test asserting "day 1 within 10%" failed on 26 Sep 2026. The regular model had missed that day too (a sudden 17% drop), so the test now checks that the live forecast equals an independent one-step calculation instead of relying on luck.
 * **Lesson:** run the app the way users will, from another folder, and look at it. Automated tests can share the developer's setup and hide real failures. Multi-day forecasts that feed predictions back in get less accurate with each day, so say so and widen the ranges.
+
+---
+
+## Phase 4: new drivers, modern models and the ensemble
+
+### 28. Tested heatwave, hot-night, humid-heat, monsoon, vacation and lockdown features
+* **Change:** six feature groups in `pipeline/daily.py` (`EXTRA`, off by default) and `scripts/feature_ablation.py`, which tests each group on 2016–2025 with 5-year rolling training.
+* **Impact:** none clearly helps. Best: hot nights, 2.627% → 2.621% (6/10 years); all six together 2.618%. The model is unchanged (`reports/feature_ablation.md`).
+* **Lesson:** yesterday's demand and the 3/7-day heat build-up already carry the heatwave, humidity and monsoon signal. A plausible driver is only worth adding if the rolling test says so. Slow-moving drivers (population, industry) belong in explaining *why* heat sensitivity changes, not in a day-ahead model that predicts the change from yesterday.
+
+### 29. Compared LightGBM with modern models
+* **Change:** `scripts/model_comparison.py` (run on a free Colab T4 GPU via `notebooks/model_comparison_colab.ipynb`): Ridge, N-HiTS with weather, Chronos-Bolt (zero-shot, demand only) and Chronos-2 (zero-shot, with weather), same yearly test, same bias correction, Diebold–Mariano tests.
+* **Impact (mean 2016–2025):** LightGBM 2.63%, Chronos-2 2.72%, Ridge 2.95%, N-HiTS 3.66%, Chronos-Bolt 4.05%, same-as-yesterday 4.51%. LightGBM beats every single model (all p < 0.01).
+* **Lessons:**
+  * **Features beat architecture on small data.** About 1,800 training days are too few for N-HiTS to learn what LightGBM gets from hand-built lags, heat build-up and holidays. It was worst in 2020–2022, when behaviour shifted.
+  * **Weather is what makes a foundation model useful here.** Chronos-2 with weather (2.72%) is almost as good as LightGBM without any training on Delhi data; Chronos-Bolt without weather (4.05%) is barely better than "same as yesterday".
+  * **Chronos-2 is more robust to shocks.** It beat LightGBM in 2016 and in 2020 (COVID: 3.01% vs 3.14%), years where a model trained on the 5 years before was misled. LightGBM wins in normal years.
+
+### 30. LightGBM + Chronos-2 average in the live forecast
+* **Change:** `pipeline/chronos.py`; `pipeline/live.py` averages the two bias-corrected forecasts (each corrected from its own last 28 days of errors). Ranges are LightGBM's, centred on the average. If Chronos-2 can't install or load, the app uses LightGBM alone and says which model ran. Tests: `tests/test_chronos_blend.py`.
+* **Impact (from the Colab run):** equal-weight average **2.49%** on 2016–2025 vs 2.63% (better in 9/10 years, DM p < 0.001); 2026 2.43% vs 2.47%. 70/30 and 80/20 weights give 2.51% and 2.54%, so the untuned 50/50 is kept.
+* **Lesson:** two different models that are each good make partly different mistakes (error correlation 0.78), and averaging them cancels some of it. That gain (5% relative) is bigger than every feature tried in #28. Combine diverse models before chasing more features.
+* **Caveats:** the average's own intervals aren't calibrated yet (LightGBM's ranges are used, which should be slightly wide); live days 2–7 use Chronos-2's direct multi-day forecast while LightGBM feeds its forecasts back in; the 2.49% is with recorded weather. The live log will show the real figure.
 
 ---
 

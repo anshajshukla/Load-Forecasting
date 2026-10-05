@@ -7,3 +7,8 @@ holidays>=0.50
 requests>=2.31,<3
 streamlit>=1.38,<2
 plotly>=5.20,<7
+# LightGBM + Chronos-2 average in the live forecast (pipeline/chronos.py). CPU-only torch keeps the install small;
+# if these fail to install or load, the app falls back to LightGBM alone and says so.
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch
+chronos-forecasting>=2.0

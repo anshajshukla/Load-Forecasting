@@ -112,6 +112,8 @@ with st.expander("How accurate are these forecasts?"):
                 "forecasts, so they are less certain and their ranges are wider.")
     if MULTIDAY.exists():
         st.markdown(MULTIDAY.read_text().split("\n", 4)[4])
+    st.caption(f"Model: **{fc.attrs.get('model', 'LightGBM')}**. On 2016–2025 the LightGBM + Chronos-2 average "
+               "scored 2.49% vs 2.63% for LightGBM alone; the day-by-day accuracy below is for LightGBM.")
     st.caption(f"Tested on 2025 with recorded weather. Bias correction applied today: "
                f"{fc.attrs.get('correction_pct', 0):+.2f}% (capped at ±2%). "
                f"Sources: {L['energy_source']}; {L['weather_source']}.")

@@ -80,3 +80,18 @@ Ranges are widened by the square root of the number of days ahead.
 * **Neural networks (LSTM, Transformer) on the real daily data:** about 1,800 training days is small for them, and
   a linear model already reaches 2.61%. They would add complexity with little room to gain.
 * **Hourly models on real data:** waiting on the SLDC scrape (needs an Indian IP).
+
+## Modern models compared (Phase 4, `scripts/model_comparison.py`)
+
+Same test for all: every day of 2016–2026 forecast day-ahead, trained models trained on the 5 years before each
+year, the same bias correction for all. Run on a free Colab T4 GPU.
+
+| Model | Type | Mean 2016–2025 | 2026 | What it taught |
+|---|---|---|---|---|
+| **LightGBM + Chronos-2, 50/50 average** | Ensemble | **2.49%** | **2.43%** | Different good models make different mistakes; averaging beats both. Now the live model |
+| LightGBM | Gradient boosting on hand-built features | 2.63% | 2.47% | Best single model; good features matter more than architecture |
+| Chronos-2 | Foundation model, zero-shot, with weather covariates | 2.72% | 2.82% | Nearly as good with no training on Delhi; better in shock years (2016, 2020) |
+| Ridge | Linear, same features | 2.95% | 2.59% | Most of the skill is in the features |
+| N-HiTS | Deep learning, with weather | 3.66% | 3.30% | Too little data (≈1,800 days) for deep learning; worst when behaviour shifted (2020–2022) |
+| Chronos-Bolt small | Foundation model, zero-shot, demand only | 4.05% | 4.36% | Without weather a foundation model barely beats "same as yesterday" |
+| Same as yesterday | Naive | 4.51% | 4.60% | The bar every model must clear |

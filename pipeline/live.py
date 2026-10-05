@@ -5,6 +5,10 @@
 * Forecast: the daily model (v2, trained on the last 5 years up to the last known day), stepped forward one
   day at a time. Day 1 is a true day-ahead forecast; later days feed earlier forecasts back in as
   "yesterday", so they are less certain and their ranges are widened (by sqrt(day)).
+* Ensemble: when Chronos-2 is available (pipeline/chronos.py), the forecast is the equal-weight average of the
+  bias-corrected LightGBM and Chronos-2 forecasts (2.49% vs 2.63% on 2016-2025, reports/model_comparison.md).
+  Each model gets its own bias correction from its own errors over the last 28 days. The ranges are LightGBM's,
+  centred on the average (the average's own errors aren't logged yet, so this is conservative).
 
 Nothing is invented: if a live source can't be reached, the repo's committed copy is used and the
 result says so.
@@ -85,7 +89,7 @@ def build_frame(energy: pd.Series, weather: pd.DataFrame) -> pd.DataFrame:
         return load(e_path, w_path)
 
 
-def forecast_days(df: pd.DataFrame, horizon: int = 7) -> pd.DataFrame:
+def forecast_days(df: pd.DataFrame, horizon: int = 7, ensemble: bool = False) -> pd.DataFrame:
     """Forecast from the day after the last known day, up to `horizon` days or as far as weather exists."""
     import lightgbm as lgb
 
@@ -117,7 +121,39 @@ def forecast_days(df: pd.DataFrame, horizon: int = 7) -> pd.DataFrame:
         rows.append(row)
         work.loc[d, "energy_mu"] = pred  # feeds the next day's "yesterday"
     out = pd.DataFrame(rows).set_index("date") if rows else pd.DataFrame()
-    out.attrs.update(last_known=last, correction_pct=corr * 100)
+    out.attrs.update(last_known=last, correction_pct=corr * 100, model="LightGBM")
+    if ensemble and len(out):
+        out = _blend_chronos(df, out, last)
+    return out
+
+
+def _blend_chronos(df: pd.DataFrame, out: pd.DataFrame, last: pd.Timestamp) -> pd.DataFrame:
+    """Average the LightGBM forecast with a bias-corrected Chronos-2 forecast; LightGBM only if unavailable."""
+    from . import chronos
+
+    ok, why = chronos.available()
+    if not ok:
+        out.attrs["model"] = f"LightGBM (Chronos-2 unavailable: {why})"
+        return out
+    try:
+        known = df["energy_mu"].loc[:last].dropna()
+        # Chronos-2's own bias correction: its one-step errors over the last CORR_WINDOW reported days.
+        origins = [df.index[df.index.get_loc(t) - 1] for t in known.index[-CORR_WINDOW:]]
+        past = chronos.forecast(df, origins, 1)[1]
+        past.index = known.index[-CORR_WINDOW:]
+        c_corr = float(np.clip((known.reindex(past.index) / past - 1).mean() * CORR_ALPHA, -CORR_CAP, CORR_CAP))
+        ahead = chronos.forecast(df, [last], len(out)).iloc[0].to_numpy() * (1 + c_corr)
+    except Exception as e:  # noqa: BLE001
+        out.attrs["model"] = f"LightGBM (Chronos-2 failed: {type(e).__name__})"
+        return out
+    out = out.copy()
+    out["pred_lgbm"], out["pred_chronos"] = out["pred"], ahead
+    blend = (out["pred_lgbm"] + out["pred_chronos"]) / 2
+    shift = blend / out["pred"]
+    for c in ("lo80", "hi80", "lo95", "hi95"):
+        out[c] = out[c] * shift
+    out["pred"] = blend
+    out.attrs.update(model="LightGBM + Chronos-2 average", chronos_correction_pct=c_corr * 100)
     return out
 
 
@@ -125,6 +161,6 @@ def run(horizon: int = 7) -> dict:
     energy, e_src = fetch_energy()
     weather, w_src = fetch_weather()
     df = build_frame(energy, weather)
-    fc = forecast_days(df, horizon)
+    fc = forecast_days(df, horizon, ensemble=True)
     return {"df": df, "forecast": fc, "energy_source": e_src, "weather_source": w_src,
             "fetched_at_utc": datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")}
