@@ -156,7 +156,7 @@ class ComprehensiveModelEvaluation:
                 self.model_results['Week3_Hybrid_RF_Linear'] = {
                     'week': 3,
                     'type': 'hybrid',
-                    'mape': 4.09,  # WARNING: hard-coded, not measured. Superseded by pipeline/ (see analysis.md)
+                    'mape': 4.09,  # WARNING: hard-coded, not measured. Superseded by pipeline/ (see learning/analysis.md)
                     'category': 'Hybrid Models',
                     'source': 'week3_hybrid',
                     'target_achieved': True,

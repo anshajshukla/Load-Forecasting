@@ -1,4 +1,4 @@
-> **Legacy (superseded).** Everything in `load_forecast_new/` was built on a dataset that is about 95% synthetic, and its headline numbers (4.09% MAPE, $4.8M/month savings, ~1% MAPE models) came from target leakage, a hard-coded constant and figures no code calculates. See `analysis.md` and `gaps.md` at the repo root for the audit, and `README.md` for the current real-data results.
+> **Legacy (superseded).** Everything in `load_forecast_new/` was built on a dataset that is about 95% synthetic, and its headline numbers (4.09% MAPE, $4.8M/month savings, ~1% MAPE models) came from target leakage, a hard-coded constant and figures no code calculates. See `learning/analysis.md` and `learning/gaps.md` for the audit, and `README.md` for the current real-data results.
 
 # 🔋 Delhi Load Forecasting Project
 ### Advanced Machine Learning Solution for Grid Stability & Duck Curve Management
