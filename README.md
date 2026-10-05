@@ -31,7 +31,7 @@ If a live source can't be reached, it falls back to the committed copy and says 
 
 **Model performance** shows the 2026 test, every year since 2016, the daily forecast log and the full history.
 **How it works** lists the data sources, the model and its settings (read from the code), every result table,
-every model used in the project, the learning log and the limits. The app follows the viewer's light/dark setting.
+every model used in the project, the learning log and the limits. The app uses a clean white theme (`.streamlit/config.toml`).
 
 ![Model performance page](docs/model_performance.png)
 

@@ -86,7 +86,7 @@ fig.update_layout(height=380, margin=dict(l=0, r=0, t=30, b=0), hovermode="x uni
 st.plotly_chart(fig, width="stretch", config={"displayModeBar": False})
 
 # --- Next 7 days ---------------------------------------------------------------------------------------------
-st.subheader("Next days", divider="gray")
+st.subheader("Next days")
 
 
 def status(day: pd.Timestamp) -> str:
