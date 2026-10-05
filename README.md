@@ -1,5 +1,7 @@
 # Delhi electricity demand forecasting
 
+**Live dashboard: https://loaddelhi.streamlit.app/** (fetches the latest real data and forecasts the next 7 days)
+
 Day-ahead forecast of Delhi's daily electricity demand, trained and tested on **real data only**: Grid-India daily reports and Open-Meteo weather.
 
 | Test | Model (MAPE) | Same as yesterday | Same day last week |
@@ -38,6 +40,7 @@ result table, every model used in the project, the learning log and the limits.
 2. Click **Create app** and choose: repository `anshajshuklaa/Load-Forecasting`, branch `main`,
    main file `app/dashboard.py`, Python 3.11.
 3. Click **Deploy**. It installs `requirements.txt` and gives a public `https://<name>.streamlit.app` link.
+   This project's deployment: https://loaddelhi.streamlit.app/
 
 The app downloads live data from raw.githubusercontent.com and api.open-meteo.com, both reachable from
 Streamlit Cloud. Docker works too: `docker compose up` serves it on port 8501.
