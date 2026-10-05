@@ -30,11 +30,14 @@ and Delhi's peak grows every year.
 
 | Horizon | Model | Persistence | Seasonal naive |
 |---|---|---|---|
-| 1h | 2.99% | 6.14% | 7.64% |
-| Day-ahead | 7.15% | 7.64% | 7.64% |
+| 1h | 1.63% | 5.11% | 6.66% |
+| Day-ahead | 5.32% | 6.66% | 6.66% |
 
-On the 1,056 hours labelled `historical` (the only rows not marked as simulated): 1h **2.62%**,
-day-ahead **5.55%** vs 6.38% seasonal naive.
+On the hours labelled `historical` (the only rows not marked as simulated): 1h **1.65%** vs 4.72%
+persistence, but day-ahead **6.24%** loses to seasonal naive (5.81%). Day-ahead has no proven skill on real data yet.
+
+Loader cleaning (see `reports/data_audit.md`): ~254 placeholder dips (nearly all at 23:00) and the 216 generated
+`0`-labelled rows are blanked, and solar radiation is shifted from UTC to IST.
 
 ## Caveat: the data
 
