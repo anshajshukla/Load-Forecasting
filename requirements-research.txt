@@ -1,0 +1,5 @@
+# Extra packages for scripts/model_comparison.py (not needed by the app)
+torch
+neuralforecast
+chronos-forecasting>=2.0
+scipy
