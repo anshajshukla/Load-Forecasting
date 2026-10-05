@@ -18,7 +18,7 @@ Day-ahead forecast of Delhi's daily electricity demand, trained and tested on **
 
 ## Live dashboard
 
-`streamlit run app/dashboard.py` opens on a **Live forecast** tab. On load, and on **Refresh now** (otherwise hourly), it:
+`streamlit run app/dashboard.py` opens a three-page app: **Live forecast**, **Model performance** and **How it works**. On load, and on **Refresh** (otherwise hourly), the live page:
 
 1. downloads the latest Grid-India daily data (via Robbie Andrew's dataset on GitHub) and the Open-Meteo weather forecast;
 2. retrains the model on the latest 5 years;
@@ -29,8 +29,11 @@ If a live source can't be reached, it falls back to the committed copy and says 
 
 ![Live forecast tab](docs/live_dashboard.png)
 
-A second page, **How it works**, lists the data sources, the model and its settings (read from the code), every
-result table, every model used in the project, the learning log and the limits.
+**Model performance** shows the 2026 test, every year since 2016, the daily forecast log and the full history.
+**How it works** lists the data sources, the model and its settings (read from the code), every result table,
+every model used in the project, the learning log and the limits. The app follows the viewer's light/dark setting.
+
+![Model performance page](docs/model_performance.png)
 
 ![How it works page](docs/how_it_works.png)
 
@@ -123,7 +126,7 @@ A test (`tests/test_daily.py`) fails if any feature for day d changes when energ
 | `pipeline/daily.py` | Daily model: features, backtest, holdout, bias correction, intervals |
 | `learning/` | `changes.md` (learning log), `models.md` (every model used and what it taught), `analysis.md` (audit and results), `gaps.md` (fixes and open gaps), `research_roadmap.md` (path to a top-journal paper) |
 | `pipeline/forecast.py` | Tomorrow's forecast and live scoring (run daily by `.github/workflows/daily-forecast.yml`) |
-| `app/dashboard.py`, `pipeline/live.py` | Streamlit dashboard; live data fetch and 7-day forecast |
+| `app/dashboard.py`, `app/views/`, `pipeline/live.py` | Streamlit app (entry point and its three pages); live data fetch and 7-day forecast |
 | `pipeline/sldc.py`, `pipeline/real.py` | Real hourly data: SLDC scraper (needs an Indian IP) and the all-real hourly path |
 | `pipeline/features.py`, `train.py`, `legacy.py` | Leak-free hourly pipeline (legacy, mostly synthetic data; `PIPELINE.md`) |
 | `reports/` | Every reported number, written by scripts |
