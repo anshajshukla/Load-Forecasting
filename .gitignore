@@ -63,3 +63,6 @@ scalers/*.pkl
 # Outputs that can be regenerated
 results/plots/
 outputs/temp/
+
+# SLDC scraper page cache (hourly.csv is committed)
+data/sldc/raw/

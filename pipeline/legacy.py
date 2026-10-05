@@ -21,7 +21,9 @@ RENAME = {
 }
 
 
-def load_legacy(path: str = LEGACY_CSV) -> pd.DataFrame:
+def load_legacy(path: str = LEGACY_CSV, real: str | None = None, real_only: bool = False) -> pd.DataFrame:
+    """real: optional hourly CSV from `python -m pipeline.sldc`; its loads replace the legacy ones.
+    real_only: also blank every load that did not come from `real` (no synthetic training data)."""
     cols = ["datetime", "data_source", *RENAME, *EVENT_COLS]
     df = pd.read_csv(path, usecols=lambda c: c in cols, parse_dates=["datetime"])
     df = df.rename(columns=RENAME).set_index("datetime").sort_index()
@@ -35,6 +37,13 @@ def load_legacy(path: str = LEGACY_CSV) -> pd.DataFrame:
     for c in TARGETS:
         v = df[c]
         df.loc[v < 0.85 * pd.concat([v.shift(1), v.shift(-1)], axis=1).min(axis=1), c] = float("nan")
+    if real:
+        r = pd.read_csv(real, parse_dates=["datetime"]).set_index("datetime")
+        r = r.reindex(df.index).dropna(subset=["delhi"])
+        df.loc[r.index, TARGETS] = r.reindex(columns=TARGETS).to_numpy()
+        df.loc[r.index, "data_source"] = "sldc"
+        if real_only:
+            df.loc[df["data_source"] != "sldc", TARGETS] = float("nan")
     # Radiation was exported on a UTC clock while everything else is IST (+5:30): the value
     # for IST hour t is the average of the UTC rows 5 and 6 hours earlier.
     rad = df["shortwave_radiation"]
