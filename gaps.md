@@ -21,7 +21,7 @@
 
 Roughly in priority order.
 
-## Data
+### Data
 
 1. **No real hourly data.** The real-data result is daily energy only. Hourly forecasting still runs on the mostly synthetic legacy dataset. `pipeline/sldc.py` is written but has never run against the live site, because delhisldc.org only answers Indian IPs. It needs one run from a machine in India (`python -m pipeline.sldc --start 2023-01-01`), and the parser may need fixing once a real page is seen.
 2. **The daily data hasn't been checked against the source PDFs.** The evidence for authenticity is strong (see `analysis.md`), but grid-india.in is blocked from the build environment. Spot-check a few days by hand (19 Jun 2024 should be 176.19 MU).
@@ -30,7 +30,7 @@ Roughly in priority order.
 5. **Discom-level targets (BRPL, BYPL, NDPL, NDMC, MES) have no real data.** Only the Delhi total is real.
 6. **The legacy synthetic data is still in the repo** (`load_forecast_new/`), along with the old notebooks and claims built on it.
 
-## Method
+### Method
 
 7. **Weather is the recorded actual, not a forecast.** Day-ahead results use the actual weather of the target day. A real system would use a weather forecast, so the true error lies between 2.8% (actual weather) and 3.7% (no weather). Archived weather forecasts, such as Open-Meteo's historical forecast API, would close this.
 8. **2026 has now been seen.** Any model change from here (including switching to the smaller model) must be disclosed. A fresh untouched test needs data after 30 Sep 2026.
@@ -40,7 +40,7 @@ Roughly in priority order.
 12. **No uncertainty estimates.** Point forecasts only; no prediction intervals (for example quantile regression or conformal intervals).
 13. **Hourly day-ahead has no proven skill.** On real `historical` rows it loses to seasonal naive (6.24% vs 5.81%).
 
-## Product and repo
+### Product and repo
 
 14. **The dashboard still shows `np.random` data** and loads no model; its data path doesn't exist.
 15. **Hard-coded claims remain** in the old code and docs: 4.09% MAPE (`01_comprehensive_evaluation.py:159`), $4.8M/month and the other business figures.
