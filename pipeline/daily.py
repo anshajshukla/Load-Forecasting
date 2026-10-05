@@ -22,7 +22,10 @@ import pandas as pd
 DAILY_CSV = Path("data/posoco/delhi_daily.csv")
 WEATHER_CSV = Path("data/weather/delhi_hourly.csv")
 TRAIN_FROM, TEST_FROM = "2023-01-01", "2026-01-01"
-PARAMS = dict(n_estimators=600, learning_rate=0.03, num_leaves=15, min_child_samples=15,
+# 7 leaves / 300 trees: same 2025 dev error as the first choice (15 / 600, 2.57%), lower dev bias
+# (-0.16% vs -0.36%) and a much smaller train/test gap. Chosen on the 2025 dev fold, but after the
+# 2026 holdout had been run once with 15 / 600 (2.82%); see reports/overfit_check.md.
+PARAMS = dict(n_estimators=300, learning_rate=0.03, num_leaves=7, min_child_samples=15,
               subsample=0.8, subsample_freq=1, colsample_bytree=0.8, verbose=-1, random_state=0)
 
 

@@ -1,10 +1,10 @@
 {
   "days": 365,
-  "model_mape": 2.568054053412584,
+  "model_mape": 2.5676809070244175,
   "yesterday_mape": 4.233553363750361,
   "last_week_mape": 7.919023886133249,
-  "mae_mu": 2.7086488555010604,
-  "skill_vs_best_baseline_pct": 39.34045864635961,
+  "mae_mu": 2.7101858933403795,
+  "skill_vs_best_baseline_pct": 39.3492726698549,
   "kind": "walk-forward",
   "period": [
     "2025-01-01",
