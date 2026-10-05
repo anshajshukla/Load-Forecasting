@@ -1,9 +1,17 @@
-# Light and dark variants keep the viewer's light/dark setting working (a single [theme] would force light).
-[theme.light]
-primaryColor = "#2a78d6"
+# Clean white, professional theme (always light).
+[theme]
+base = "light"
+primaryColor = "#1f5fbf"
+backgroundColor = "#ffffff"
+secondaryBackgroundColor = "#f5f7fa"
+textColor = "#1a1f2b"
+font = "sans serif"
+borderColor = "#e3e7ee"
+showWidgetBorder = true
+baseRadius = "small"
 
-[theme.dark]
-primaryColor = "#3987e5"
+[theme.sidebar]
+backgroundColor = "#f5f7fa"
 
 [client]
 toolbarMode = "minimal"
