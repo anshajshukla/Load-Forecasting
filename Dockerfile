@@ -1,13 +1,15 @@
 FROM python:3.11-slim
 
 WORKDIR /app
-COPY requirements-pipeline.txt requirements-app.txt ./
-RUN pip install --no-cache-dir -r requirements-app.txt
+COPY requirements.txt ./
+RUN pip install --no-cache-dir -r requirements.txt
 
 COPY pipeline/ ./pipeline/
 COPY app/ ./app/
 COPY data/posoco/ ./data/posoco/
+COPY data/weather/ ./data/weather/
 COPY reports/ ./reports/
+COPY learning/ ./learning/
 
 EXPOSE 8501
 HEALTHCHECK CMD python -c "import urllib.request; urllib.request.urlopen('http://localhost:8501/_stcore/health')"

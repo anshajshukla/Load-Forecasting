@@ -27,6 +27,21 @@ If a live source can't be reached, it falls back to the committed copy and says 
 
 ![Live forecast tab](docs/live_dashboard.png)
 
+A second page, **How it works**, lists the data sources, the model and its settings (read from the code), every
+result table, every model used in the project, the learning log and the limits.
+
+![How it works page](docs/how_it_works.png)
+
+### Put it online (free, Streamlit Community Cloud)
+
+1. Sign in at [share.streamlit.io](https://share.streamlit.io) with GitHub.
+2. Click **Create app** and choose: repository `anshajshuklaa/Load-Forecasting`, branch `main`,
+   main file `app/dashboard.py`, Python 3.11.
+3. Click **Deploy**. It installs `requirements.txt` and gives a public `https://<name>.streamlit.app` link.
+
+The app downloads live data from raw.githubusercontent.com and api.open-meteo.com, both reachable from
+Streamlit Cloud. Docker works too: `docker compose up` serves it on port 8501.
+
 | Days ahead | Error (2025 test) | 95% range covered |
 |---|---|---|
 | 1 | 2.26% | 96% |
