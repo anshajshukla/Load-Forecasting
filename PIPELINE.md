@@ -47,18 +47,23 @@ load does not do, and the last 216 rows (23-31 July 2025) switch to a different 
 the model's 35% day-ahead error there is the data changing, not the model. These numbers prove
 the method, not real-world accuracy. Real SLDC data is the next step.
 
-## Real data: scraping Delhi SLDC
+## Real data only: train 2023–2025, test on 2026
 
-The committed dataset is mostly synthetic (`reports/data_audit.md`). `pipeline/sldc.py` scrapes the real
-5-minute loads from delhisldc.org. The site only answers Indian IPs, so run it from a machine in India:
+The committed dataset is mostly synthetic (`reports/data_audit.md`), so the real-data path does not use it at
+all: loads come only from delhisldc.org, weather only from the Open-Meteo archive (IST clock), and both
+commands assert that every row is `sldc`. SLDC only answers Indian IPs, so run this from a machine in India:
 
 ```bash
 pip install -r requirements-pipeline.txt
-python -m pipeline.sldc --start 2022-07-25 --end 2025-07-31     # ~1,100 pages, about 20 min at 1 req/s
-python -m pipeline backtest --real data/sldc/hourly.csv              # real loads replace synthetic ones
-python -m pipeline backtest --real data/sldc/hourly.csv --real-only  # no synthetic data at all
+python -m pipeline.sldc --start 2023-01-01                      # real 5-min loads -> data/sldc/hourly.csv (~1,370 pages, ~25 min)
+python -m pipeline weather --start 2023-01-01 --end 2026-10-04  # real weather -> data/weather/delhi_hourly.csv
+python -m pipeline backtest --real-data                         # development: walk-forward on 2023–2025 only
+python -m pipeline holdout                                      # once, at the end: train on 2023–2025, score 2026
 ```
 
-Pages are cached in `data/sldc/raw/`, so an interrupted run resumes where it stopped. A day whose page has
-no load table is reported as FAILED with its HTML kept for inspection. `--real-only` needs at least 13 months
-of scraped history, because each backtest fold trains on at least a year.
+* `backtest --real-data` cuts everything from 2026-01-01 on (`--until`), so tuning never sees the test year.
+* `holdout` trains one model per horizon on data before 2026-01-01 and scores every 2026 hour against
+  persistence and seasonal naive, with a by-month table (`reports/holdout.md`). Run it once; rerunning after
+  changing the model to improve the 2026 number turns 2026 into training data.
+* Pages are cached in `data/sldc/raw/`, so an interrupted scrape resumes. A day whose page has no load table
+  is reported as FAILED with its HTML kept, so a layout change is easy to fix.
