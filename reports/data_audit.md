@@ -28,3 +28,23 @@ On about 250 days the 23:00 load drops to a value like 1,489.24 MW (repeated acr
 * Report headline accuracy on the `historical` rows only (1h 1.65% vs 4.72% persistence; day-ahead 6.24%, which **loses** to seasonal naive at 5.81%), and call the rest a synthetic-data backtest.
 * The loader already blanks the 216 `0` rows, the 23:00 dips, and shifts radiation to IST.
 * Replace the synthetic history with real data, from the SLDC scraper (it needs an Indian IP) or the gated [happyman11/Delhi-SLDC](https://huggingface.co/datasets/happyman11/Delhi-SLDC) dataset, before claiming any accuracy number in an interview.
+
+## Grid-India daily data (`data/posoco/delhi_daily.csv`): authenticity checks
+
+The daily series used for the headline model was checked for events a generator would not reproduce
+(the source PDFs at grid-india.in are blocked from this environment, so they could not be compared directly):
+
+| Check | Result |
+|---|---|
+| Janata curfew, Sun 22 Mar 2020 | 59.1 → **46.1 MU** that exact day |
+| COVID lockdown from 25 Mar 2020 | Stays at 42–46 MU through early April; the same dates in 2019 rose from 54 to 74 MU |
+| COVID fiscal year (Apr 2020–Mar 2021) | 29,385 MU, down from 32,901 the year before, recovering to 30,936 then 34,939 |
+| Holi, 21 Mar 2019 | 60.1 → 46.1 MU that day |
+| Diwali (12 Nov 2023, 31 Oct 2024, 20 Oct 2025, different dates every year) | A dip of 15–25% on each actual date |
+| Heavy rain in monsoon (>20 mm, independent Open-Meteo data) | Demand falls 4.3% day over day on average, vs +1.7% on dry days (28 rain days) |
+| Record day | 18–19 Jun 2024 (177.7 and 176.2 MU), the heatwave when Delhi set its all-time peak of about 8,656 MW |
+| Weekly cycle | Weekdays ~106 MU, Saturday 102.5, Sunday 98.8 |
+| Legacy `historical` hourly rows (independent source) | Daily totals match at r = 0.998 |
+
+Fiscal-year totals (2023-24: 35,278 MU) are in the range of CEA's planning figures (the LGBR 2023-24 projected
+37,068 MU; that is a forecast, not an actual, so it is only a sanity check).
