@@ -27,6 +27,8 @@
 | 21 | **No automated run, and 2026 has been seen** | `pipeline/forecast.py` + `.github/workflows/daily-forecast.yml`: each day refresh Grid-India data and weather, forecast the next day with the real weather *forecast*, and log it in `reports/live/forecasts.csv` (never overwritten), scoring it once the actual is reported | A growing, clean out-of-sample test that uses real weather forecasts |
 | 22 | **No root README** | `README.md`: results, quick start, architecture, data sources, repo map, limitations | The project explains itself |
 | 23 | **Model could be better** | v2: heat build-up (3/7-day), growth vs last year, weekday ratios and holiday-distance features; 5 training years; learning rate 0.02 / 600 trees. Chosen on the 2016–2025 yearly test only. | Mean 2016–2025 error **2.82% → 2.69%** (8 of 10 years better); 2026 **2.73% → 2.57%**; no-weather 3.59% → 3.35% |
+| 24 | **Systematic under-forecast** (−0.94% on 2026) | Multiply each forecast by 1 + half the mean error of the last 28 days, using only errors known the day before; chosen on 2017–2025 | 2017–2025 MAPE 2.668% → **2.600%**; 2026 **2.57% → 2.45%**, bias −0.94% → **−0.41%** |
+| 25 | **Intervals too narrow** (80%/95% covered 76.9%/92.7%) | Quantiles of the last 365 days' errors instead of a fixed band from the previous year | 95% band covers **94.1%** of 2026 and 93–97% in every year since 2016; 80% band 77.7% (79% on 2017–2025) |
 
 ## Still open
 
@@ -34,9 +36,7 @@ These can't be closed from the build environment. Each one says what would close
 
 1. **No real hourly data.** delhisldc.org only answers Indian IPs. *To close:* run `python -m pipeline.sldc --start 2023-01-01` from a machine in India and push `data/sldc/hourly.csv`; the parser may need one fix once a real page is seen. This also covers the legacy **hourly day-ahead**, which loses to seasonal naive on the real rows (6.24% vs 5.81%).
 2. **Daily data not checked against the source PDFs.** grid-india.in is blocked here. *To close:* spot-check a few days by hand (19 Jun 2024 should be 176.19 MU).
-3. **No strict day-ahead weather test on past data.** For recent dates, Open-Meteo's archive is itself built from short-range forecasts, so "recorded" and "forecast" weather can't be separated here. *To close:* allow `previous-runs-api.open-meteo.com` (forecasts as issued a day earlier). The live log (fix #21) uses real next-day forecasts and answers this going forward. Bounds until then: 2.57% (archive weather) to 3.35% (no weather).
+3. **No strict day-ahead weather test on past data.** For recent dates, Open-Meteo's archive is itself built from short-range forecasts, so "recorded" and "forecast" weather can't be separated here. *To close:* allow `previous-runs-api.open-meteo.com` (forecasts as issued a day earlier). The live log (fix #21) uses real next-day forecasts and answers this going forward. Bounds until then: 2.45% (archive weather) to about 3.35% (no weather, before bias correction).
 4. **No daily peak (MW) and no discom-level real data.** The Grid-India dataset has energy met only for Delhi. *To close:* the SLDC scrape (#1) provides peaks and discom loads.
-5. **Slight systematic under-forecast** (−0.94% on 2026). A growth-vs-last-year feature (v2) did not remove it. *To close:* try a bias correction calibrated on the rolling years before 2026 (for example a trailing-residual adjustment), then confirm on the live log.
-6. **Intervals are slightly narrow** (80% band covers 76.9%, 95% band 92.7%). *To close:* recalibrate on a longer window (for example 2023–2025 residuals) using the rolling years, never 2026.
-7. **The daily workflow hasn't run on GitHub yet.** It needs to be triggered once (Actions → daily-forecast → Run workflow) and allowed to push to `main`. It depends on Robbie Andrew's dataset staying updated.
-8. **The legacy code is still in the repo** (`load_forecast_new/`), marked as superseded rather than deleted, so the history of the project stays visible.
+5. **The daily workflow hasn't run on GitHub yet.** It needs to be triggered once (Actions → daily-forecast → Run workflow) and allowed to push to `main`. It depends on Robbie Andrew's dataset staying updated.
+6. **The legacy code is still in the repo** (`load_forecast_new/`), marked as superseded rather than deleted, so the history of the project stays visible.

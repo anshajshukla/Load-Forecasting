@@ -28,3 +28,15 @@ def test_holdout_trains_only_before_test_year():
     r, f = holdout(frame(), "2023-01-01", "2025-01-01")
     assert r["train"][1] < "2025-01-01" <= r["test"][0]
     assert r["model_mape"] < r["yesterday_mape"]
+
+
+def test_postprocess_uses_only_past_errors():
+    from pipeline.daily import postprocess
+    idx = pd.date_range("2024-01-01", periods=500, freq="D")
+    rng = np.random.default_rng(1)
+    actual = pd.Series(100 + rng.normal(0, 3, 500), index=idx)
+    raw = pd.Series(100.0, index=idx)
+    base = postprocess(actual, raw).iloc[400]
+    bumped = actual.copy()
+    bumped.iloc[400:] *= 2
+    assert postprocess(bumped, raw).iloc[400].equals(base)

@@ -5,7 +5,8 @@
 1. Optionally refreshes data/posoco/delhi_daily.csv from Robbie Andrew's POSOCO_data.csv.
 2. Appends recent weather and the weather *forecast* (Open-Meteo forecast API, IST) to data/weather.
 3. Trains on the last 5 years of real data and forecasts the day after the last known day,
-   with 80%/95% intervals from the latest 12-month walk-forward.
+   corrected by half its mean error over the last 28 days, with 80%/95% intervals from the last
+   365 days' errors (both from out-of-sample forecasts known by the day before).
 4. Appends to reports/live/forecasts.csv (a forecast is never overwritten) and fills in actuals
    for earlier forecasts once Grid-India reports them.
 
@@ -21,7 +22,7 @@ from pathlib import Path
 import pandas as pd
 
 from . import LAT, LON, TZ
-from .daily import DAILY_CSV, WEATHER_CSV, _fit_predict, _xy, dev_residuals, features, load
+from .daily import DAILY_CSV, WEATHER_CSV, YEARS_BACK, _fit_predict, _xy, features, load, oos_predictions, postprocess
 from .features import WEATHER_COLS
 
 FORECAST_URL = "https://api.open-meteo.com/v1/forecast"
@@ -63,22 +64,18 @@ def forecast_next(df: pd.DataFrame) -> dict:
     target = last + pd.Timedelta(days=1)
     if target not in df.index or pd.isna(df.loc[target, "t_max"]):
         raise ValueError(f"no weather for {target.date()}; fetch the forecast first")
-    start = (last - pd.DateOffset(years=5)).strftime("%Y-%m-%d")
+    start = (last - pd.DateOffset(years=YEARS_BACK)).strftime("%Y-%m-%d")
     ext = df.loc[:target]
     X, y = _xy(ext, start)
-    Xt = features(ext).loc[[target]]
-    Xall = pd.concat([X, Xt])
-    tr = Xall.index <= last
-    te = Xall.index == target
-    yall = y.reindex(Xall.index)
-    p, _ = _fit_predict(Xall, yall, tr, te)
-    pred = float(p.iloc[0])
-    res = dev_residuals(df.loc[:last], start, (last + pd.Timedelta(days=1)).strftime("%Y-%m-%d"))
-    out = {"target_date": target.date().isoformat(), "made_at_utc": datetime.now(timezone.utc).isoformat(timespec="seconds"),
-           "pred": round(pred, 2)}
+    Xall = pd.concat([X, features(ext).loc[[target]]])
+    raw, _ = _fit_predict(Xall, y.reindex(Xall.index), Xall.index <= last, Xall.index == target)
+    # Out-of-sample forecasts for the past ~13 months drive the bias correction and the intervals.
+    hist = oos_predictions(df.loc[:last], last.year - 1, last.year)
+    post = postprocess(df["energy_mu"], pd.concat([hist[hist.index < target], raw])).loc[target]
+    out = {"target_date": target.date().isoformat(),
+           "made_at_utc": datetime.now(timezone.utc).isoformat(timespec="seconds"), "pred": round(float(post["pred"]), 2)}
     for lvl in (80, 95):
-        lo, hi = res.quantile([(1 - lvl / 100) / 2, 1 - (1 - lvl / 100) / 2])
-        out[f"lo{lvl}"], out[f"hi{lvl}"] = round(pred * (1 + lo), 2), round(pred * (1 + hi), 2)
+        out[f"lo{lvl}"], out[f"hi{lvl}"] = round(float(post[f"lo{lvl}"]), 2), round(float(post[f"hi{lvl}"]), 2)
     return out
 
 
