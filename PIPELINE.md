@@ -46,3 +46,19 @@ that behave differently. Some simulated summer days fall to ~1,900 MW at night, 
 load does not do, and the last 216 rows (23-31 July 2025) switch to a different daily shape;
 the model's 35% day-ahead error there is the data changing, not the model. These numbers prove
 the method, not real-world accuracy. Real SLDC data is the next step.
+
+## Real data: scraping Delhi SLDC
+
+The committed dataset is mostly synthetic (`reports/data_audit.md`). `pipeline/sldc.py` scrapes the real
+5-minute loads from delhisldc.org. The site only answers Indian IPs, so run it from a machine in India:
+
+```bash
+pip install -r requirements-pipeline.txt
+python -m pipeline.sldc --start 2022-07-25 --end 2025-07-31     # ~1,100 pages, about 20 min at 1 req/s
+python -m pipeline backtest --real data/sldc/hourly.csv              # real loads replace synthetic ones
+python -m pipeline backtest --real data/sldc/hourly.csv --real-only  # no synthetic data at all
+```
+
+Pages are cached in `data/sldc/raw/`, so an interrupted run resumes where it stopped. A day whose page has
+no load table is reported as FAILED with its HTML kept for inspection. `--real-only` needs at least 13 months
+of scraped history, because each backtest fold trains on at least a year.
