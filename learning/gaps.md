@@ -29,6 +29,7 @@
 | 23 | **Model could be better** | v2: heat build-up (3/7-day), growth vs last year, weekday ratios and holiday-distance features; 5 training years; learning rate 0.02 / 600 trees. Chosen on the 2016–2025 yearly test only. | Mean 2016–2025 error **2.82% → 2.69%** (8 of 10 years better); 2026 **2.73% → 2.57%**; no-weather 3.59% → 3.35% |
 | 24 | **Systematic under-forecast** (−0.94% on 2026) | Multiply each forecast by 1 + half the mean error of the last 28 days, using only errors known the day before; chosen on 2017–2025 | 2017–2025 MAPE 2.668% → **2.600%**; 2026 **2.57% → 2.45%**, bias −0.94% → **−0.41%** |
 | 25 | **Intervals too narrow** (80%/95% covered 76.9%/92.7%) | Quantiles of the last 365 days' errors instead of a fixed band from the previous year | 95% band covers **94.1%** of 2026 and 93–97% in every year since 2016; 80% band 77.7% (79% on 2017–2025) |
+| 26 | **Correction could overshoot after an unusual month** | Correction capped at ±2% (`CORR_CAP`) | Same accuracy (2.45% on 2026); binds on 15 days in 2017–2025 |
 
 ## Still open
 

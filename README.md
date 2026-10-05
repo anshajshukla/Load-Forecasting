@@ -6,9 +6,9 @@ Day-ahead forecast of Delhi's daily electricity demand, trained and tested on **
 |---|---|---|---|
 | Development: walk-forward over 2025 | 2.46% | 4.23% | 7.92% |
 | **2026 held out (1 Jan – 30 Sep, 273 days)** | **2.45%** | 4.55% | 10.12% |
-| Every year 2016–2026, each trained on the 5 years before | median 2.48% (2.37–3.15%) | beaten 11/11 years | |
+| Every year 2016–2026, each trained on the 5 years before | median 2.48% (2.37–3.14%) | beaten 11/11 years | |
 
-* Each forecast is corrected by half its mean error over the last 28 days (removes most of a small under-forecast: bias −0.94% → −0.41% on 2026).
+* Each forecast is corrected by half its mean error over the last 28 days, capped at ±2% (removes most of a small under-forecast: bias −0.94% → −0.41% on 2026).
 * Intervals come from the last 365 days' errors: the 95% interval covers 94.1% of 2026 days (93–97% in every year since 2016), the 80% interval 77.7%.
 * Without a weather forecast for the target day, the error is 3.35%. Results above use recorded weather as a stand-in for a forecast.
 * A linear model on the same features gets 2.61%, so most of the skill comes from the features, not the model's complexity.
@@ -80,7 +80,7 @@ A test (`tests/test_daily.py`) fails if any feature for day d changes when energ
 | Path | What |
 |---|---|
 | `pipeline/daily.py` | Daily model: features, backtest, holdout, bias correction, intervals |
-| `learning/` | `changes.md` (learning log: every change, its measured impact and the lesson), `analysis.md` (audit and results), `gaps.md` (fixes and open gaps) |
+| `learning/` | `changes.md` (learning log), `models.md` (every model used and what it taught), `analysis.md` (audit and results), `gaps.md` (fixes and open gaps) |
 | `pipeline/forecast.py` | Tomorrow's forecast and live scoring (run daily by `.github/workflows/daily-forecast.yml`) |
 | `app/dashboard.py` | Streamlit dashboard on real data |
 | `pipeline/sldc.py`, `pipeline/real.py` | Real hourly data: SLDC scraper (needs an Indian IP) and the all-real hourly path |

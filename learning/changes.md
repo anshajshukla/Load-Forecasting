@@ -134,6 +134,15 @@ Numbers are day-ahead MAPE unless stated. "Dev" means data used to make choices;
 * **Reproduce:** `python scripts/training_window.py` → `reports/training_window.md`. It asserts that every energy value equals the Grid-India file and that training always ends before the test year, and it reports the file fingerprints and the 112 source-missing days (skipped, never filled). The table is also in the README.
 * **Lesson:** more data only helps if it describes the same system. When behaviour shifts in steps (COVID, AC adoption), a clean recent window beats a smooth decay. A tested idea that fails is still worth writing down.
 
+### 23. Capped the bias correction at ±2%
+* **Problem:** without a limit, one unusual month (a lockdown, a long festival period, a data glitch) would make the correction drag every following forecast with it. For example, recent errors of 10% would shift tomorrow's forecast by 5%.
+* **Change:** `CORR_CAP = 0.02`: the correction can never move a forecast by more than 2%. A test feeds weeks of 33% errors and checks that the correction stops at the cap.
+* **How chosen:** on 2017–2025, a 2% cap bound on only 15 days and left accuracy unchanged (2.600%). A 1% cap was about the same; 0.5% started to cost accuracy (2.618%).
+* **Impact:** 2026 unchanged at **2.45%**; 2020 (COVID) 3.15% → 3.14%.
+* **Lesson:** add a safety limit whenever a model corrects itself from recent data. Pick it where it costs nothing in normal times and only acts in unusual ones.
+
+The full list of models used in the project, and what each taught, is in [`models.md`](models.md).
+
 ---
 
 ## Still open

@@ -106,7 +106,10 @@ def _fit_predict(X, y, tr, te):
 #   bias -0.50% -> -0.12%; any window from 28 to 91 days gives about the same);
 # * intervals: quantiles of the last 365 days' corrected errors (80%/95% coverage 79%/95% in every year,
 #   vs 77%/93% for a fixed band from the previous year).
-CORR_WINDOW, CORR_ALPHA, INTERVAL_WINDOW, YEARS_BACK = 28, 0.5, 365, 5
+# * cap: the correction never moves a forecast by more than 2%. On 2017-2025 it binds on 15 days and
+#   leaves accuracy unchanged (2.600%); it stops one unusual month (lockdown, data glitch) from dragging
+#   every forecast after it.
+CORR_WINDOW, CORR_ALPHA, CORR_CAP, INTERVAL_WINDOW, YEARS_BACK = 28, 0.5, 0.02, 365, 5
 
 
 def oos_predictions(df, first_year: int, last_year: int, years_back: int = YEARS_BACK) -> pd.Series:
@@ -126,6 +129,7 @@ def postprocess(actual: pd.Series, raw: pd.Series) -> pd.DataFrame:
     a = actual.reindex(raw.index)
     err = a / raw - 1
     corr = (err.shift(1).rolling(CORR_WINDOW, min_periods=CORR_WINDOW // 2).mean() * CORR_ALPHA).fillna(0)
+    corr = corr.clip(-CORR_CAP, CORR_CAP)
     pred = raw * (1 + corr)
     res = (a / pred - 1).shift(1).rolling(INTERVAL_WINDOW, min_periods=INTERVAL_WINDOW // 2)
     out = pd.DataFrame({"raw": raw, "pred": pred})

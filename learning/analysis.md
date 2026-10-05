@@ -52,9 +52,9 @@ The model (v2) is LightGBM (7 leaves, 600 trees, learning rate 0.02) trained on 
 |---|---|---|---|
 | Development (walk-forward over 2025) | 2.46% | 4.23% | 7.92% |
 | **2026 held-out test (273 days)** | **2.45%** | 4.55% | 10.12% |
-| Every year 2016–2026, each trained on the 5 years before (`reports/rolling_years.md`) | median 2.48%, range 2.37–3.15% | beaten 11/11 years | |
+| Every year 2016–2026, each trained on the 5 years before (`reports/rolling_years.md`) | median 2.48%, range 2.37–3.14% | beaten 11/11 years | |
 
-* It beats "same as yesterday" in every month of 2026. The worst year is 2020 (3.15%, the COVID shock), and even then it beats the baseline.
+* It beats "same as yesterday" in every month of 2026. The worst year is 2020 (3.14%, the COVID shock), and even then it beats the baseline.
 * **Bias correction:** each forecast is multiplied by 1 + half the mean relative error of the last 28 days (errors known the day before). Chosen on 2017–2025: MAPE 2.668% → 2.600%, bias −0.50% → −0.12%. On 2026: 2.57% → 2.45%, bias −0.94% → −0.41%.
 * **Prediction intervals:** quantiles of the last 365 days' errors. The 95% band covers 94.1% of 2026 days and 93–97% in every year since 2016; the 80% band covers 77.7% on 2026 (79% on 2017–2025).
 * **How v2 was chosen:** every candidate (more training years, new features, tuning, a ridge ensemble) was scored on the 2016–2025 yearly test only. v2 cut the mean error there from 2.82% to 2.69% and improved 8 of 10 years; a ridge ensemble added nothing, so it was left out.

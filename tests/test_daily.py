@@ -40,3 +40,12 @@ def test_postprocess_uses_only_past_errors():
     bumped = actual.copy()
     bumped.iloc[400:] *= 2
     assert postprocess(bumped, raw).iloc[400].equals(base)
+
+
+def test_bias_correction_is_capped():
+    from pipeline.daily import CORR_CAP, postprocess
+    idx = pd.date_range("2024-01-01", periods=60, freq="D")
+    actual = pd.Series(150.0, index=idx)   # model 33% too low for weeks: correction must still stop at the cap
+    raw = pd.Series(100.0, index=idx)
+    out = postprocess(actual, raw)
+    assert (out["pred"] / out["raw"] - 1).max() <= CORR_CAP + 1e-12
