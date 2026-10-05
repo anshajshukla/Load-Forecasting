@@ -1,0 +1,7 @@
+# Leak-free forecasting pipeline (pipeline/). The legacy load_forecast_new/requirements.txt is separate.
+pandas>=2.1,<4
+numpy>=1.26,<3
+lightgbm>=4.3,<5
+scikit-learn>=1.4,<2  # required by lightgbm.sklearn
+holidays>=0.50
+pytest>=8
