@@ -13,7 +13,6 @@ sys.path.insert(0, str(ROOT))
 
 from pipeline.daily import CORR_ALPHA, CORR_CAP, CORR_WINDOW, INTERVAL_WINDOW, PARAMS, YEARS_BACK  # noqa: E402
 
-st.set_page_config(page_title="How it works", layout="wide")
 st.title("How it works")
 st.caption("Everything below is read from the repo: code settings, generated reports and the learning notes.")
 

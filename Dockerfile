@@ -6,6 +6,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY pipeline/ ./pipeline/
 COPY app/ ./app/
+COPY .streamlit/ ./.streamlit/
 COPY data/posoco/ ./data/posoco/
 COPY data/weather/ ./data/weather/
 COPY reports/ ./reports/

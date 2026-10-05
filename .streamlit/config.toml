@@ -1,0 +1,9 @@
+# Light and dark variants keep the viewer's light/dark setting working (a single [theme] would force light).
+[theme.light]
+primaryColor = "#2a78d6"
+
+[theme.dark]
+primaryColor = "#3987e5"
+
+[client]
+toolbarMode = "minimal"
