@@ -361,7 +361,7 @@ def load_project_config() -> Dict[str, Any]:
         "start_date": "2022-07-01",
         "current_date": "2025-08-09",
         "target_mape": 5.0,
-        "achieved_mape": 4.09,  # WARNING: hard-coded legacy claim, not measured (see analysis.md)
+        "achieved_mape": 4.09,  # WARNING: hard-coded legacy claim, not measured (see learning/analysis.md)
         "total_features_original": 267,
         "total_features_optimized": 111,
         "quality_score": 0.894,
@@ -428,7 +428,7 @@ def get_phase_status() -> List[Dict[str, Any]]:
             "progress": 100,
             "duration": "4 weeks",
             "key_achievements": [
-                "Legacy 4.09% MAPE claim was hard-coded; see analysis.md",
+                "Legacy 4.09% MAPE claim was hard-coded; see learning/analysis.md",
                 "19 models trained and evaluated",
                 "Hybrid ensemble optimization",
                 "Cross-validation framework",
@@ -442,7 +442,7 @@ def get_phase_status() -> List[Dict[str, Any]]:
             "duration": "1 week",
             "key_achievements": [
                 "Unanimous committee approval",
-                "Legacy $4.8M/month figure was never calculated; see analysis.md",
+                "Legacy $4.8M/month figure was never calculated; see learning/analysis.md",
                 "Production deployment authorized",
                 "Complete documentation package",
             ],

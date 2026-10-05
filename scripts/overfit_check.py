@@ -39,7 +39,7 @@ def run(params=PARAMS, cols=None, a=tr, b=te, target=None):
 # 1. train vs test
 tr_err, te_err = run()
 _, dev_err = run(a=dev_tr, b=dev_te)
-out += ["## 1. Train vs test error", "", "| Training (2023-2025, in-sample) | Dev test (2025, trained on 2023-2024) | 2026 test |",
+out += ["## 1. Train vs test error", "", f"| Training ({TRAIN_FROM[:4]}-2025, in-sample) | Dev test (2025, trained on {TRAIN_FROM[:4]}-2024) | 2026 test |",
         "|---|---|---|", f"| {tr_err:.2f}% | {dev_err:.2f}% | {te_err:.2f}% |", ""]
 
 # 2. simpler models
@@ -102,7 +102,8 @@ verdict = (f"**Verdict:** training error {tr_err:.2f}% vs {te_err:.2f}% on 2026.
            f"sizes, is stable across seeds ({min(seeds):.2f}–{max(seeds):.2f}%), and collapses to {sh:.2f}% (worse than "
            f"same-as-yesterday) when the target is shuffled, so the skill is real and not memorised noise. A linear model "
            f"gets {mape(y[te], p_r):.2f}%, so most of the skill comes from the features. The model size "
-           f"({PARAMS['num_leaves']} leaves, {PARAMS['n_estimators']} trees) was chosen on the 2025 dev fold, after a first "
-           "2026 run with 15 leaves / 600 trees (2.82%); that order is disclosed.\n\n")
+           f"and v2 features ({PARAMS['num_leaves']} leaves, {PARAMS['n_estimators']} trees, training from {TRAIN_FROM}) were chosen "
+           "on 2025 dev data and the 2016-2025 rolling-year test. 2026 was looked at three times in total "
+           "(v1 large: 2.82%, v1 small: 2.73%, v2), each after the choice was made; that order is disclosed.\n\n")
 Path("reports/overfit_check.md").write_text("# Overfitting checks: daily model\n\n" + verdict + "\n".join(out))
 print("\n".join(out))

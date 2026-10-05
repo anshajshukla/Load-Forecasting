@@ -1,0 +1,9 @@
+# Used by Streamlit Community Cloud (and any host that installs requirements.txt) to run app/dashboard.py.
+pandas>=2.1,<4
+numpy>=1.26,<3
+lightgbm>=4.3,<5
+scikit-learn>=1.4,<2
+holidays>=0.50
+requests>=2.31,<3
+streamlit>=1.38,<2
+plotly>=5.20,<7

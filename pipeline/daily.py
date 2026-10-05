@@ -14,18 +14,20 @@ import argparse
 import json
 from pathlib import Path
 
+REPO_ROOT = Path(__file__).resolve().parents[1]
+
 import holidays
 import lightgbm as lgb
 import numpy as np
 import pandas as pd
 
-DAILY_CSV = Path("data/posoco/delhi_daily.csv")
-WEATHER_CSV = Path("data/weather/delhi_hourly.csv")
-TRAIN_FROM, TEST_FROM = "2023-01-01", "2026-01-01"
-# 7 leaves / 300 trees: same 2025 dev error as the first choice (15 / 600, 2.57%), lower dev bias
-# (-0.16% vs -0.36%) and a much smaller train/test gap. Chosen on the 2025 dev fold, but after the
-# 2026 holdout had been run once with 15 / 600 (2.82%); see reports/overfit_check.md.
-PARAMS = dict(n_estimators=300, learning_rate=0.03, num_leaves=7, min_child_samples=15,
+DAILY_CSV = REPO_ROOT / "data/posoco/delhi_daily.csv"
+WEATHER_CSV = REPO_ROOT / "data/weather/delhi_hourly.csv"
+TRAIN_FROM, TEST_FROM = "2021-01-01", "2026-01-01"  # 5 training years (v2; v1 used 3)
+# v2 (chosen on the 2016-2025 rolling-year test, mean MAPE 2.82% -> 2.71%; 2026 not used):
+# extra heat build-up, growth, holiday-distance and weekday-ratio features, 5 training years,
+# learning rate 0.02 with 600 trees. v1 (7 leaves / 300 trees, lr 0.03, 3 years) is in git history.
+PARAMS = dict(n_estimators=600, learning_rate=0.02, num_leaves=7, min_child_samples=15,
               subsample=0.8, subsample_freq=1, colsample_bytree=0.8, verbose=-1, random_state=0,
               n_jobs=1, deterministic=True)  # identical results on every run
 
@@ -64,8 +66,25 @@ def features(df: pd.DataFrame) -> pd.DataFrame:
     f["hdd"] = (16 - df["t_mean"]).clip(lower=0)
     f["d_t_max"] = df["t_max"] - df["t_max"].shift(1)  # weather change vs the last known day
     f["t_max_yday"] = df["t_max"].shift(1)
+    # Heat build-up over the last days (weather of d and earlier), and growth vs a year ago (energy <= d-1).
+    f["t_mean_3d"] = df["t_mean"].rolling(3).mean()
+    f["t_mean_7d"] = df["t_mean"].rolling(7).mean()
+    f["t_max_3d"] = df["t_max"].rolling(3).mean()
+    f["cdd_3d"] = (f["t_mean_3d"] - 24).clip(lower=0)
+    f["yoy_growth"] = y.shift(1).rolling(28).mean() / y.shift(365).rolling(28).mean()
+    # Typical ratio of this weekday to the trailing week, from the last 8 same weekdays (all <= d-1).
+    rel = (y / y.rolling(7).mean()).shift(1)
+    prev_dow = (df.index.dayofweek - 1) % 7
+    f["dow_ratio_prev"] = rel.groupby(prev_dow).transform(lambda s: s.rolling(8, min_periods=4).median())
+    f["lag7_ratio"] = y.shift(7) / y.shift(8)
     idx = df.index
     hol = holidays.India(years=range(idx.year.min() - 1, idx.year.max() + 2), subdiv="DL")
+    hd = np.array(sorted(pd.to_datetime(list(hol)).values))
+    pos = np.searchsorted(hd, idx.values)
+    nxt = hd[np.minimum(pos, len(hd) - 1)]
+    prv = hd[np.maximum(pos - 1, 0)]
+    f["days_to_holiday"] = np.clip((nxt - idx.values) / np.timedelta64(1, "D"), 0, 10)
+    f["days_since_holiday"] = np.clip((idx.values - prv) / np.timedelta64(1, "D"), 0, 10)
     f["dow"] = idx.dayofweek
     f["is_holiday"] = pd.Index(idx.date).isin(list(hol)).astype(int)
     f["doy_sin"] = np.sin(2 * np.pi * idx.dayofyear / 365.25)
@@ -82,6 +101,44 @@ def mape(a, p) -> float:
 def _fit_predict(X, y, tr, te):
     m = lgb.LGBMRegressor(**PARAMS).fit(X[tr], (y - X["lag_1d"])[tr])  # learn the change from yesterday
     return pd.Series(m.predict(X[te]) + X.loc[te, "lag_1d"].to_numpy(), index=X.index[te]), m
+
+
+# Post-processing, chosen on the 2017-2025 out-of-sample errors (2026 not used):
+# * bias correction: multiply by 1 + 0.5 x mean relative error of the last 28 days (MAPE 2.668% -> 2.600%,
+#   bias -0.50% -> -0.12%; any window from 28 to 91 days gives about the same);
+# * intervals: quantiles of the last 365 days' corrected errors (80%/95% coverage 79%/95% in every year,
+#   vs 77%/93% for a fixed band from the previous year).
+# * cap: the correction never moves a forecast by more than 2%. On 2017-2025 it binds on 15 days and
+#   leaves accuracy unchanged (2.600%); it stops one unusual month (lockdown, data glitch) from dragging
+#   every forecast after it.
+CORR_WINDOW, CORR_ALPHA, CORR_CAP, INTERVAL_WINDOW, YEARS_BACK = 28, 0.5, 0.02, 365, 5
+
+
+def oos_predictions(df, first_year: int, last_year: int, years_back: int = YEARS_BACK) -> pd.Series:
+    """Day-ahead predictions for each year from a model trained on the `years_back` years before it."""
+    X, y = _xy(df, f"{first_year - years_back}-01-01")
+    out = []
+    for year in range(first_year, last_year + 1):
+        tr = (X.index >= f"{year - years_back}-01-01") & (X.index < f"{year}-01-01")
+        te = (X.index >= f"{year}-01-01") & (X.index < f"{year + 1}-01-01")
+        if te.any() and tr.sum() >= 365:  # skip years without at least a year of history to train on
+            out.append(_fit_predict(X, y, tr, te)[0])
+    return pd.concat(out) if out else pd.Series(dtype=float)
+
+
+def postprocess(actual: pd.Series, raw: pd.Series) -> pd.DataFrame:
+    """Bias-corrected forecast and 80%/95% intervals, each using only errors known by the day before."""
+    a = actual.reindex(raw.index)
+    err = a / raw - 1
+    corr = (err.shift(1).rolling(CORR_WINDOW, min_periods=CORR_WINDOW // 2).mean() * CORR_ALPHA).fillna(0)
+    corr = corr.clip(-CORR_CAP, CORR_CAP)
+    pred = raw * (1 + corr)
+    res = (a / pred - 1).shift(1).rolling(INTERVAL_WINDOW, min_periods=INTERVAL_WINDOW // 2)
+    out = pd.DataFrame({"raw": raw, "pred": pred})
+    for lvl in (80, 95):
+        q = (1 - lvl / 100) / 2
+        out[f"lo{lvl}"], out[f"hi{lvl}"] = pred * (1 + res.quantile(q)), pred * (1 + res.quantile(1 - q))
+    return out
 
 
 def _score(y, X, pred, te) -> dict:
@@ -116,17 +173,6 @@ def backtest(df, train_from=TRAIN_FROM, until=TEST_FROM, folds=12) -> dict:
     return r
 
 
-def dev_residuals(df, train_from=TRAIN_FROM, until=TEST_FROM, folds=12) -> pd.Series:
-    """Relative day-ahead errors (actual/pred - 1) from the walk-forward over the year before `until`."""
-    X, y = _xy(df[df.index < until], train_from)
-    out = []
-    for mth in pd.period_range(end=pd.Timestamp(until) - pd.Timedelta(days=1), periods=folds, freq="M"):
-        te, tr = X.index.to_period("M") == mth, X.index < mth.start_time
-        p, _ = _fit_predict(X, y, tr, te)
-        out.append(y[te] / p - 1)
-    return pd.concat(out)
-
-
 def holdout(df, train_from=TRAIN_FROM, test_from=TEST_FROM) -> tuple[dict, pd.DataFrame]:
     X, y = _xy(df, train_from)
     tr, te = X.index < test_from, X.index >= test_from
@@ -134,17 +180,23 @@ def holdout(df, train_from=TRAIN_FROM, test_from=TEST_FROM) -> tuple[dict, pd.Da
     r = _score(y, X, p, te)
     r.update(kind="holdout", train=[str(X.index[tr].min().date()), str(X.index[tr].max().date())],
              test=[str(X.index[te].min().date()), str(X.index[te].max().date())])
-    frame = pd.DataFrame({"actual": y[te], "pred": p, "yesterday": X.loc[te, "lag_1d"], "last_week": X.loc[te, "lag_7d"]})
-    # Split-conformal intervals: quantiles of relative errors on the 2025 dev walk-forward, never on 2026.
-    res = dev_residuals(df, train_from, test_from)
+    # Earlier years' out-of-sample forecasts feed the bias correction and intervals (errors known by d-1 only).
+    start_year = pd.Timestamp(test_from).year
+    hist = oos_predictions(df, start_year - 2, start_year - 1)
+    post = postprocess(df["energy_mu"], pd.concat([hist, p])).loc[p.index]
+    frame = pd.DataFrame({"actual": y[te], "raw": p, "yesterday": X.loc[te, "lag_1d"], "last_week": X.loc[te, "lag_7d"]})
+    frame = frame.join(post.drop(columns="raw"))
+    r["raw_model_mape"] = r["model_mape"]
+    r["model_mape"] = mape(frame.actual, frame.pred)
+    r["mae_mu"] = float(np.nanmean(np.abs(frame.actual - frame.pred)))
+    r["bias_pct"] = float(((frame.pred - frame.actual) / frame.actual).mean() * 100)
+    r["raw_bias_pct"] = float(((frame.raw - frame.actual) / frame.actual).mean() * 100)
+    r["skill_vs_best_baseline_pct"] = 100 * (1 - r["model_mape"] / min(r["yesterday_mape"], r["last_week_mape"]))
     r["intervals"] = {}
     for level in (80, 95):
-        lo, hi = res.quantile([(1 - level / 100) / 2, 1 - (1 - level / 100) / 2])
-        frame[f"lo{level}"], frame[f"hi{level}"] = p * (1 + lo), p * (1 + hi)
         inside = (frame.actual >= frame[f"lo{level}"]) & (frame.actual <= frame[f"hi{level}"])
         r["intervals"][level] = {"coverage": float(inside.mean() * 100),
-                                 "mean_width_mu": float((frame[f"hi{level}"] - frame[f"lo{level}"]).mean()),
-                                 "band_pct": [float(lo * 100), float(hi * 100)]}
+                                 "mean_width_mu": float((frame[f"hi{level}"] - frame[f"lo{level}"]).mean())}
     r["by_month"] = {str(k): {"model": mape(g.actual, g.pred), "yesterday": mape(g.actual, g.yesterday),
                               "last_week": mape(g.actual, g.last_week)}
                      for k, g in frame.groupby(frame.index.to_period("M"))}
@@ -185,12 +237,13 @@ def main(argv=None) -> None:
                  "| Month | Model | Yesterday | Same day last week |", "|---|---|---|---|"]
         for k, v in r["by_month"].items():
             lines.append(f"| {k} | {v['model']:.2f}% | {v['yesterday']:.2f}% | {v['last_week']:.2f}% |")
-        lines += ["", "## Prediction intervals", "",
-                  "Split-conformal: the band is set from relative errors on the 2025 development walk-forward, then "
-                  "checked on 2026.", "", "| Nominal | 2026 coverage | Band | Mean width (MU) |", "|---|---|---|---|"]
+        lines += ["", f"Model before bias correction: {r['raw_model_mape']:.2f}% (bias {r['raw_bias_pct']:+.2f}%); "
+                  f"after: {r['model_mape']:.2f}% (bias {r['bias_pct']:+.2f}%). The correction uses only errors known the "
+                  "day before.", "", "## Prediction intervals", "",
+                  "Quantiles of the last 365 days' errors, each known by the day before.", "",
+                  "| Nominal | 2026 coverage | Mean width (MU) |", "|---|---|---|"]
         for lvl, v in r["intervals"].items():
-            lines.append(f"| {lvl}% | {v['coverage']:.1f}% | {v['band_pct'][0]:+.1f}% to {v['band_pct'][1]:+.1f}% | "
-                         f"{v['mean_width_mu']:.1f} |")
+            lines.append(f"| {lvl}% | {v['coverage']:.1f}% | {v['mean_width_mu']:.1f} |")
         lines += ["", "## Most-used features", "", ", ".join(r["top_features"])]
         (a.out / "daily_holdout.json").write_text(json.dumps(r, indent=2))
         (a.out / "daily_holdout.md").write_text("\n".join(lines) + "\n")
