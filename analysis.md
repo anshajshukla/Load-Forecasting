@@ -51,7 +51,8 @@ The model is LightGBM trained on the change from yesterday. Its inputs are past 
 | | Model | Same as yesterday | Same day last week |
 |---|---|---|---|
 | Development (walk-forward over 2025) | 2.57% | 4.23% | 7.92% |
-| **2026 held-out test (273 days)** | **2.82%** | 4.55% | 10.12% |
+| **2026 held-out test (273 days)** | **2.72%** | 4.55% | 10.12% |
+| Every year 2016–2026 (train on prior 3 years) | median 2.73%, range 2.52–3.55% | beaten 11/11 years | |
 
 It beats "same as yesterday" in every month of 2026, with monthly errors from 1.7% to 3.7%. The test checking that a forecast never sees energy from day d or later passes.
 

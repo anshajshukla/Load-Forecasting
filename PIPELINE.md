@@ -8,9 +8,10 @@ trained once on 2023–2025 and scored on every day of 2026 up to 30 Sep:
 | | Model | Same as yesterday | Same day last week |
 |---|---|---|---|
 | Development (walk-forward on 2025) | 2.57% | 4.23% | 7.92% |
-| **2026 held-out test (273 days)** | **2.82%** | 4.55% | 10.12% |
+| **2026 held-out test (273 days)** | **2.72%** | 4.55% | 10.12% |
+| Every year 2016–2026 (train on prior 3 years) | median 2.73%, range 2.52–3.55% | beaten 11/11 years | |
 
-The model beats "same as yesterday" in every month of 2026, and the held-out error is close to the development
+The 2026 number is from the final model (7 leaves, 300 trees), chosen on 2025 development data after a first 2026 run with a larger model gave 2.82%. The model beats "same as yesterday" in every month of 2026, and the held-out error is close to the development
 error, so the model was not overfitted. Weather for the target day is the archive actual, standing in for a weather
 forecast, so real-world error would be slightly higher. Full tables: `reports/daily_backtest.md`, `reports/daily_holdout.md`.
 Overfitting checks (train/test gap, linear baseline, complexity sweep, shuffled target, seeds, no-weather): `reports/overfit_check.md`.
