@@ -4,7 +4,7 @@
 
 1. Optionally refreshes data/posoco/delhi_daily.csv from Robbie Andrew's POSOCO_data.csv.
 2. Appends recent weather and the weather *forecast* (Open-Meteo forecast API, IST) to data/weather.
-3. Trains on the last 3 years of real data and forecasts the day after the last known day,
+3. Trains on the last 5 years of real data and forecasts the day after the last known day,
    with 80%/95% intervals from the latest 12-month walk-forward.
 4. Appends to reports/live/forecasts.csv (a forecast is never overwritten) and fills in actuals
    for earlier forecasts once Grid-India reports them.
@@ -63,7 +63,7 @@ def forecast_next(df: pd.DataFrame) -> dict:
     target = last + pd.Timedelta(days=1)
     if target not in df.index or pd.isna(df.loc[target, "t_max"]):
         raise ValueError(f"no weather for {target.date()}; fetch the forecast first")
-    start = (last - pd.DateOffset(years=3)).strftime("%Y-%m-%d")
+    start = (last - pd.DateOffset(years=5)).strftime("%Y-%m-%d")
     ext = df.loc[:target]
     X, y = _xy(ext, start)
     Xt = features(ext).loc[[target]]

@@ -1,4 +1,4 @@
-"""Rolling-origin test over many years: for each year Y, train on the 3 years before Y and score Y day-ahead.
+"""Rolling-origin test over many years: for each year Y, train on the 5 years before Y and score Y day-ahead.
 
 Run: python scripts/rolling_years.py (writes reports/rolling_years.md). Same model and features as pipeline.daily.
 """
@@ -14,7 +14,7 @@ df = load()
 X, y = _xy(df, "2013-01-01")
 rows = []
 for year in range(2016, 2027):
-    tr = (X.index >= f"{year - 3}-01-01") & (X.index < f"{year}-01-01")
+    tr = (X.index >= f"{year - 5}-01-01") & (X.index < f"{year}-01-01")
     te = (X.index >= f"{year}-01-01") & (X.index < f"{year + 1}-01-01")
     p, _ = _fit_predict(X, y, tr, te)
     a = y[te]
@@ -23,7 +23,7 @@ for year in range(2016, 2027):
                  "bias": float(((p - a) / a).mean() * 100)})
 r = pd.DataFrame(rows)
 lines = ["# Rolling-origin test, 2016–2026", "",
-         "For each year: train on the previous 3 years only, score every day of that year day-ahead. Same model, features "
+         "For each year: train on the previous 5 years only, score every day of that year day-ahead. Same model, features "
          "and settings as `pipeline.daily`; real Grid-India data and Open-Meteo archive weather. 2026 runs to 30 Sep.", "",
          "| Year | Days | Model | Same as yesterday | Same day last week | Bias |", "|---|---|---|---|---|---|"]
 for x in rows:

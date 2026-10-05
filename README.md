@@ -4,13 +4,14 @@ Day-ahead forecast of Delhi's daily electricity demand, trained and tested on **
 
 | Test | Model (MAPE) | Same as yesterday | Same day last week |
 |---|---|---|---|
-| Development: walk-forward over 2025 | 2.53% | 4.23% | 7.92% |
-| **2026 held out (1 Jan – 30 Sep, 273 days)** | **2.73%** | 4.55% | 10.12% |
-| Every year 2016–2026, each trained on the 3 years before | median 2.73% (2.52–3.55%) | beaten 11/11 years | |
+| Development: walk-forward over 2025 | 2.46% | 4.23% | 7.92% |
+| **2026 held out (1 Jan – 30 Sep, 273 days)** | **2.57%** | 4.55% | 10.12% |
+| Every year 2016–2026, each trained on the 5 years before | median 2.58% (2.42–3.25%) | beaten 11/11 years | |
 
-* The 95% prediction interval covers 93.8% of 2026 days. The 80% interval covers 74.4%, so it is a little narrow.
-* Without a weather forecast for the target day, the error is 3.6%. Results above use recorded weather as a stand-in for a forecast.
-* A linear model gets 2.94%, so most of the skill comes from the features, not the model's complexity.
+* The 95% prediction interval covers 92.7% of 2026 days, and the 80% interval 76.9%; both are slightly narrow.
+* Without a weather forecast for the target day, the error is 3.35%. Results above use recorded weather as a stand-in for a forecast.
+* A linear model on the same features gets 2.61%, so most of the skill comes from the features, not the model's complexity.
+* Model v2 (heat build-up, growth, holiday-distance and weekday features, 5 training years) was chosen on the 2016–2025 yearly test, where it cut mean error from 2.82% to 2.69%; 2026 then improved from 2.73% to 2.57%.
 
 ## Quick start
 
@@ -32,10 +33,10 @@ Grid-India daily energy met (data/posoco)    Open-Meteo weather, IST (data/weath
                  │                                         │
                  └──────────────┬──────────────────────────┘
                                 ▼
-   features for day d: energy from days ≤ d-1 only (lags, 7/28-day means, trend),
-   weather for d and d-1, calendar and holidays
+   features for day d: energy from days ≤ d-1 only (lags, 7/28-day means, trend, growth vs last year,
+   weekday ratios), weather for d and the days before (3/7-day heat build-up), calendar, holiday distance
                                 ▼
-   LightGBM (7 leaves, 300 trees) predicts the change from yesterday
+   LightGBM (7 leaves, 600 trees, last 5 years) predicts the change from yesterday
                                 ▼
    forecast + split-conformal intervals (calibrated on 2025, never on 2026)
 ```

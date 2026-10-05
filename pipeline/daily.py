@@ -21,11 +21,11 @@ import pandas as pd
 
 DAILY_CSV = Path("data/posoco/delhi_daily.csv")
 WEATHER_CSV = Path("data/weather/delhi_hourly.csv")
-TRAIN_FROM, TEST_FROM = "2023-01-01", "2026-01-01"
-# 7 leaves / 300 trees: same 2025 dev error as the first choice (15 / 600, 2.57%), lower dev bias
-# (-0.16% vs -0.36%) and a much smaller train/test gap. Chosen on the 2025 dev fold, but after the
-# 2026 holdout had been run once with 15 / 600 (2.82%); see reports/overfit_check.md.
-PARAMS = dict(n_estimators=300, learning_rate=0.03, num_leaves=7, min_child_samples=15,
+TRAIN_FROM, TEST_FROM = "2021-01-01", "2026-01-01"  # 5 training years (v2; v1 used 3)
+# v2 (chosen on the 2016-2025 rolling-year test, mean MAPE 2.82% -> 2.71%; 2026 not used):
+# extra heat build-up, growth, holiday-distance and weekday-ratio features, 5 training years,
+# learning rate 0.02 with 600 trees. v1 (7 leaves / 300 trees, lr 0.03, 3 years) is in git history.
+PARAMS = dict(n_estimators=600, learning_rate=0.02, num_leaves=7, min_child_samples=15,
               subsample=0.8, subsample_freq=1, colsample_bytree=0.8, verbose=-1, random_state=0,
               n_jobs=1, deterministic=True)  # identical results on every run
 
@@ -64,8 +64,25 @@ def features(df: pd.DataFrame) -> pd.DataFrame:
     f["hdd"] = (16 - df["t_mean"]).clip(lower=0)
     f["d_t_max"] = df["t_max"] - df["t_max"].shift(1)  # weather change vs the last known day
     f["t_max_yday"] = df["t_max"].shift(1)
+    # Heat build-up over the last days (weather of d and earlier), and growth vs a year ago (energy <= d-1).
+    f["t_mean_3d"] = df["t_mean"].rolling(3).mean()
+    f["t_mean_7d"] = df["t_mean"].rolling(7).mean()
+    f["t_max_3d"] = df["t_max"].rolling(3).mean()
+    f["cdd_3d"] = (f["t_mean_3d"] - 24).clip(lower=0)
+    f["yoy_growth"] = y.shift(1).rolling(28).mean() / y.shift(365).rolling(28).mean()
+    # Typical ratio of this weekday to the trailing week, from the last 8 same weekdays (all <= d-1).
+    rel = (y / y.rolling(7).mean()).shift(1)
+    prev_dow = (df.index.dayofweek - 1) % 7
+    f["dow_ratio_prev"] = rel.groupby(prev_dow).transform(lambda s: s.rolling(8, min_periods=4).median())
+    f["lag7_ratio"] = y.shift(7) / y.shift(8)
     idx = df.index
     hol = holidays.India(years=range(idx.year.min() - 1, idx.year.max() + 2), subdiv="DL")
+    hd = np.array(sorted(pd.to_datetime(list(hol)).values))
+    pos = np.searchsorted(hd, idx.values)
+    nxt = hd[np.minimum(pos, len(hd) - 1)]
+    prv = hd[np.maximum(pos - 1, 0)]
+    f["days_to_holiday"] = np.clip((nxt - idx.values) / np.timedelta64(1, "D"), 0, 10)
+    f["days_since_holiday"] = np.clip((idx.values - prv) / np.timedelta64(1, "D"), 0, 10)
     f["dow"] = idx.dayofweek
     f["is_holiday"] = pd.Index(idx.date).isin(list(hol)).astype(int)
     f["doy_sin"] = np.sin(2 * np.pi * idx.dayofyear / 365.25)
