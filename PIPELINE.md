@@ -13,6 +13,7 @@ trained once on 2023–2025 and scored on every day of 2026 up to 30 Sep:
 The model beats "same as yesterday" in every month of 2026, and the held-out error is close to the development
 error, so the model was not overfitted. Weather for the target day is the archive actual, standing in for a weather
 forecast, so real-world error would be slightly higher. Full tables: `reports/daily_backtest.md`, `reports/daily_holdout.md`.
+Overfitting checks (train/test gap, linear baseline, complexity sweep, shuffled target, seeds, no-weather): `reports/overfit_check.md`.
 
 ```bash
 python -m pipeline.daily backtest   # development, 2026 excluded
