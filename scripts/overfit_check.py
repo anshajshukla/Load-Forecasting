@@ -53,7 +53,7 @@ s_tr, s_te = run(stump)
 out += ["## 2. Simpler models on the same features", "", "| Model | Train | 2026 test |", "|---|---|---|",
         f"| Ridge regression (linear) | {mape(y[tr], p_r_in):.2f}% | {mape(y[te], p_r):.2f}% |",
         f"| Small GBM (4 leaves, 200 trees) | {s_tr:.2f}% | {s_te:.2f}% |",
-        f"| Chosen GBM (15 leaves, 600 trees) | {tr_err:.2f}% | {te_err:.2f}% |",
+        f"| Chosen GBM ({PARAMS['num_leaves']} leaves, {PARAMS['n_estimators']} trees) | {tr_err:.2f}% | {te_err:.2f}% |",
         f"| Same as yesterday | - | {mape(y[te], base[te]):.2f}% |", ""]
 
 # 3. complexity sweep, judged on the 2025 dev fold (2026 shown for information only)
@@ -98,5 +98,11 @@ out += ["## 7. Bias", "", f"Mean error on 2026: {res.mean():+.2f}% (positive = o
         f"other days {mape(y[te][~hot], p_main[~hot]):.2f}%.", ""]
 
 Path("reports").mkdir(exist_ok=True)
-Path("reports/overfit_check.md").write_text("# Overfitting checks: daily model\n\n" + "\n".join(out))
+verdict = (f"**Verdict:** training error {tr_err:.2f}% vs {te_err:.2f}% on 2026. Test error barely moves across model "
+           f"sizes, is stable across seeds ({min(seeds):.2f}–{max(seeds):.2f}%), and collapses to {sh:.2f}% (worse than "
+           f"same-as-yesterday) when the target is shuffled, so the skill is real and not memorised noise. A linear model "
+           f"gets {mape(y[te], p_r):.2f}%, so most of the skill comes from the features. The model size "
+           f"({PARAMS['num_leaves']} leaves, {PARAMS['n_estimators']} trees) was chosen on the 2025 dev fold, after a first "
+           "2026 run with 15 leaves / 600 trees (2.82%); that order is disclosed.\n\n")
+Path("reports/overfit_check.md").write_text("# Overfitting checks: daily model\n\n" + verdict + "\n".join(out))
 print("\n".join(out))

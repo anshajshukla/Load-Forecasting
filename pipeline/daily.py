@@ -26,7 +26,8 @@ TRAIN_FROM, TEST_FROM = "2023-01-01", "2026-01-01"
 # (-0.16% vs -0.36%) and a much smaller train/test gap. Chosen on the 2025 dev fold, but after the
 # 2026 holdout had been run once with 15 / 600 (2.82%); see reports/overfit_check.md.
 PARAMS = dict(n_estimators=300, learning_rate=0.03, num_leaves=7, min_child_samples=15,
-              subsample=0.8, subsample_freq=1, colsample_bytree=0.8, verbose=-1, random_state=0)
+              subsample=0.8, subsample_freq=1, colsample_bytree=0.8, verbose=-1, random_state=0,
+              n_jobs=1, deterministic=True)  # identical results on every run
 
 
 def load(daily_csv=DAILY_CSV, weather_csv=WEATHER_CSV) -> pd.DataFrame:
@@ -40,7 +41,8 @@ def load(daily_csv=DAILY_CSV, weather_csv=WEATHER_CSV) -> pd.DataFrame:
         "rain_mm": g["precipitation"].sum(), "cloud_mean": g["cloud_cover"].mean(),
         "radiation_sum": g["shortwave_radiation"].sum(), "wind_mean": g["wind_speed_10m"].mean(),
     })
-    idx = pd.date_range(e.index.min(), e.index.max(), freq="D")
+    # Extend past the last known energy day while weather exists, so tomorrow can be forecast.
+    idx = pd.date_range(e.index.min(), max(e.index.max(), wd.dropna(subset=["t_max"]).index.max()), freq="D")
     df = wd.reindex(idx).join(e.reindex(idx))
     df.index.name = "date"
     return df

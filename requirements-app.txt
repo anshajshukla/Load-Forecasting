@@ -1,0 +1,4 @@
+# Dashboard (app/dashboard.py) on top of the pipeline requirements.
+-r requirements-pipeline.txt
+streamlit>=1.38,<2
+plotly>=5.20,<7
