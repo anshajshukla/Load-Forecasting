@@ -1,1 +1,1 @@
-web: sh setup.sh && streamlit run load_forecast_new/delhi_forecasting_dashboard/main.py
+web: streamlit run app/dashboard.py --server.port=$PORT --server.address=0.0.0.0 --server.headless=true

@@ -26,7 +26,8 @@ TRAIN_FROM, TEST_FROM = "2023-01-01", "2026-01-01"
 # (-0.16% vs -0.36%) and a much smaller train/test gap. Chosen on the 2025 dev fold, but after the
 # 2026 holdout had been run once with 15 / 600 (2.82%); see reports/overfit_check.md.
 PARAMS = dict(n_estimators=300, learning_rate=0.03, num_leaves=7, min_child_samples=15,
-              subsample=0.8, subsample_freq=1, colsample_bytree=0.8, verbose=-1, random_state=0)
+              subsample=0.8, subsample_freq=1, colsample_bytree=0.8, verbose=-1, random_state=0,
+              n_jobs=1, deterministic=True)  # identical results on every run
 
 
 def load(daily_csv=DAILY_CSV, weather_csv=WEATHER_CSV) -> pd.DataFrame:
@@ -40,7 +41,8 @@ def load(daily_csv=DAILY_CSV, weather_csv=WEATHER_CSV) -> pd.DataFrame:
         "rain_mm": g["precipitation"].sum(), "cloud_mean": g["cloud_cover"].mean(),
         "radiation_sum": g["shortwave_radiation"].sum(), "wind_mean": g["wind_speed_10m"].mean(),
     })
-    idx = pd.date_range(e.index.min(), e.index.max(), freq="D")
+    # Extend past the last known energy day while weather exists, so tomorrow can be forecast.
+    idx = pd.date_range(e.index.min(), max(e.index.max(), wd.dropna(subset=["t_max"]).index.max()), freq="D")
     df = wd.reindex(idx).join(e.reindex(idx))
     df.index.name = "date"
     return df
@@ -114,6 +116,17 @@ def backtest(df, train_from=TRAIN_FROM, until=TEST_FROM, folds=12) -> dict:
     return r
 
 
+def dev_residuals(df, train_from=TRAIN_FROM, until=TEST_FROM, folds=12) -> pd.Series:
+    """Relative day-ahead errors (actual/pred - 1) from the walk-forward over the year before `until`."""
+    X, y = _xy(df[df.index < until], train_from)
+    out = []
+    for mth in pd.period_range(end=pd.Timestamp(until) - pd.Timedelta(days=1), periods=folds, freq="M"):
+        te, tr = X.index.to_period("M") == mth, X.index < mth.start_time
+        p, _ = _fit_predict(X, y, tr, te)
+        out.append(y[te] / p - 1)
+    return pd.concat(out)
+
+
 def holdout(df, train_from=TRAIN_FROM, test_from=TEST_FROM) -> tuple[dict, pd.DataFrame]:
     X, y = _xy(df, train_from)
     tr, te = X.index < test_from, X.index >= test_from
@@ -122,6 +135,16 @@ def holdout(df, train_from=TRAIN_FROM, test_from=TEST_FROM) -> tuple[dict, pd.Da
     r.update(kind="holdout", train=[str(X.index[tr].min().date()), str(X.index[tr].max().date())],
              test=[str(X.index[te].min().date()), str(X.index[te].max().date())])
     frame = pd.DataFrame({"actual": y[te], "pred": p, "yesterday": X.loc[te, "lag_1d"], "last_week": X.loc[te, "lag_7d"]})
+    # Split-conformal intervals: quantiles of relative errors on the 2025 dev walk-forward, never on 2026.
+    res = dev_residuals(df, train_from, test_from)
+    r["intervals"] = {}
+    for level in (80, 95):
+        lo, hi = res.quantile([(1 - level / 100) / 2, 1 - (1 - level / 100) / 2])
+        frame[f"lo{level}"], frame[f"hi{level}"] = p * (1 + lo), p * (1 + hi)
+        inside = (frame.actual >= frame[f"lo{level}"]) & (frame.actual <= frame[f"hi{level}"])
+        r["intervals"][level] = {"coverage": float(inside.mean() * 100),
+                                 "mean_width_mu": float((frame[f"hi{level}"] - frame[f"lo{level}"]).mean()),
+                                 "band_pct": [float(lo * 100), float(hi * 100)]}
     r["by_month"] = {str(k): {"model": mape(g.actual, g.pred), "yesterday": mape(g.actual, g.yesterday),
                               "last_week": mape(g.actual, g.last_week)}
                      for k, g in frame.groupby(frame.index.to_period("M"))}
@@ -162,6 +185,12 @@ def main(argv=None) -> None:
                  "| Month | Model | Yesterday | Same day last week |", "|---|---|---|---|"]
         for k, v in r["by_month"].items():
             lines.append(f"| {k} | {v['model']:.2f}% | {v['yesterday']:.2f}% | {v['last_week']:.2f}% |")
+        lines += ["", "## Prediction intervals", "",
+                  "Split-conformal: the band is set from relative errors on the 2025 development walk-forward, then "
+                  "checked on 2026.", "", "| Nominal | 2026 coverage | Band | Mean width (MU) |", "|---|---|---|---|"]
+        for lvl, v in r["intervals"].items():
+            lines.append(f"| {lvl}% | {v['coverage']:.1f}% | {v['band_pct'][0]:+.1f}% to {v['band_pct'][1]:+.1f}% | "
+                         f"{v['mean_width_mu']:.1f} |")
         lines += ["", "## Most-used features", "", ", ".join(r["top_features"])]
         (a.out / "daily_holdout.json").write_text(json.dumps(r, indent=2))
         (a.out / "daily_holdout.md").write_text("\n".join(lines) + "\n")

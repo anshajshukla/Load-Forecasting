@@ -7,8 +7,8 @@ trained once on 2023–2025 and scored on every day of 2026 up to 30 Sep:
 
 | | Model | Same as yesterday | Same day last week |
 |---|---|---|---|
-| Development (walk-forward on 2025) | 2.57% | 4.23% | 7.92% |
-| **2026 held-out test (273 days)** | **2.72%** | 4.55% | 10.12% |
+| Development (walk-forward on 2025) | 2.53% | 4.23% | 7.92% |
+| **2026 held-out test (273 days)** | **2.73%** | 4.55% | 10.12% |
 | Every year 2016–2026 (train on prior 3 years) | median 2.73%, range 2.52–3.55% | beaten 11/11 years | |
 
 The 2026 number is from the final model (7 leaves, 300 trees), chosen on 2025 development data after a first 2026 run with a larger model gave 2.82%. The model beats "same as yesterday" in every month of 2026, and the held-out error is close to the development
