@@ -126,6 +126,13 @@ Numbers are day-ahead MAPE unless stated. "Dev" means data used to make choices;
 * **Impact:** the 95% band covers **94.1%** of 2026 and 93–97% in every year since 2016; the 80% band 77.7% (79% on 2017–2025).
 * **Lesson:** calibrate intervals on recent, out-of-sample errors. In-sample or old errors make bands too narrow.
 
+### 22. Why more history doesn't help (investigated, no change)
+* **Question:** why does training on all history since 2013 do no better than the last 5 years?
+* **Finding:** Delhi's demand changed underneath the model. The average level grew about 27% (82 → 104 MU/day, 2013 → 2025; winter +39%). Summer heat sensitivity rose from 1.3% per °C (2013) to 5.4% (2021), peaking in the COVID years when people stayed home with AC, then fell back to about 2% per °C (2025). Old years teach a heat response the city no longer has.
+* **Training window, 2019–2025 mean error:** 2 years 2.79%, 3 years 2.72%, **5 years 2.67%**, 8 years 2.68%, all history 2.69%.
+* **Tried and rejected:** using all history with older days down-weighted (half-life 1–5 years: 2.69–2.70%), and down-weighting the COVID period (2.68–2.69%). None beat the plain 5-year window, so nothing changed.
+* **Lesson:** more data only helps if it describes the same system. When behaviour shifts in steps (COVID, AC adoption), a clean recent window beats a smooth decay. A tested idea that fails is still worth writing down.
+
 ---
 
 ## Still open
