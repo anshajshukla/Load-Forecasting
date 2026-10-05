@@ -121,7 +121,7 @@ A test (`tests/test_daily.py`) fails if any feature for day d changes when energ
 | Path | What |
 |---|---|
 | `pipeline/daily.py` | Daily model: features, backtest, holdout, bias correction, intervals |
-| `learning/` | `changes.md` (learning log), `models.md` (every model used and what it taught), `analysis.md` (audit and results), `gaps.md` (fixes and open gaps) |
+| `learning/` | `changes.md` (learning log), `models.md` (every model used and what it taught), `analysis.md` (audit and results), `gaps.md` (fixes and open gaps), `research_roadmap.md` (path to a top-journal paper) |
 | `pipeline/forecast.py` | Tomorrow's forecast and live scoring (run daily by `.github/workflows/daily-forecast.yml`) |
 | `app/dashboard.py`, `pipeline/live.py` | Streamlit dashboard; live data fetch and 7-day forecast |
 | `pipeline/sldc.py`, `pipeline/real.py` | Real hourly data: SLDC scraper (needs an Indian IP) and the all-real hourly path |
