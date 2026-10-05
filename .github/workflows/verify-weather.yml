@@ -1,0 +1,15 @@
+name: verify-weather
+on:
+  push:
+    branches: [claude/sldc-pipeline]
+    paths: [tools/verify_weather.py, .github/workflows/verify-weather.yml]
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: { sparse-checkout: "tools\nload_forecast_new/delhi_interaction_enhanced_cleaned.csv", sparse-checkout-cone-mode: false }
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.11" }
+      - run: pip install pandas requests numpy
+      - run: python tools/verify_weather.py
