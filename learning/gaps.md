@@ -31,6 +31,7 @@
 | 25 | **Intervals too narrow** (80%/95% covered 76.9%/92.7%) | Quantiles of the last 365 days' errors instead of a fixed band from the previous year | 95% band covers **94.1%** of 2026 and 93–97% in every year since 2016; 80% band 77.7% (79% on 2017–2025) |
 | 26 | **Correction could overshoot after an unusual month** | Correction capped at ±2% (`CORR_CAP`) | Same accuracy (2.45% on 2026); binds on 15 days in 2017–2025 |
 | 27 | **No live UI** | `pipeline/live.py` + dashboard Live tab: live download, retrain, 7-day forecast with ranges, delay labels, honest fallback | Day 1 2.26%, days 2–7 3.75–4.19% (2025) |
+| 28 | **Untested extra drivers** (heatwaves, hot nights, humid heat, monsoon, school vacations, lockdown) | Six feature groups in `pipeline/daily.py` (`EXTRA`), off by default; `scripts/feature_ablation.py` tests each on 2016–2025 | No group helps clearly: best is hot nights, 2.627% → 2.621% (6/10 years); all groups 2.618%. The existing heat build-up and lag features already carry this information, so the model is unchanged (`reports/feature_ablation.md`) |
 
 ## Still open
 

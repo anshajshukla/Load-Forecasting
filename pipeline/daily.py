@@ -89,7 +89,79 @@ def features(df: pd.DataFrame) -> pd.DataFrame:
     f["is_holiday"] = pd.Index(idx.date).isin(list(hol)).astype(int)
     f["doy_sin"] = np.sin(2 * np.pi * idx.dayofyear / 365.25)
     f["doy_cos"] = np.cos(2 * np.pi * idx.dayofyear / 365.25)
+    for g in FEATURE_GROUPS:
+        f = f.join(EXTRA[g](df))
     return f
+
+
+# Extra feature groups (weather of day d and earlier, calendars fixed in advance; no energy used).
+# Each was tested in scripts/feature_ablation.py; FEATURE_GROUPS holds the ones kept.
+def _heatwave(df):
+    """IMD-style heatwave: t_max >= 40 C and >= 4.5 C above normal, or t_max >= 45 C. The normal for a
+    day of year is the mean t_max of that date (+-7 days) over earlier years only."""
+    t = df["t_max"]
+    doy = np.minimum(df.index.dayofyear.to_numpy(), 365)
+    yrs = df.index.year.to_numpy()
+    tab = t.groupby([yrs, doy]).mean().unstack().reindex(columns=range(1, 366))  # year x day of year
+    wrap = pd.concat([tab.iloc[:, -7:], tab, tab.iloc[:, :7]], axis=1)
+    tab = wrap.T.rolling(15, center=True, min_periods=1).mean().T.iloc[:, 7:-7]
+    tab.columns = range(1, 366)
+    normal_tab = tab.expanding().mean().shift(1)  # years strictly before
+    normal = pd.Series(normal_tab.to_numpy()[normal_tab.index.get_indexer(yrs), doy - 1], index=df.index)
+    dep = t - normal
+    hw = (((t >= 40) & (dep >= 4.5)) | (t >= 45)).astype(int)
+    run = hw.groupby((hw == 0).cumsum()).cumsum()
+    return pd.DataFrame({"t_max_dep": dep, "heatwave": hw, "heatwave_run": run.clip(upper=10)})
+
+
+def _hot_nights(df):
+    tmin = df["t_min"]
+    hot = (tmin >= 30).astype(int)
+    return pd.DataFrame({"t_min_yday": tmin.shift(1), "t_min_3d": tmin.rolling(3).mean(), "hot_night": hot,
+                         "hot_night_run": hot.groupby((hot == 0).cumsum()).cumsum().clip(upper=10)})
+
+
+def _humid_heat(df):
+    t, rh = df["t_max"], df["rh_mean"]
+    # Stull (2011) wet-bulb temperature from air temperature and relative humidity.
+    wb = (t * np.arctan(0.151977 * np.sqrt(rh + 8.313659)) + np.arctan(t + rh) - np.arctan(rh - 1.676331)
+          + 0.00391838 * rh ** 1.5 * np.arctan(0.023101 * rh) - 4.686035)
+    return pd.DataFrame({"wet_bulb": wb, "wet_bulb_3d": wb.rolling(3).mean(), "feels_minus_t": df["feels_max"] - t})
+
+
+def _monsoon(df):
+    """Onset each year: first day from 15 Jun with 3-day rain >= 20 mm (uses rain of day d and earlier)."""
+    rain = df["rain_mm"].fillna(0)
+    r3 = rain.rolling(3).sum()
+    since = pd.Series(np.nan, index=df.index)
+    for yr in np.unique(df.index.year):
+        m = (df.index.year == yr) & (df.index.month >= 6) & ~((df.index.month == 6) & (df.index.day < 15))
+        hit = r3[m & (r3 >= 20)]
+        if len(hit):
+            on = hit.index[0]
+            k = (df.index >= on) & (df.index.year == yr)
+            since[k] = (df.index[k] - on).days
+    return pd.DataFrame({"rain_3d": r3, "rain_7d": rain.rolling(7).sum(),
+                         "days_since_monsoon": since.clip(upper=60).fillna(-1)})
+
+
+def _vacations(df):
+    """Delhi school vacations (approximate standard dates: summer 11 May-30 Jun, winter 1-15 Jan)."""
+    m, d = df.index.month, df.index.day
+    summer = ((m == 5) & (d >= 11)) | (m == 6)
+    winter = (m == 1) & (d <= 15)
+    return pd.DataFrame({"school_vacation": (summer | winter).astype(int)}, index=df.index)
+
+
+def _lockdown(df):
+    i = df.index
+    ld = ((i >= "2020-03-25") & (i <= "2020-05-31")) | ((i >= "2021-04-19") & (i <= "2021-05-31"))
+    return pd.DataFrame({"lockdown": ld.astype(int)}, index=i)
+
+
+EXTRA = {"heatwave": _heatwave, "hot_nights": _hot_nights, "humid_heat": _humid_heat, "monsoon": _monsoon,
+         "vacations": _vacations, "lockdown": _lockdown}
+FEATURE_GROUPS: list[str] = []
 
 
 def mape(a, p) -> float:
