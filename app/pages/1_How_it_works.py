@@ -99,5 +99,5 @@ with st.expander("Full learning log (every change, its impact and the lesson)"):
 
 st.header("6. Limits")
 st.markdown(section(read("learning/gaps.md"), "## Still open"))
-st.caption("Source code: github.com/anshajshuklaa/Load-Forecasting · Disclosure: 2026 was scored four times as the "
+st.caption("Live app: loaddelhi.streamlit.app · Source code: github.com/anshajshuklaa/Load-Forecasting · Disclosure: 2026 was scored four times as the "
            "model evolved; each choice was made on development data first. The daily forecast log is the clean test.")
