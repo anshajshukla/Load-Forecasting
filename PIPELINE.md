@@ -1,5 +1,26 @@
 # Leak-free forecasting pipeline
 
+## Headline: real data only, 2026 held out
+
+Day-ahead forecast of Delhi's **daily energy** (MU) on real Grid-India data (`data/posoco/`, no synthetic rows),
+trained once on 2023–2025 and scored on every day of 2026 up to 30 Sep:
+
+| | Model | Same as yesterday | Same day last week |
+|---|---|---|---|
+| Development (walk-forward on 2025) | 2.57% | 4.23% | 7.92% |
+| **2026 held-out test (273 days)** | **2.82%** | 4.55% | 10.12% |
+
+The model beats "same as yesterday" in every month of 2026, and the held-out error is close to the development
+error, so the model was not overfitted. Weather for the target day is the archive actual, standing in for a weather
+forecast, so real-world error would be slightly higher. Full tables: `reports/daily_backtest.md`, `reports/daily_holdout.md`.
+
+```bash
+python -m pipeline.daily backtest   # development, 2026 excluded
+python -m pipeline.daily holdout    # the one-time 2026 test
+```
+
+The hourly results below are on the legacy dataset, which is mostly synthetic (`reports/data_audit.md`).
+
 `pipeline/` replaces the old modelling code's evaluation with one that can be trusted.
 The old phase scripts in `load_forecast_new/` are left untouched for reference.
 
