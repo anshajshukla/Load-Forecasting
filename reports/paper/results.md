@@ -10,6 +10,9 @@
 | LightGBM, no bias correction | 2.67% | 3.47 | 1.901 | 79.6% | -6.18 (p=7.17e-10) | -6.19 (p=6.6e-10) |
 | Ridge, same features | 3.00% | 3.66 | 2.083 | 79.5% | -9.74 (p=4.16e-22) | -6.50 (p=9.55e-11) |
 | SARIMAX + weather | 2.80% | 3.48 | 2.023 | 86.3% | -5.26 (p=1.53e-07) | -1.93 (p=0.0543) |
+| N-HiTS + weather | 4.02% | 5.81 | 3.580 | 1.4% | -11.26 (p=6.62e-29) | -6.25 (p=4.59e-10) |
+| Chronos-2 + weather (zero-shot) | 2.69% | 3.61 | 1.959 | 81.7% | -2.24 (p=0.025) | -4.10 (p=4.24e-05) |
+| Chronos-Bolt (zero-shot, no weather) | 3.97% | 5.19 | 2.944 | 86.4% | -22.87 (p=1.43e-107) | -16.07 (p=5.67e-56) |
 | Prophet + weather | 6.94% | 8.46 | 4.978 | 72.0% | -13.48 (p=2.38e-40) | -9.50 (p=3.75e-21) |
 | Same as yesterday | 4.51% | 5.71 | 3.293 | 79.7% | -30.81 (p=2.83e-183) | -18.45 (p=2.04e-72) |
 | Same day last week | 8.42% | 11.22 | 6.426 | 79.5% | -24.05 (p=7.86e-118) | -15.00 (p=3.2e-49) |
@@ -24,6 +27,9 @@ DM statistic: LightGBM's loss minus the other model's; negative means LightGBM i
 | LightGBM, no bias correction | 2.75 | 2.59 | 2.41 | 3.25 | 2.94 | 2.57 | 2.58 | 2.46 | 2.45 |
 | Ridge, same features | 2.98 | 2.88 | 2.69 | 3.71 | 3.48 | 2.83 | 2.83 | 2.73 | 2.85 |
 | SARIMAX + weather | 2.79 | 2.72 | 2.70 | 3.29 | 3.13 | 2.73 | 2.65 | 2.63 | 2.57 |
+| N-HiTS + weather | 3.96 | 3.24 | 3.48 | 5.20 | 4.70 | 4.70 | 3.42 | 3.80 | 3.69 |
+| Chronos-2 + weather (zero-shot) | 2.70 | 2.48 | 2.53 | 3.14 | 3.05 | 2.95 | 2.53 | 2.33 | 2.51 |
+| Chronos-Bolt (zero-shot, no weather) | 3.94 | 3.60 | 3.88 | 4.30 | 4.31 | 4.13 | 4.06 | 3.59 | 3.91 |
 | Prophet + weather | 5.30 | 4.42 | 4.36 | 15.80 | 8.55 | 6.64 | 5.43 | 4.30 | 7.70 |
 | Same as yesterday | 4.70 | 4.43 | 4.56 | 4.67 | 4.68 | 4.80 | 4.45 | 4.05 | 4.23 |
 | Same day last week | 7.60 | 6.97 | 8.56 | 9.61 | 9.09 | 8.77 | 9.56 | 7.76 | 7.92 |
@@ -35,6 +41,9 @@ DM statistic: LightGBM's loss minus the other model's; negative means LightGBM i
 | LightGBM, no bias correction | 6 | 3 | 0 |
 | Ridge, same features | 9 | 0 | 0 |
 | SARIMAX + weather | 3 | 6 | 0 |
+| N-HiTS + weather | 9 | 0 | 0 |
+| Chronos-2 + weather (zero-shot) | 1 | 8 | 0 |
+| Chronos-Bolt (zero-shot, no weather) | 9 | 0 | 0 |
 | Prophet + weather | 9 | 0 | 0 |
 | Same as yesterday | 9 | 0 | 0 |
 | Same day last week | 9 | 0 | 0 |
