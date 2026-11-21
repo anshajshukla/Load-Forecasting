@@ -40,7 +40,7 @@ every model used in the project, the learning log and the limits. The app uses a
 ### Put it online (free, Streamlit Community Cloud)
 
 1. Sign in at [share.streamlit.io](https://share.streamlit.io) with GitHub.
-2. Click **Create app** and choose: repository `anshajshuklaa/Load-Forecasting`, branch `main`,
+2. Click **Create app** and choose: repository `anshajshukla/Load-Forecasting`, branch `main`,
    main file `app/dashboard.py`, Python 3.11.
 3. Click **Deploy**. It installs `requirements.txt` and gives a public `https://<name>.streamlit.app` link.
    This project's deployment: https://loaddelhi.streamlit.app/
@@ -136,4 +136,5 @@ A test (`tests/test_daily.py`) fails if any feature for day d changes when energ
 
 See `learning/gaps.md`. The main ones:
 * The real-data results are **daily energy only**. Hourly needs the SLDC scrape from an Indian IP.
-* 2026 was looked at before the final model size was chosen (on 2025 data), and this is disclosed. The live forecasts in `reports/live/` are the clean out-of-sample test from now on.
+* 2026 was looked at before the final model size was chosen (on 2025 data), and this is disclosed. The live forecasts in `reports/live/` are the clean out-of-sample test, but only the rows marked
+  `ex_ante=True` (from 22 Nov 2026): earlier rows were made on or after the target day because of Grid-India's reporting delay.

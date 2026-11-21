@@ -21,12 +21,11 @@ WEATHER_CSV = REPO_ROOT / "data/weather/delhi_hourly.csv"
 
 
 def fetch_weather(start: date, end: date, out: Path = WEATHER_CSV) -> pd.DataFrame:
-    import requests
+    from .http import get
 
-    r = requests.get(WEATHER_URL, timeout=120, params={
+    r = get(WEATHER_URL, timeout=120, params={
         "latitude": LAT, "longitude": LON, "start_date": start.isoformat(), "end_date": end.isoformat(),
         "hourly": ",".join(WEATHER_COLS), "timezone": TZ})
-    r.raise_for_status()
     h = r.json()["hourly"]
     w = pd.DataFrame(h).rename(columns={"time": "datetime"})
     w["datetime"] = pd.to_datetime(w["datetime"])

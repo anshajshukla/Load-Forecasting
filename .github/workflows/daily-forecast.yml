@@ -12,8 +12,8 @@ jobs:
   forecast:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
         with: { python-version: "3.11", cache: pip, cache-dependency-path: requirements-pipeline.txt }
       - run: pip install -r requirements-pipeline.txt
       - name: Fetch latest Grid-India daily data (Robbie Andrew's processed POSOCO reports)
@@ -22,10 +22,15 @@ jobs:
           git -C /tmp/ra sparse-checkout set india/data
           unzip -o -q /tmp/ra/india/data/POSOCO_data.zip -d /tmp/posoco
       - name: Refresh archive weather (last 30 days)
+        # Not fatal: tomorrow's run covers the same window, and the forecast step can use stored weather.
+        continue-on-error: true
         run: python -c "from datetime import date, timedelta as t; from pipeline.forecast import merge_weather; from pipeline.real import fetch_weather; import pandas as pd; from pathlib import Path; d=date.today(); w=fetch_weather(d-t(30), d-t(6), Path('/tmp/w.csv')); merge_weather(w, prefer_new=True)"
       - name: Forecast and score
+        id: forecast
         run: python -m pipeline.forecast --posoco-csv /tmp/posoco/POSOCO_data.csv
       - name: Commit results
+        # Also after a failed forecast, so newly reported actuals are still scored and saved.
+        if: always() && steps.forecast.conclusion != 'skipped'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"

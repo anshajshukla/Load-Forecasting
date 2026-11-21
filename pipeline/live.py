@@ -29,19 +29,9 @@ FORECAST_URL = "https://api.open-meteo.com/v1/forecast"
 
 def _get(url: str, tries: int = 3, **kw):
     """GET with a few retries, so one network hiccup doesn't drop a live source."""
-    import time
+    from .http import get
 
-    import requests
-
-    for i in range(tries):
-        try:
-            r = requests.get(url, timeout=60, **kw)
-            r.raise_for_status()
-            return r
-        except requests.RequestException:
-            if i == tries - 1:
-                raise
-            time.sleep(2 * (i + 1))
+    return get(url, tries=tries, backoff=2, **kw)
 
 
 def fetch_energy() -> tuple[pd.Series, str]:

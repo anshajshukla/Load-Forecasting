@@ -70,9 +70,15 @@ with t_log:
     if LIVE.exists():
         live = pd.read_csv(LIVE, parse_dates=["target_date"]).set_index("target_date")
         scored = live.dropna(subset=["actual"])
+        ex_ante = scored[scored["ex_ante"].astype(bool)] if "ex_ante" in scored else scored.iloc[:0]
+        c1, c2 = st.columns(2)
         if len(scored):
-            st.metric(f"Live error over {len(scored)} scored days",
+            c1.metric(f"Live error, all {len(scored)} scored days",
                       f"{((scored.pred - scored.actual).abs() / scored.actual * 100).mean():.2f}%")
+        c2.metric(f"Made before the day (ex-ante), {len(ex_ante)} scored days",
+                  f"{((ex_ante.pred - ex_ante.actual).abs() / ex_ante.actual * 100).mean():.2f}%" if len(ex_ante) else "none yet")
+        st.caption("Only ex-ante rows were forecast before the day began, with a real weather forecast. Rows before "
+                   "22 Nov 2026 were made on or after the target day, because Grid-India reports with a delay.")
         st.dataframe(live.sort_index(ascending=False), width="stretch")
     else:
         st.info("No logged forecasts yet. The daily GitHub Action records one forecast per day before the day "
