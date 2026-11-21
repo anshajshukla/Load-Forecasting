@@ -1,7 +1,7 @@
 name: pipeline-ci
 on:
   pull_request:
-    paths: ["pipeline/**", "tests/**", "requirements-pipeline.txt", ".github/workflows/pipeline-ci.yml"]
+    paths: ["pipeline/**", "research/**", "tests/**", "requirements-pipeline.txt", ".github/workflows/pipeline-ci.yml"]
   push:
     branches: [main]
     paths: ["pipeline/**", "tests/**", "requirements-pipeline.txt"]

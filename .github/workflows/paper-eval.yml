@@ -1,0 +1,63 @@
+name: paper-eval
+# Heavy parts of the paper evaluation (research/): issued day-ahead weather from Open-Meteo's
+# previous-runs API, N-HiTS and Chronos baselines, then the combined comparison. Results are
+# committed back to the branch. Development years only (2017-2025); the 2026 holdout is not used.
+on:
+  pull_request:
+    paths: ["research/**", ".github/workflows/paper-eval.yml"]
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: paper-eval-${{ github.head_ref || github.ref_name }}
+  cancel-in-progress: true
+jobs:
+  eval:
+    runs-on: ubuntu-latest
+    timeout-minutes: 150
+    steps:
+      - uses: actions/checkout@v5
+        with: { ref: "${{ github.head_ref || github.ref_name }}" }
+      - uses: actions/setup-python@v6
+        with: { python-version: "3.11", cache: pip, cache-dependency-path: requirements-pipeline.txt }
+      - name: Install
+        run: |
+          pip install -r requirements-pipeline.txt statsmodels
+          pip install torch --index-url https://download.pytorch.org/whl/cpu
+          pip install neuralforecast "chronos-forecasting>=2.0"
+          pip freeze | grep -iE "^(torch|neuralforecast|chronos|lightgbm|pandas|statsmodels)=" 
+      - name: Issued day-ahead weather (previous-runs API)
+        id: issued
+        continue-on-error: true
+        run: |
+          python -m research.issued_weather fetch
+          python -m research.issued_weather eval
+      - name: N-HiTS
+        id: nhits
+        continue-on-error: true
+        run: python -m research.baselines_dl --only nhits
+      - name: Chronos-Bolt (zero-shot)
+        id: bolt
+        continue-on-error: true
+        run: python -m research.baselines_dl --only chronos_bolt
+      - name: Chronos-2 with covariates (zero-shot)
+        id: chronos2
+        continue-on-error: true
+        run: python -m research.baselines_dl --only chronos2
+      - name: Compare every model
+        run: |
+          python -m research.evaluate
+          cat reports/paper/issued_weather.md 2>/dev/null || true
+      - name: Commit results to the branch
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add reports/paper data/weather/delhi_issued_day1.csv 2>/dev/null || git add reports/paper
+          git diff --cached --quiet || git commit -m "Paper evaluation results (paper-eval workflow)"
+          git push
+      - name: Fail if a model did not run
+        if: steps.issued.outcome == 'failure' || steps.nhits.outcome == 'failure' || steps.bolt.outcome == 'failure' || steps.chronos2.outcome == 'failure'
+        run: |
+          echo "issued=${{ steps.issued.outcome }} nhits=${{ steps.nhits.outcome }} bolt=${{ steps.bolt.outcome }} chronos2=${{ steps.chronos2.outcome }}"
+          exit 1
